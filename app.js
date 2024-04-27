@@ -10,10 +10,10 @@ const port = process.env.PORT || 5500;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
 });
 
 app.listen(port, () => console.log(`Server is running on ${port}`));
