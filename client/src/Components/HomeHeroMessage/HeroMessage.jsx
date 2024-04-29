@@ -3,13 +3,12 @@ const HeroMessage = () => {
   return (
     <Wrapper>
       <article className="message-article">
-        <p className="message-hero">Welcome to Genocide</p>
-      </article>
-      <article className="message-article">
-        <p className="message-hook">Welcome to Genocide</p>
-      </article>
-      <article className="message-article">
-        <p className="message-close">Welcome to Genocide</p>
+        <h1 className="hero"> genocide</h1>
+        <div className="title-underline"></div>
+        <p className="message">
+          a computer science club & a investors paradise. come join us for the
+          fun!
+        </p>
       </article>
     </Wrapper>
   );

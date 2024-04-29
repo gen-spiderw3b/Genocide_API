@@ -8,15 +8,27 @@ const Wrapper = styled.section`
   margin-top: 5rem;
 
   .message-article {
+    min-height: calc(100vh - 5rem);
     background: red;
-    height: 5rem;
-    margin-bottom: 2rem;
   }
 
-  .message-hero {
+  .hero {
     font-size: 1.5rem;
     text-align: center;
     color: black;
+    text-transform: capitalize;
+    margin-bottom: 5rem;
+  }
+  .message {
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+    text-transform: capitalize;
+    margin-top: 80%;
+  }
+  .title-underline {
+    background: black;
+    margin-top: -4.5rem;
   }
 `;
 
