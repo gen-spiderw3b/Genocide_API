@@ -24,7 +24,7 @@ const Wrapper = styled.section`
     text-align: center;
     color: black;
     text-transform: capitalize;
-    margin-top: 80%;
+    margin-top: 50%;
   }
   .title-underline {
     background: black;
