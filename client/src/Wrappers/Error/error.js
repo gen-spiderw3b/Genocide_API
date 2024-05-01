@@ -15,6 +15,14 @@ const Wrapper = styled.main`
     margin-bottom: 2rem;
     margin-top: -3rem;
   }
+  .attribution {
+    font-size: 0.6rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+  }
+  .attribution:hover {
+    color: white;
+  }
   h3 {
     margin-bottom: 0.5rem;
   }
@@ -29,6 +37,16 @@ const Wrapper = styled.main`
     color: blue;
     text-transform: capitalize;
   }
+  a:hover {
+    color: white;
+  }
+  /* Medai Queries */
+  @media (min-width: 800px) {
+    .attribution {
+      font-size: 1rem;
+    }
+  }
+  /* End Of Medai Queries */
 `;
 
 export default Wrapper;

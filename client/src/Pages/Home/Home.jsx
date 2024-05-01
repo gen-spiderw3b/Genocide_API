@@ -10,8 +10,13 @@ const Home = () => {
   const matches = useMediaQuery("only screen and (min-width:800px)");
   return (
     <Wrapper>
-      <div className="hero-container">
-        {matches ? <HomeHeroImg /> : <HeroMessage />}
+      <div className="hero-section">
+        {matches ? <HomeHeroImg className="hero-img" /> : <HeroMessage />}
+        <span className="attribution">
+          <a href="https://www.vecteezy.com/free-photos" target="_blank">
+            Free Stock photos by Vecteezy
+          </a>
+        </span>
       </div>
       <div className="article-section">
         <div className="title">

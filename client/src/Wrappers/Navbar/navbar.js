@@ -31,6 +31,7 @@ const Wrapper = styled.nav`
       font-size: 2rem;
     }
     .login a {
+      margin-right: 4rem;
       font-size: 2rem;
     }
   }

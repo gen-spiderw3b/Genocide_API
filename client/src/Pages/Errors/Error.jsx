@@ -9,6 +9,11 @@ const Error = () => {
     return (
       <Wrapper>
         <img src={Img} alt="Error" className="img" />
+        <span className="attribution">
+          <a href="https://www.vecteezy.com/free-photos" target="_blank">
+            Free Stock photos by Vecteezy
+          </a>
+        </span>
         <h3>Page Not Found!</h3>
         <p>{error.data}</p>
         <Link to="/">back to home</Link>
