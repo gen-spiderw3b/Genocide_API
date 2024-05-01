@@ -1,21 +1,17 @@
 import PropTypes from "prop-types";
-const HomeHeroArticle = ({ title }) => {
+const HomeHeroArticle = ({ title, message }) => {
   return (
     <>
       <h2 className="article-title">{title}</h2>
       <div className="title-underline"></div>
-      <p className="article-message">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore officia
-        delectus autem doloremque ab provident ut, consequuntur adipisci
-        repudiandae explicabo ipsa dolores tempora perferendis asperiores iure
-        accusantium, necessitatibus non labore!
-      </p>
+      <p className="article-message">{message}</p>
     </>
   );
 };
 
 HomeHeroArticle.propTypes = {
   title: PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default HomeHeroArticle;

@@ -45,8 +45,10 @@ const Wrapper = styled.main`
     border: 2px solid red;
   }
   .article-message {
+    margin: 0 auto;
+    line-height: 1.5;
     color: black;
-    text-align: center;
+    text-transform: capitalize;
   }
 `;
 
