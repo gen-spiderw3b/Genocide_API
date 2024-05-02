@@ -39,6 +39,7 @@ const Wrapper = styled.main`
   }
   .about-title {
     font-size: 4rem;
+    margin: 0 auto;
     margin-bottom: 3rem;
     text-align: center;
     color: red;
@@ -85,6 +86,17 @@ const Wrapper = styled.main`
       height: calc(100vh - 5rem);
     }
   }
+  @media (min-width: 1200px) {
+    /* img */
+    .article {
+      width: auto;
+    }
+    #article-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
   @media (min-width: 1300px) {
     /* img */
     .hero-section {

@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 const Wrapper = styled.nav`
   /* Nav */
-  background: red;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  #nav-container {
+    height: 5rem;
+    background: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   /* Header */
   .header a {
     padding-left: 0.5rem;
@@ -17,11 +19,15 @@ const Wrapper = styled.nav`
   }
   /* Login */
   .login a {
-    padding-right: 0.5rem;
-    text-transform: capitalize;
-    font-size: 1.3rem;
+    padding: 0.2rem 0.8rem;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
     text-decoration: none;
-    color: black;
+    background: black;
+    color: red;
+    border: transparent;
+    border-radius: 10px;
   }
   a:hover {
     color: white;
@@ -32,7 +38,7 @@ const Wrapper = styled.nav`
     }
     .login a {
       margin-right: 4rem;
-      font-size: 2rem;
+      font-size: 1.3rem;
     }
   }
 `;

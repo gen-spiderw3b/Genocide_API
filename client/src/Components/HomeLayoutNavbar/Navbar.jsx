@@ -3,11 +3,14 @@ import Wrapper from "../../Wrappers/Navbar/navbar";
 const Navbar = () => {
   return (
     <Wrapper>
-      <div className="header">
-        <Link to="/">genocide</Link>
-      </div>
-      <div className="login">
-        <Link to="/login">login</Link>
+      <div id="nav-container">
+        <div className="header">
+          <Link to="/">genocide</Link>
+        </div>
+        <div className="login">
+          <Link to="/register">register</Link>
+          <Link to="/login">login</Link>
+        </div>
       </div>
     </Wrapper>
   );
