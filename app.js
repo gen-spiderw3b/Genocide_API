@@ -1,4 +1,5 @@
 import "express-async-errors";
+// import {process} = from 'node:'
 import express from "express";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
@@ -38,7 +39,7 @@ const start = async () => {
     );
   } catch (error) {
     console.log(error);
-    process.exit(1);
+    process.exitCode = 1;
   }
 };
 
