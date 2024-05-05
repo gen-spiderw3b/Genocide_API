@@ -11,8 +11,11 @@ dotenv.config();
 //Custom Imports
 import errorHandler from "./Middleware/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
+
+//Variables && MiddleWare
 const app = express();
 const port = process.env.PORT || 10000;
+app.use(express.json());
 
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));

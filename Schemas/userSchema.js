@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
-
+import { Class } from "../Utils/Classes/class.js";
 const UserSchema = new mongoose.Schema(
   {
+    class: {
+      type: String,
+      default: Object.values(Class.MEMBER),
+    },
     firstName: {
       type: String,
     },
