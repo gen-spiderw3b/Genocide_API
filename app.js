@@ -12,7 +12,7 @@ dotenv.config();
 import errorHandler from "./Middleware/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
 const app = express();
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 10000;
 
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
