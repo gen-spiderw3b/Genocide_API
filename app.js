@@ -20,14 +20,6 @@ if ((process.env.NODE_ENV = "development")) {
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 
-//Route Not Found
-app.use("*", (req, res) => {
-  res.status(404).json({ msg: "Route Not Found!" });
-});
-
-//Error Handler Middleware
-app.use(errorHandler);
-
 //Building Front-End Progomatically
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -39,6 +31,14 @@ app.get("*", (req, res) => {
 });
 
 //End Of Building Front-End Progomatically
+
+//Route Not Found
+app.use("*", (req, res) => {
+  res.status(404).json({ msg: "Route Not Found!" });
+});
+
+//Error Handler Middleware
+app.use(errorHandler);
 
 const start = async () => {
   try {
