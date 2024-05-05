@@ -1,5 +1,5 @@
+//Imports
 import "express-async-errors";
-// import {process} = from 'node:'
 import express from "express";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
@@ -7,15 +7,27 @@ import mongoose from "mongoose";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
-import { log } from "console";
 dotenv.config();
-
+//Custom Imports
+import errorHandler from "./Middleware/errorHandlerMiddleware.js";
+import UserRouter from "./Routes/userRoutes.js";
 const app = express();
 const port = process.env.PORT || 5500;
 
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
 }
+
+//Route Not Found
+app.get("*", (req, res) => {
+  res.status(404).json({ msg: "Route Not Found!" });
+});
+
+//Error Handler Middleware
+app.use(errorHandler);
+
+//EndPoints
+app.use("/api/v1/user", UserRouter);
 
 //Building Front-End Progomatically
 
