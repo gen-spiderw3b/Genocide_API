@@ -17,6 +17,8 @@ const port = process.env.PORT || 5500;
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
 }
+//EndPoints
+app.use("/api/v1/user", UserRouter);
 
 //Route Not Found
 app.get("*", (req, res) => {
@@ -25,9 +27,6 @@ app.get("*", (req, res) => {
 
 //Error Handler Middleware
 app.use(errorHandler);
-
-//EndPoints
-app.use("/api/v1/user", UserRouter);
 
 //Building Front-End Progomatically
 
