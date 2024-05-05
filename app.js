@@ -21,7 +21,7 @@ if ((process.env.NODE_ENV = "development")) {
 app.use("/api/v1/user", UserRouter);
 
 //Route Not Found
-app.get("*", (req, res) => {
+app.use("*", (req, res) => {
   res.status(404).json({ msg: "Route Not Found!" });
 });
 
