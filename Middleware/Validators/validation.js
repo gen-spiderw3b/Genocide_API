@@ -26,7 +26,7 @@ export const validateRegister = withValidationErrors([
   body("lastName")
     .notEmpty()
     .withMessage("lastName is required")
-    .isLength({ min: 8 })
+    .isLength({ min: 4 })
     .withMessage("lastName must be at least 8 characters long! ")
     .trim(),
   body("password")

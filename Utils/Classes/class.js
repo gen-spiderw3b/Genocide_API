@@ -1,5 +1,5 @@
 export const Class = {
-  ADMIN: "Admin",
-  MEMBER: "Member",
-  Treasure: "Treasure",
+  ADMIN: "admin",
+  MEMBER: "member",
+  Treasure: "treasure",
 };

@@ -44,7 +44,7 @@ const Register = () => {
           defaultValue="birmingham"
         />
         <FormInput
-          type="number"
+          type="text"
           name="phoneNumber"
           placeholder="xxx-xxx-xxxx"
           defaultValue="123-456-7890"
