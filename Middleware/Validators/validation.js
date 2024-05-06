@@ -1,2 +1,69 @@
-import { body } from "express-validator";
+import { body, validationResult } from "express-validator";
+import { BadRequestError } from "../../Middleware/RequestErrors/errors.js";
 import Users from "../../Schemas/userSchema.js";
+
+const withValidationErrors = (validateValues) => {
+  return [
+    validateValues,
+    (req, res, next) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const errMessage = errors.array().map((error) => error.msg);
+        throw new BadRequestError(errMessage);
+      }
+      next();
+    },
+  ];
+};
+
+export const validateRegister = withValidationErrors([
+  body("firstName")
+    .notEmpty()
+    .withMessage("firstName is required")
+    .isLength({ min: 4 })
+    .withMessage("firstName must be at least 4 characters long! ")
+    .trim(),
+  body("lastName")
+    .notEmpty()
+    .withMessage("lastName is required")
+    .isLength({ min: 8 })
+    .withMessage("lastName must be at least 8 characters long! ")
+    .trim(),
+  body("password")
+    .notEmpty()
+    .withMessage("password is required")
+    .isLength({ min: 6 })
+    .withMessage("password must be at least 6 characters long! ")
+    .trim(),
+  body("state")
+    .notEmpty()
+    .withMessage("Name of State is required")
+    .toLowerCase()
+    .isLength({ min: 2, max: 2 })
+    .withMessage("example:al ... example:ky")
+    .trim(),
+  body("city")
+    .notEmpty()
+    .withMessage("Name of city is required")
+    .toLowerCase()
+    .isLength({ min: 4, max: 30 })
+    .withMessage("city name is too small or to large. 4-30 characters long!")
+    .trim(),
+  body("phoneNumber")
+    .notEmpty()
+    .withMessage("phoneNumber is required")
+    .isLength({ min: 12, max: 12 })
+    .withMessage("format must be xxx-xxx-xxxx")
+    .trim(),
+  body("email")
+    .notEmpty()
+    .withMessage("email is required")
+    .isEmail()
+    .withMessage("invalid email format")
+    .custom(async (email) => {
+      const user = await Users.findOne({ email });
+      if (user) {
+        throw new BadRequestError("email already exists");
+      }
+    }),
+]);

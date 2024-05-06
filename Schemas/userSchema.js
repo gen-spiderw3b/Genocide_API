@@ -4,29 +4,16 @@ const UserSchema = new mongoose.Schema(
   {
     class: {
       type: String,
-      default: Object.values(Class.MEMBER),
+      enum: Object.values(Class),
+      default: Class.MEMBER,
     },
-    firstName: {
-      type: String,
-    },
-    lastName: {
-      type: String,
-    },
-    email: {
-      type: String,
-    },
-    password: {
-      type: String,
-    },
-    state: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-    phoneNumber: {
-      type: Number,
-    },
+    firstName: String,
+    lastName: String,
+    email: String,
+    password: String,
+    state: String,
+    city: String,
+    phoneNumber: Number,
   },
   { timestamps: true }
 );

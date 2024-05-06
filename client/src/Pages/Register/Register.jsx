@@ -44,10 +44,10 @@ const Register = () => {
           defaultValue="birmingham"
         />
         <FormInput
-          type="text"
-          name="phone"
-          placeholder="Phone-Number"
-          defaultValue="8645125304"
+          type="number"
+          name="phoneNumber"
+          placeholder="xxx-xxx-xxxx"
+          defaultValue="123-456-7890"
         />
         <button type="button" className="btn btn-block">
           register

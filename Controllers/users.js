@@ -3,10 +3,8 @@ import Users from "../Schemas/userSchema.js";
 
 // Register
 export const registerUser = async (req, res) => {
-  //Get Admin
   const user = await Users.create(req.body);
-
-  res.status(200).json(user);
+  res.status(StatusCodes.CREATED).json(user);
 };
 //End Of Register
 
