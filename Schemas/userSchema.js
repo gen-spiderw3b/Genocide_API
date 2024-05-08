@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import { Class } from "../Utils/Classes/class.js";
+import { ROLE } from "../Utils/Classes/class.js";
 const UserSchema = new mongoose.Schema(
   {
-    class: {
+    role: {
       type: String,
-      enum: Object.values(Class),
-      default: Class.MEMBER,
+      enum: Object.values(ROLE),
+      default: ROLE.MEMBER,
     },
     firstName: String,
     lastName: String,

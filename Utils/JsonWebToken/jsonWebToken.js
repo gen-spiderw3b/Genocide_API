@@ -9,4 +9,7 @@ export const createToken = (payload) => {
 };
 
 //Verify Token
-export const verifyToken = () => {};
+export const verifyToken = (token) => {
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  return decoded;
+};

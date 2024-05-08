@@ -1,4 +1,4 @@
-export const Class = {
+export const ROLE = {
   ADMIN: "admin",
   MEMBER: "member",
   Treasure: "treasure",

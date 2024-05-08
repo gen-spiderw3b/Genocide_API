@@ -8,7 +8,7 @@ import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
 export const registerUser = async (req, res) => {
   //Creating Admin
   const isFirstAccount = (await Users.countDocuments()) === 0;
-  req.body.class = isFirstAccount ? "admin" : "member";
+  req.body.role = isFirstAccount ? "admin" : "member";
   //Hashing Password
   const hashedPassword = await hashPassword(req.body.password);
   req.body.password = hashedPassword;
@@ -33,7 +33,7 @@ export const LoginUser = async (req, res) => {
   }
   //Create Token
   const oneDay = 1000 * 60 * 60 * 24;
-  const token = createToken({ UserId: user._id, class: user.class });
+  const token = createToken({ userId: user._id, role: user.role });
 
   //Create Cookie
   res.cookie("token", token, {
@@ -48,6 +48,10 @@ export const LoginUser = async (req, res) => {
 
 // Logout
 export const logoutUser = (req, res) => {
-  res.status(200).json({ msg: "Logout" });
+  res.cookie("token", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+  res.status(200).json({ msg: "User Logged Out" });
 };
 //End Of Logout
