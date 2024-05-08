@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
+import cookieParser from "cookie-parser";
 dotenv.config();
 //Custom Imports
 import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
@@ -16,6 +17,7 @@ import UserRouter from "./Routes/userRoutes.js";
 const app = express();
 const port = process.env.PORT || 10000;
 app.use(express.json());
+app.use(cookieParser());
 
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
