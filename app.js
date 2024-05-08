@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 import path from "path";
 dotenv.config();
 //Custom Imports
-import errorHandler from "./Middleware/errorHandlerMiddleware.js";
+import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
 
 //Variables && MiddleWare

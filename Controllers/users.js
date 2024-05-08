@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import Users from "../Schemas/userSchema.js";
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
+import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
 
 // Register
 export const registerUser = async (req, res) => {
@@ -17,8 +18,17 @@ export const registerUser = async (req, res) => {
 //End Of Register
 
 // Login
-export const LoginUser = (req, res) => {
-  res.status(200).json({ msg: "Login" });
+export const LoginUser = async (req, res) => {
+  const user = await Users.findOne({ email: req.body.email });
+
+  const isUserVerify =
+    user && (await checkPassword(req.body.password, user.password));
+
+  if (!isUserVerify) {
+    throw new UnauthorizedError("Invalid Login!");
+  }
+
+  res.status(200).json(user);
 };
 //End Of Login
 
