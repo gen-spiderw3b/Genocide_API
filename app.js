@@ -12,7 +12,10 @@ dotenv.config();
 //Custom Imports
 import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
+import DashBoardUser from "./Routes/DashBoard/dashboard.js";
 
+//Dashboard Auth
+import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 //Variables && MiddleWare
 const app = express();
 const port = process.env.PORT || 10000;
@@ -24,6 +27,7 @@ if ((process.env.NODE_ENV = "development")) {
 }
 //EndPoints
 app.use("/api/v1/user", UserRouter);
+app.use("/api/v1/dashboard", authMiddleWare, DashBoardUser);
 
 //Building Front-End Progomatically
 
