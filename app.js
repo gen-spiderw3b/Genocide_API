@@ -18,7 +18,7 @@ import UserAuthRouter from "./Routes/Users/user.js";
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 //Variables && MiddleWare
 const app = express();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use(cookieParser());
 
