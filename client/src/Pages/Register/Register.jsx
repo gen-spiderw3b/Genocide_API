@@ -29,48 +29,13 @@ const Register = () => {
         <div className="header">
           <h3>register</h3>
         </div>
-        <FormInput
-          type="text"
-          name="firstName"
-          placeholder="FirstName"
-          defaultValue="test1"
-        />
-        <FormInput
-          type="text"
-          name="lastName"
-          placeholder="LastName"
-          defaultValue="test1"
-        />
-        <FormInput
-          type="email"
-          name="email"
-          placeholder="email"
-          defaultValue="test1@gmail.com"
-        />
-        <FormInput
-          type="password"
-          name="password"
-          placeholder="Password"
-          defaultValue="123456"
-        />
-        <FormInput
-          type="text"
-          name="state"
-          placeholder="State eg:alabama"
-          defaultValue="alabama"
-        />
-        <FormInput
-          type="text"
-          name="city"
-          placeholder="city"
-          defaultValue="birmingham"
-        />
-        <FormInput
-          type="text"
-          name="phoneNumber"
-          placeholder="xxx-xxx-xxxx"
-          defaultValue="123-456-7890"
-        />
+        <FormInput type="text" name="firstName" placeholder="FirstName" />
+        <FormInput type="text" name="lastName" placeholder="LastName" />
+        <FormInput type="email" name="email" placeholder="email" />
+        <FormInput type="password" name="password" placeholder="Password" />
+        <FormInput type="text" name="state" placeholder="a.l" />
+        <FormInput type="text" name="city" placeholder="city" />
+        <FormInput type="text" name="phoneNumber" placeholder="xxx-xxx-xxxx" />
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>
           {isSubmitting ? "submitting" : "submit"}
         </button>

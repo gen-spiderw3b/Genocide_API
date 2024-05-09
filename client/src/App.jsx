@@ -5,9 +5,11 @@ import {
   Register,
   Login,
   Dashboard,
+  DashboardLayout,
   Error,
 } from "./Pages/index";
 import { action as registerAction } from "./Pages/Register/Register";
+import { action as loginAction } from "./Pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +29,17 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
-        children: [],
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+        ],
       },
     ],
   },
