@@ -1,9 +1,31 @@
+import { Form, redirect, useNavigation } from "react-router-dom";
 import Wrapper from "../../Wrappers/Register/register";
 import { FormInput } from "../../Components/index";
+import customFetch from "../../Utils/customFetch";
+import { toast } from "react-toastify";
+//Actions
+// eslint-disable-next-line react-refresh/only-export-components
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    await customFetch.post("/user/register", data);
+    toast.success("You have Registered With Genocide!");
+    return redirect("/login");
+  } catch (error) {
+    console.log(error);
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
 const Register = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
   return (
     <Wrapper>
-      <form className="form">
+      <Form method="post" className="form">
         <div className="header">
           <h3>register</h3>
         </div>
@@ -34,7 +56,7 @@ const Register = () => {
         <FormInput
           type="text"
           name="state"
-          placeholder="State"
+          placeholder="State eg:alabama"
           defaultValue="alabama"
         />
         <FormInput
@@ -49,10 +71,10 @@ const Register = () => {
           placeholder="xxx-xxx-xxxx"
           defaultValue="123-456-7890"
         />
-        <button type="button" className="btn btn-block">
-          register
+        <button type="submit" className="btn btn-block" disabled={isSubmitting}>
+          {isSubmitting ? "submitting" : "submit"}
         </button>
-      </form>
+      </Form>
     </Wrapper>
   );
 };
