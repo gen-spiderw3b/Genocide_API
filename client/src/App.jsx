@@ -12,6 +12,7 @@ import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
 
 const router = createBrowserRouter([
+  //HomeLayout
   {
     path: "/",
     element: <HomeLayout />,
@@ -31,15 +32,16 @@ const router = createBrowserRouter([
         element: <Login />,
         action: loginAction,
       },
+    ],
+  },
+  // DashboardLayout
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
       {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />,
-          },
-        ],
+        index: true,
+        element: <Dashboard />,
       },
     ],
   },
