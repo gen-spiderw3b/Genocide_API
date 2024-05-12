@@ -5,3 +5,4 @@ export { default as Login } from "./Login/Login";
 export { default as Error } from "./Errors/Error";
 export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as DashboardLayout } from "./Dashboard/DashboardLayout";
+export { default as VersionInfo } from "./VersionInfo/VersionInfo";

@@ -7,6 +7,7 @@ import {
   Dashboard,
   DashboardLayout,
   Error,
+  VersionInfo,
 } from "./Pages/index";
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "version-info",
+        element: <VersionInfo />,
       },
     ],
   },
