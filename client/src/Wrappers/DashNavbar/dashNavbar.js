@@ -1,79 +1,52 @@
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
-  height: 5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   background: red;
-  .column-one {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+  .nav-center {
     display: flex;
+    width: 90vw;
     align-items: center;
-  }
-  .column-two {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
   }
-  .column-three {
-    display: flex;
-    align-items: center;
-  }
-  .column-four {
-    display: flex;
-    align-items: center;
-  }
-
-  .open-btn {
-    border: transparent;
+  .toggle-btn {
     background: transparent;
-    font-size: 1.5rem;
-    transition: var(--transition);
+    border-color: transparent;
+    font-size: 1.75rem;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
-  .open-btn:hover {
-    transform: rotate(90deg);
-  }
-  .logout-btn {
-    height: 1.2rem;
-    width: 6rem;
-    padding: 0.2rem 0.5rem;
-    background: black;
-    color: red;
+  .btn-container {
+    display: flex;
+    align-items: center;
   }
   .logo {
-    margin-left: 0.2rem;
-  }
-  a:link,
-  a:visited {
-    color: black;
     text-decoration: none;
+    color: black;
+    text-transform: capitalize;
   }
-  a:hover {
+  .info {
+    padding: 0.5rem 0.5rem;
+    background: black;
     color: white;
+    border-radius: 10px;
   }
-  .version-btn {
-    background: transparent;
-    border: transparent;
-    text-align: center;
-    text-transform: uppercase;
-    transition: var(--transition);
+  .info:hover {
+    background: grey;
+    color: red;
   }
-  .version-btn:hover {
-    color: white;
-  }
-
-  @media (min-width: 768px) {
-    .column-two {
-      justify-content: end;
-    }
-    .column-four {
-      justify-content: end;
-    }
-    .version-btn {
-      margin-right: 5.5rem;
-    }
-    .logout-btn {
-      margin-right: 4rem;
+  @media (min-width: 992px) {
+    position: sticky;
+    top: 0;
+    .nav-center {
+      width: 90%;
     }
   }
 `;

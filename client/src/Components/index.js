@@ -5,4 +5,5 @@ export { default as HeroMessage } from "./HomeHeroMessage/HeroMessage";
 export { default as HomeHeroArticle } from "./HomeHeroArticle/HomeHeroArticle";
 export { default as FormInput } from "./FormInput/FormInput";
 export { default as BigSidebar } from "./SideBars/BigSidebar";
+export { default as SmallSidebar } from "./SideBars/SmallSidebar";
 export { default as DashboardNavbar } from "./SideBars/DashboardNavbar";

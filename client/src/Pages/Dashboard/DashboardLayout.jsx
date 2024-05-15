@@ -1,32 +1,39 @@
 import { Outlet } from "react-router-dom";
 import Wrapper from "../../Wrappers/DashboardLayout/dashboardLayout";
-import { BigSidebar, DashboardNavbar } from "../../Components/index";
 import { useState, useContext, createContext } from "react";
+import {
+  BigSidebar,
+  SmallSidebar,
+  DashboardNavbar,
+} from "../../Components/index";
 
 const DashboardContext = createContext();
 
 const DashboardLayout = () => {
-  const [isBigSidebar, setIsBigSidebar] = useState(false);
+  const user = { name: "ghost" };
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  const openBigSidebar = () => {
-    setIsBigSidebar(true);
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
   };
-  const closeBigSidebar = () => {
-    setIsBigSidebar(false);
+  const logoutUser = async () => {
+    console.log("logout user");
   };
-
   return (
     <DashboardContext.Provider
-      value={{ isBigSidebar, openBigSidebar, closeBigSidebar }}
+      value={{ showSidebar, toggleSidebar, logoutUser, user }}
     >
       <Wrapper>
-        <div className="sidebar">
+        <main className="dashboard">
+          <SmallSidebar />
           <BigSidebar />
-        </div>
-        <div className="navbar">
-          <DashboardNavbar />
-        </div>
-        <Outlet />
+          <div className="navbar">
+            <DashboardNavbar />
+            <div className="dashboard-page">
+              <Outlet />
+            </div>
+          </div>
+        </main>
       </Wrapper>
     </DashboardContext.Provider>
   );

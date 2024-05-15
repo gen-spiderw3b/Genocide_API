@@ -1,30 +1,28 @@
 import Wrapper from "../../Wrappers/DashNavbar/dashNavbar";
-import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
-import { FaBars } from "react-icons/fa";
+import { FaAlignLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
 const DashboardNavbar = () => {
-  const { openBigSidebar } = UseDashboardContext();
+  const { toggleSidebar } = UseDashboardContext();
 
   return (
     <Wrapper>
-      <div className="column-one">
-        <h3 className="logo">
-          <Link to="/">genocide</Link>
-        </h3>
-      </div>
-      <div className="column-two">
-        <button type="submit" className="btn logout-btn">
-          logout
+      <div className="nav-center">
+        <button type="button" className="toggle-btn" onClick={toggleSidebar}>
+          <FaAlignLeft />
         </button>
-        <button className=" open-btn" onClick={openBigSidebar}>
-          <FaBars />
-        </button>
-      </div>
-      <div className="column-three">payment info</div>
-      <div className="column-four">
-        <button type="button" className="version-btn">
-          <Link to="version-info">version info</Link>
-        </button>
+        <div>
+          <h2>
+            <Link to="/" className="logo">
+              genocide
+            </Link>
+          </h2>
+        </div>
+        <div className="btn-container">toggle/logout</div>
+        <h3>payment</h3>
+        <Link to="version-info" className="logo info">
+          developer info
+        </Link>
       </div>
     </Wrapper>
   );
