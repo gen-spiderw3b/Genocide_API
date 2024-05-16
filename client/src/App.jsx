@@ -4,10 +4,17 @@ import {
   Home,
   Register,
   Login,
-  Dashboard,
   DashboardLayout,
   Error,
   VersionInfo,
+  Headline,
+  War,
+  SeeAllGroups,
+  CreateGroups,
+  EditGroups,
+  UserGroups,
+  Education,
+  UpdateUser,
 } from "./Pages/index";
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
@@ -40,10 +47,47 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout />,
     children: [
+      // Headline
       {
         index: true,
-        element: <Dashboard />,
+        element: <Headline />,
       },
+      //War
+      {
+        path: "war",
+        element: <War />,
+      },
+      //See All Groups
+      {
+        path: "see-all-groups",
+        element: <SeeAllGroups />,
+      },
+      //Create Groups
+      {
+        path: "create-groups",
+        element: <CreateGroups />,
+      },
+      //Edit Groups
+      {
+        path: "Edit-groups",
+        element: <EditGroups />,
+      },
+      //User Groups
+      {
+        path: "user-groups",
+        element: <UserGroups />,
+      },
+      //Education
+      {
+        path: "education",
+        element: <Education />,
+      },
+      //Update User
+      {
+        path: "update-user",
+        element: <UpdateUser />,
+      },
+      //Version
       {
         path: "version-info",
         element: <VersionInfo />,

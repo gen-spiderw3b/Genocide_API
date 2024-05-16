@@ -7,3 +7,8 @@ export { default as FormInput } from "./FormInput/FormInput";
 export { default as BigSidebar } from "./SideBars/BigSidebar";
 export { default as SmallSidebar } from "./SideBars/SmallSidebar";
 export { default as DashboardNavbar } from "./SideBars/DashboardNavbar";
+export { default as Features } from "./DashboardList/Features";
+export { default as Learning } from "./DashboardList/Learning";
+export { default as Network } from "./DashboardList/Network";
+export { default as Users } from "./DashboardList/Users";
+export { default as Wars } from "./DashboardList/Wars";
