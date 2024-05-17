@@ -7,21 +7,12 @@ import { GiPlayerTime } from "react-icons/gi";
 import { GiPlayerNext } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
-//features
-export const features = [
-  { text: "headline", path: "headline", icon: <IoNewspaperSharp /> },
-];
 
-//war
-export const war = [{ text: "war", path: "war", icon: <GiBatteredAxe /> }];
-
-//user
-export const user = [
+const links = [
+  { text: "headline", path: ".", icon: <IoNewspaperSharp /> },
+  { text: "war", path: "war", icon: <GiBatteredAxe /> },
   { text: "update User", path: "update-user", icon: <FaUserSecret /> },
-];
-
-//Network
-export const groups = [
+  { text: "education", path: "education", icon: <SiBookstack /> },
   {
     text: "see all groups",
     path: "see-all-groups",
@@ -31,8 +22,4 @@ export const groups = [
   { text: "edit groups", path: "edit-groups", icon: <GiPlayerTime /> },
   { text: "your groups", path: "user-groups", icon: <GiPlayerNext /> },
 ];
-
-//education
-export const education = [
-  { text: "education", path: "education", icon: <SiBookstack /> },
-];
+export default links;
