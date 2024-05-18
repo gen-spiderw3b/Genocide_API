@@ -1,8 +1,8 @@
-import Wrapper from "../../Wrappers/SmallSidebar/smallSidebar";
 import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
+import Wrapper from "../../Wrappers/SmallSidebar/smallSidebar";
 import { FaTimes } from "react-icons/fa";
-import links from "../../Utils/Data";
-import { NavLink } from "react-router-dom";
+import { NavLinks } from "../index";
+
 const SmallSidebar = () => {
   const { showSidebar, toggleSidebar } = UseDashboardContext();
 
@@ -18,23 +18,7 @@ const SmallSidebar = () => {
             <FaTimes />
           </button>
           <header>genocide</header>
-          <div className="nav-links">
-            {links.map((items) => {
-              const { text, path, icon } = items;
-              return (
-                <NavLink
-                  to={path}
-                  key={text}
-                  onClick={toggleSidebar}
-                  className="nav-link"
-                  end
-                >
-                  <span className="icon">{icon}</span>
-                  {text}
-                </NavLink>
-              );
-            })}
-          </div>
+          <NavLinks />
         </div>
       </div>
     </Wrapper>

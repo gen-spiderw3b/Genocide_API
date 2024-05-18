@@ -2,6 +2,7 @@ import Wrapper from "../../Wrappers/DashNavbar/dashNavbar";
 import { FaAlignLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
+import { LogoutContainer } from ".././index";
 const DashboardNavbar = () => {
   const { toggleSidebar } = UseDashboardContext();
 
@@ -18,7 +19,9 @@ const DashboardNavbar = () => {
             </Link>
           </h2>
         </div>
-        <div className="btn-container">toggle/logout</div>
+        <div className="btn-container">
+          <LogoutContainer />
+        </div>
         <h3>payment</h3>
         <Link to="version-info" className="logo info">
           developer info

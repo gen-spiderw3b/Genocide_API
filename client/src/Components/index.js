@@ -7,3 +7,5 @@ export { default as FormInput } from "./FormInput/FormInput";
 export { default as BigSidebar } from "./SideBars/BigSidebar";
 export { default as SmallSidebar } from "./SideBars/SmallSidebar";
 export { default as DashboardNavbar } from "./SideBars/DashboardNavbar";
+export { default as NavLinks } from "./SideBars/NavLinks";
+export { default as LogoutContainer } from "./SideBars/LogoutContainer";
