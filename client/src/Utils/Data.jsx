@@ -7,19 +7,100 @@ import { GiPlayerTime } from "react-icons/gi";
 import { GiPlayerNext } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
+//NanoId
+import { nanoid } from "nanoid";
 
-const links = [
-  { text: "headline", path: ".", icon: <IoNewspaperSharp /> },
-  { text: "war", path: "war", icon: <GiBatteredAxe /> },
-  { text: "update User", path: "update-user", icon: <FaUserSecret /> },
-  { text: "education", path: "education", icon: <SiBookstack /> },
+const subLinks = [
   {
-    text: "see all groups",
-    path: "see-all-groups",
-    icon: <GiBabyfootPlayers />,
+    pageId: nanoid(),
+    page: "headline",
+    links: [
+      {
+        id: nanoid(),
+        label: "bulletBoard",
+        icon: <IoNewspaperSharp />,
+        url: ".",
+      },
+    ],
   },
-  { text: "create groups", path: "create-groups", icon: <IoCreate /> },
-  { text: "edit groups", path: "edit-groups", icon: <GiPlayerTime /> },
-  { text: "your groups", path: "user-groups", icon: <GiPlayerNext /> },
+  {
+    pageId: nanoid(),
+    page: "war",
+    links: [
+      {
+        id: nanoid(),
+        label: "war",
+        icon: <GiBatteredAxe />,
+        url: "war",
+      },
+      {
+        id: nanoid(),
+        label: "test1",
+        icon: <GiBatteredAxe />,
+        url: "war/test1",
+      },
+      {
+        id: nanoid(),
+        label: "test2",
+        icon: <GiBatteredAxe />,
+        url: "war/test2",
+      },
+    ],
+  },
+  {
+    pageId: nanoid(),
+    page: "education",
+    links: [
+      {
+        id: nanoid(),
+        label: "juniorDeveloper",
+        icon: <SiBookstack />,
+        url: "education/junior-dev",
+      },
+    ],
+  },
+  {
+    pageId: nanoid(),
+    page: "groups",
+    links: [
+      {
+        id: nanoid(),
+        label: "see all groups",
+        icon: <GiBabyfootPlayers />,
+        url: "groups/see-all-groups",
+      },
+      {
+        id: nanoid(),
+        label: "create groups",
+        icon: <IoCreate />,
+        url: "groups/create-groups",
+      },
+      {
+        id: nanoid(),
+        label: "edit groups",
+        icon: <GiPlayerTime />,
+        url: "groups/edit-groups",
+      },
+      {
+        id: nanoid(),
+        label: "your groups",
+        icon: <GiPlayerNext />,
+        url: "groups/user-groups",
+      },
+    ],
+  },
+  {
+    pageId: nanoid(),
+    page: "users",
+    links: [
+      {
+        id: nanoid(),
+        label: "user",
+        icon: <FaUserSecret />,
+        url: "users/update-users",
+      },
+    ],
+  },
 ];
-export default links;
+
+export default subLinks;

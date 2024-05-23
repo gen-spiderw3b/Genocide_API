@@ -1,26 +1,35 @@
 import { NavLink } from "react-router-dom";
 import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
-import links from "../../Utils/Data";
+import subLinks from "../../Utils/Data";
 import PropTypes from "prop-types";
 
 const NavLinks = ({ isBigSidebar }) => {
-  const { toggleSidebar, user } = UseDashboardContext();
+  const { toggleSidebar } = UseDashboardContext();
 
   return (
-    <div className="nav-links">
-      {links.map((items) => {
-        const { text, path, icon } = items;
+    <div className="sidebar-links">
+      {subLinks.map((items) => {
+        const { pageId, page, links } = items;
         return (
-          <NavLink
-            to={path}
-            key={text}
-            className="nav-link"
-            onClick={isBigSidebar ? null : toggleSidebar}
-            end
-          >
-            <span className="icon">{icon}</span>
-            {text}
-          </NavLink>
+          <article key={pageId}>
+            <h2>{page}</h2>
+            <div className="sidebar-sublinks">
+              {links.map((link) => {
+                const { id, label, icon, url } = link;
+                return (
+                  <NavLink
+                    key={id}
+                    to={url}
+                    onClick={isBigSidebar ? null : toggleSidebar}
+                    end
+                  >
+                    {icon}
+                    {label}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </article>
         );
       })}
     </div>

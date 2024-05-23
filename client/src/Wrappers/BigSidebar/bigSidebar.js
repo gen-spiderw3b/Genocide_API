@@ -30,33 +30,32 @@ const Wrapper = styled.aside`
       align-items: center;
       padding-left: 2.5rem;
     }
-    .nav-links {
+    .sidebar-links {
       padding-top: 2rem;
       display: flex;
       flex-direction: column;
     }
-    .nav-link {
+    .sidebar-sublinks {
+      margin-bottom: 1rem;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      gap: 1rem;
+    }
+    h2 {
       color: red;
-      padding: 1rem 0;
-      padding-left: 2.5rem;
-      text-transform: capitalize;
-      transition: padding-left 0.3s ease-in-out;
+      margin-bottom: 1rem;
     }
-    .nav-link:hover {
-      padding-left: 3rem;
+    a {
+      text-decoration: none;
       color: white;
-      transition: var(--transition);
     }
-    .icon {
-      font-size: 1.5rem;
-      margin-right: 1rem;
-      display: grid;
-      place-items: center;
+    svg {
+      margin-right: 0.3rem;
+      color: red;
     }
     .active {
-      color: white;
+      color: red;
     }
   }
 `;

@@ -1,76 +1,65 @@
 import styled from "styled-components";
 
 const Wrapper = styled.aside`
-  @media (min-width: 992px) {
-    display: none;
-  }
-  .sidebar-container {
+  .sidebar {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    /* toggle */
     opacity: 0;
-    transition: var(--transition);
     visibility: hidden;
   }
   .show-sidebar {
-    z-index: 99;
     opacity: 1;
     visibility: visible;
+    transition-property: opacity;
+    transition-duration: 1s;
   }
-  .content {
-    background: black;
-    width: 90vw;
-    height: 95vh;
-    border-radius: 10px;
+  .sidebar-container {
+    padding: 4rem 2rem;
     position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  header {
-    color: red;
-    text-transform: uppercase;
-    font-size: 2rem;
-    margin-top: 5rem;
   }
   .close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    font-size: 2rem;
     background: transparent;
     border-color: transparent;
-    font-size: 2rem;
-    color: darkred;
-    cursor: pointer;
-  }
-  .nav-links {
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .nav-link {
-    display: flex;
-    align-items: center;
     color: red;
-    padding: 1rem 0;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  article {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    color: red;
+  }
+  .sidebar-sublinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5rem;
+  }
+  .sidebar-sublinks a {
+    display: block;
+    color: red;
     text-transform: capitalize;
     text-decoration: none;
-    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
-  .nav-link:hover {
-    color: white;
+  svg {
+    color: red;
   }
-  .icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    display: grid;
-    place-items: center;
-    transition: var(--transition);
+
+  @media (min-width: 992px) {
+    display: none;
   }
+
   .active {
     color: white;
   }

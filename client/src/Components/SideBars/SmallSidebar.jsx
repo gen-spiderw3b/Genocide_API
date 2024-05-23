@@ -8,17 +8,14 @@ const SmallSidebar = () => {
 
   return (
     <Wrapper>
-      <div
-        className={
-          showSidebar ? "sidebar-container show-sidebar" : "sidebar-container"
-        }
-      >
-        <div className="content">
-          <button type="button" className="close-btn" onClick={toggleSidebar}>
+      <div className={showSidebar ? "sidebar show-sidebar" : "sidebar"}>
+        <div className="sidebar-container">
+          <button className="close-btn" onClick={toggleSidebar}>
             <FaTimes />
           </button>
-          <header>genocide</header>
-          <NavLinks />
+          <div className="sidebar-links">
+            <NavLinks />
+          </div>
         </div>
       </div>
     </Wrapper>

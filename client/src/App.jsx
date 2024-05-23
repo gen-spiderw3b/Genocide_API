@@ -16,6 +16,9 @@ import {
   Education,
   UpdateUser,
 } from "./Pages/index";
+//test
+import TestOne from "./Pages/War/TestOne";
+import TestTwo from "./Pages/War/TestTwo";
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
 
@@ -54,8 +57,18 @@ const router = createBrowserRouter([
       },
       //War
       {
-        path: "war",
+        path: "war/",
         element: <War />,
+        children: [
+          {
+            path: "test1",
+            element: <TestOne />,
+          },
+          {
+            path: "test2",
+            element: <TestTwo />,
+          },
+        ],
       },
       //See All Groups
       {

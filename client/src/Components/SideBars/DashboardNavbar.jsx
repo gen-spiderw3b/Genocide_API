@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UseDashboardContext } from "../../Pages/Dashboard/DashboardLayout";
 import { LogoutContainer } from ".././index";
 const DashboardNavbar = () => {
-  const { toggleSidebar } = UseDashboardContext();
+  const { toggleSidebar, showSidebar } = UseDashboardContext();
 
   return (
     <Wrapper>
@@ -20,7 +20,7 @@ const DashboardNavbar = () => {
           </h2>
         </div>
         <div className="btn-container">
-          <LogoutContainer />
+          {showSidebar ? null : <LogoutContainer />}
         </div>
         <h3>payment</h3>
         <Link to="version-info" className="logo info">
