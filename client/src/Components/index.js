@@ -9,3 +9,4 @@ export { default as SmallSidebar } from "./SideBars/SmallSidebar";
 export { default as DashboardNavbar } from "./SideBars/DashboardNavbar";
 export { default as NavLinks } from "./SideBars/NavLinks";
 export { default as LogoutContainer } from "./SideBars/LogoutContainer";
+export { default as CreateGroupForm } from "./Group/CreateGroupForm";
