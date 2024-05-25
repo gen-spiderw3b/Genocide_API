@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  margin: auto 0;
+const Wrapper = styled.main`
+  min-height: 100vh;
+
   .form {
+    margin: 10rem auto;
     background: black;
   }
-  .header {
-    margin-bottom: 3rem;
+  header {
+    margin-top: 0.5rem;
   }
   .header h3 {
     color: red;

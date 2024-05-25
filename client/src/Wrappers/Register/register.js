@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin: auto 0;
+  header {
+    margin-top: 3rem;
+  }
   .form {
     background: black;
   }

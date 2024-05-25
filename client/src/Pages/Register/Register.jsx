@@ -3,6 +3,7 @@ import Wrapper from "../../Wrappers/Register/register";
 import { FormInput } from "../../Components/index";
 import customFetch from "../../Utils/customFetch";
 import { toast } from "react-toastify";
+import { Navbar } from "../../Components/index";
 //Actions
 // eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request }) => {
@@ -25,6 +26,7 @@ const Register = () => {
   const isSubmitting = navigation.state === "submitting";
   return (
     <Wrapper>
+      <Navbar header="genocide" register="register" login="login" />
       <Form method="post" className="form">
         <div className="header">
           <h3>register</h3>

@@ -12,7 +12,7 @@ dotenv.config();
 //Custom Imports
 import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
-import AuthRouter from "./Routes/DashBoard/dashboard.js";
+
 import UserAuthRouter from "./Routes/Users/user.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
@@ -27,7 +27,6 @@ if ((process.env.NODE_ENV = "development")) {
 }
 //EndPoints
 app.use("/api/v1/user", UserRouter);
-app.use("/api/v1/dashboard", authMiddleWare, AuthRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
 
 //Building Front-End Progomatically

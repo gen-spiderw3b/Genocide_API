@@ -1,5 +1,6 @@
 import Wrapper from "../../Wrappers/Home/home";
 import { useMediaQuery } from "@react-hook/media-query";
+import { Navbar } from "../../Components/index";
 import {
   HomeHeroImg,
   HeroMessage,
@@ -10,6 +11,7 @@ const Home = () => {
   const matches = useMediaQuery("only screen and (min-width:800px)");
   return (
     <Wrapper>
+      <Navbar header="genocide" register="register" login="login" />
       <div className="hero-section">
         {matches ? <HomeHeroImg className="hero-img" /> : <HeroMessage />}
         <span className="attribution">

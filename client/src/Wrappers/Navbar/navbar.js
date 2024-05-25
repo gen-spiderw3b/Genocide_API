@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.nav`
   /* Nav */
-  #nav-container {
+  .nav-container {
     height: 5rem;
     background: red;
     display: flex;
@@ -10,6 +10,7 @@ const Wrapper = styled.nav`
     align-items: center;
   }
   /* Header */
+
   .header a {
     padding-left: 0.5rem;
     text-transform: uppercase;
