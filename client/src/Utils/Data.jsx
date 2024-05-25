@@ -29,21 +29,9 @@ const subLinks = [
     links: [
       {
         id: nanoid(),
-        label: "war",
+        label: "DBD",
         icon: <GiBatteredAxe />,
-        url: "war",
-      },
-      {
-        id: nanoid(),
-        label: "test1",
-        icon: <GiBatteredAxe />,
-        url: "war/test1",
-      },
-      {
-        id: nanoid(),
-        label: "test2",
-        icon: <GiBatteredAxe />,
-        url: "war/test2",
+        url: "war/deadbydaylight",
       },
     ],
   },

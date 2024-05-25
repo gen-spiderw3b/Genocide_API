@@ -3,7 +3,7 @@ import { CreateGroupForm } from "../../Components/index";
 import { useState } from "react";
 import Wrapper from "../../Wrappers/War/war";
 
-const War = () => {
+const WarLayout = () => {
   const [isCreateGroupForm, setIsGroupForm] = useState(false);
 
   const createGroup = () => {
@@ -18,12 +18,12 @@ const War = () => {
           </button>
           <button className="btn-component browse-group">browse group</button>
         </div>
-        <div className="content">
-          {isCreateGroupForm ? <CreateGroupForm /> : null}
-        </div>
       </nav>
+      <div className="content">
+        {isCreateGroupForm ? <CreateGroupForm /> : null}
+      </div>
       <Outlet />
     </Wrapper>
   );
 };
-export default War;
+export default WarLayout;

@@ -8,7 +8,8 @@ import {
   Error,
   VersionInfo,
   Headline,
-  War,
+  WarLayout,
+  DeadByDaylight,
   SeeAllGroups,
   CreateGroups,
   EditGroups,
@@ -16,9 +17,7 @@ import {
   Education,
   UpdateUser,
 } from "./Pages/index";
-//test
-import TestOne from "./Pages/War/TestOne";
-import TestTwo from "./Pages/War/TestTwo";
+
 //Actions
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
@@ -59,15 +58,11 @@ const router = createBrowserRouter([
           //War
           {
             path: "war/",
-            element: <War />,
+            element: <WarLayout />,
             children: [
               {
-                path: "test1",
-                element: <TestOne />,
-              },
-              {
-                path: "test2",
-                element: <TestTwo />,
+                path: "deadbydaylight",
+                element: <DeadByDaylight />,
               },
             ],
           },
