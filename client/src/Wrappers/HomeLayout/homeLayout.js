@@ -5,10 +5,6 @@ const Wrapper = styled.main`
   background: black;
 
   .footer {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background: red;
   }
   .footer h2 {
