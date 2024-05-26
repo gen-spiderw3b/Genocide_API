@@ -8,8 +8,11 @@ import {
   Error,
   VersionInfo,
   Headline,
+  //War
   WarLayout,
-  DeadByDaylight,
+  CreateGroup,
+  BrowseGroup,
+  //End Of War
   SeeAllGroups,
   CreateGroups,
   EditGroups,
@@ -61,8 +64,12 @@ const router = createBrowserRouter([
             element: <WarLayout />,
             children: [
               {
-                path: "deadbydaylight",
-                element: <DeadByDaylight />,
+                path: "create-group",
+                element: <CreateGroup />,
+              },
+              {
+                path: "browse-group",
+                element: <BrowseGroup />,
               },
             ],
           },

@@ -29,9 +29,15 @@ const subLinks = [
     links: [
       {
         id: nanoid(),
-        label: "DBD",
+        label: "create group",
         icon: <GiBatteredAxe />,
-        url: "war/deadbydaylight",
+        url: "war/create-group",
+      },
+      {
+        id: nanoid(),
+        label: "browse group",
+        icon: <GiBatteredAxe />,
+        url: "war/browse-group",
       },
     ],
   },
