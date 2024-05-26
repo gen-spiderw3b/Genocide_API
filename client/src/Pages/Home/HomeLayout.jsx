@@ -5,7 +5,7 @@ const HomeLayout = () => {
   return (
     <Wrapper>
       <Outlet />
-      <Footer className="footer" />
+      <Footer />
     </Wrapper>
   );
 };

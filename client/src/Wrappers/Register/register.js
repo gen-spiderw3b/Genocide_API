@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  height: 110vh;
   margin: auto 0;
+  background: whitesmoke;
   header {
     margin-top: 3rem;
   }

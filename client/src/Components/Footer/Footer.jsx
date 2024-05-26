@@ -1,13 +1,9 @@
-import PropTypes from "prop-types";
-const Footer = ({ className }) => {
+const Footer = () => {
   return (
-    <div className={className}>
+    <div className="footer">
       <h2>genocide</h2>
     </div>
   );
 };
 
-Footer.propTypes = {
-  className: PropTypes.string,
-};
 export default Footer;

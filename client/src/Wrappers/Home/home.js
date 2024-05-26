@@ -22,6 +22,7 @@ const Wrapper = styled.main`
   }
 
   /* Article */
+
   .article-section {
     height: auto;
   }

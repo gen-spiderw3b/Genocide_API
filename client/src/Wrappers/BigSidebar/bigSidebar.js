@@ -6,6 +6,7 @@ const Wrapper = styled.aside`
   @media (min-width: 992px) {
     display: block;
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+
     .sidebar-container {
       background: black;
       min-height: 100vh;
@@ -48,14 +49,14 @@ const Wrapper = styled.aside`
     }
     a {
       text-decoration: none;
-      color: white;
+      color: red;
     }
     svg {
       margin-right: 0.3rem;
       color: red;
     }
     .active {
-      color: red;
+      color: white;
     }
   }
 `;
