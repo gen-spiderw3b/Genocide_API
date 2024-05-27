@@ -30,8 +30,7 @@ if ((process.env.NODE_ENV = "development")) {
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
-//War Endpoints
-app.use("/api/v1/war/", warRoutes);
+app.use("/api/v1/war", authMiddleWare, warRoutes);
 
 //Building Front-End Progomatically
 

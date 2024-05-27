@@ -27,7 +27,12 @@ const CreateGroup = () => {
           list={Object.values(GOALS)}
         />
         <label htmlFor="desc">description</label>
-        <textarea name="desc" id="desc" className="text-area"></textarea>
+        <textarea
+          name="desc"
+          id="desc"
+          className="text-area"
+          placeholder="Write Here"
+        ></textarea>
         <button type="submit" className="btn-block">
           create group
         </button>

@@ -1,14 +1,14 @@
 export const GAMES = {
-  DEAD_BY_DAYLIGHT: "DeadByDaylight",
-  WORLD_OF_WARCRAFT: "World Of Warcraft",
+  DEAD_BY_DAYLIGHT: "dead by daylight",
+  WORLD_OF_WARCRAFT: "world of warcraft",
 };
 
 export const GOALS = {
-  NONE: "None",
-  DUNGEONS: "Dungeons",
-  MYTHIC_RAIDING: "Myhtic Raiding",
-  MYTHIC_DUNGEONS: "Myhtic DUNGEONS",
-  BATTLEGROUNDS: "Battlegrounds",
-  ARENA: "Arena",
-  RANKED_BATTLEGROUNDS: "Ranked Battlegrounds",
+  NONE: "none",
+  DUNGEONS: "dungeons",
+  MYTHIC_RAIDING: "mythic raiding",
+  MYTHIC_DUNGEONS: "mythic dungeons",
+  BATTLEGROUNDS: "battlegrounds",
+  ARENA: "arena",
+  RANKED_BATTLEGROUNDS: "ranked battlegrounds",
 };
