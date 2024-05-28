@@ -1,12 +1,21 @@
-import { Outlet, useOutletContext } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
+import customFetch from "../../Utils/customFetch";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get("/war/browse-group");
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 
 const WarLayout = () => {
-  const { user } = useOutletContext();
-  console.log(user);
-
+  const { groups } = useLoaderData();
   return (
     <>
-      <Outlet />
+      <Outlet context={{ groups }} />
     </>
   );
 };

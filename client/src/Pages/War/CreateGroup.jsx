@@ -1,8 +1,25 @@
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import FormInput from "../../Components/FormInput/FormInput";
 import SelectOption from "../../Components/FormInput/SelectOption";
 import Wrapper from "../../Wrappers/War/createGroup";
 import { GAMES, GOALS } from "../../../../Utils/Constants/constants";
+import customFetch from "../../Utils/customFetch";
+import { toast } from "react-toastify";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await customFetch.post("/war/create-group", data);
+    toast.success("WarBand Has Been Created!");
+    return redirect("../browse-group");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return null;
+  }
+};
+
 const CreateGroup = () => {
   return (
     <Wrapper>

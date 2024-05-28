@@ -19,6 +19,12 @@ const CreateGroup = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },
+    joinedBy: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
   },
   { timestamps: true }
 );

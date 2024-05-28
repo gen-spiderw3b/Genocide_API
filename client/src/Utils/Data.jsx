@@ -39,6 +39,30 @@ const subLinks = [
         icon: <GiBatteredAxe />,
         url: "war/browse-group",
       },
+      {
+        id: nanoid(),
+        label: "my groups",
+        icon: <GiBatteredAxe />,
+        url: "war/my-group",
+      },
+      {
+        id: nanoid(),
+        label: "joined groups",
+        icon: <GiBatteredAxe />,
+        url: "war/joined-group",
+      },
+      {
+        id: nanoid(),
+        label: "delete group",
+        icon: <GiBatteredAxe />,
+        url: "war/delete-group",
+      },
+      {
+        id: nanoid(),
+        label: "update groups",
+        icon: <GiBatteredAxe />,
+        url: "war/update-groups",
+      },
     ],
   },
   {
