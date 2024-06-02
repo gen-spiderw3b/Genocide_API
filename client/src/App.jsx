@@ -33,9 +33,10 @@ import {
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
 import { action as CreateWarAction } from "./Pages/War/CreateGroup";
+
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
-import { loader as warLoader } from "./Pages/War/WarLayout";
+import { loader as wowLoader } from "./Pages/War/World Of Warcraft/Wow";
 const router = createBrowserRouter([
   //HomeLayout
   {
@@ -72,7 +73,6 @@ const router = createBrowserRouter([
           {
             path: "war/",
             element: <WarLayout />,
-            loader: warLoader,
             children: [
               {
                 path: "create-group",
@@ -82,6 +82,7 @@ const router = createBrowserRouter([
               {
                 path: "world-of-warcraft",
                 element: <Wow />,
+                loader: wowLoader,
               },
               {
                 path: "my-groups",

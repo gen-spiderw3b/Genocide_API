@@ -13,7 +13,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.post("/war/create-group", data);
     toast.success("WarBand Has Been Created!");
-    return redirect("../browse-group");
+    return redirect("../my-groups");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return null;
