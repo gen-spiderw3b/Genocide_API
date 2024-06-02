@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  background: whitesmoke;
+  background: white;
   .dashboard {
     display: grid;
     grid-template-columns: 1fr;

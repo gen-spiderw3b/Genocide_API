@@ -5,7 +5,6 @@ import {
 } from "../../Middleware/Validators/validation.js";
 import {
   createGroup,
-  browseGroup,
   myWarGroup,
   deleteWarGroup,
   updateWarGroup,
@@ -16,7 +15,6 @@ import {
 const router = Router();
 
 router.route("/create-group").post(validateWarGroup, createGroup);
-router.route("/browse-group").get(browseGroup);
 router.route("/joined-group").get(joinedGroups);
 router.route("/my-group").get(myWarGroup);
 router.route("/delete-group/:id").delete(validateWarGroupId, deleteWarGroup);

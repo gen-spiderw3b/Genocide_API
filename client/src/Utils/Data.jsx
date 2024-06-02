@@ -35,21 +35,21 @@ const subLinks = [
       },
       {
         id: nanoid(),
-        label: "browse group",
+        label: "World Of Warcraft",
         icon: <GiBatteredAxe />,
-        url: "war/browse-group",
+        url: "war/world-of-warcraft",
       },
       {
         id: nanoid(),
         label: "my groups",
         icon: <GiBatteredAxe />,
-        url: "war/my-group",
+        url: "war/my-groups",
       },
       {
         id: nanoid(),
         label: "joined groups",
         icon: <GiBatteredAxe />,
-        url: "war/joined-group",
+        url: "war/joined-groups",
       },
       {
         id: nanoid(),

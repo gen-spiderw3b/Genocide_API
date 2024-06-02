@@ -10,33 +10,6 @@ export const createGroup = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ warGroup });
 };
 
-//Browse Groups
-export const browseGroup = async (req, res) => {
-  const groups = await CreateGroup.aggregate([
-    {
-      $lookup: {
-        from: "users",
-        localField: "joinedBy",
-        foreignField: "_id",
-        as: "joinedBy",
-      },
-    },
-    {
-      $project: {
-        _id: 1,
-        games: 1,
-        groupName: 1,
-        players: 1,
-        goals: 1,
-        desc: 1,
-        createdBy: 1,
-        joinedBy: 1,
-      },
-    },
-  ]);
-  res.status(StatusCodes.OK).json({ groups });
-};
-
 //My Groups
 export const myWarGroup = async (req, res) => {
   const myGroup = await CreateGroup.find({ createdBy: req.user.userId });

@@ -11,7 +11,6 @@ import {
   //War
   WarLayout,
   CreateGroup,
-  BrowseGroup,
   MyGroups,
   JoinedGroups,
   DeleteGroup,
@@ -19,6 +18,9 @@ import {
   JoinGroup,
   LeaveGroup,
   //End Of War
+  //World Of Warcraft
+  Wow,
+  //End Of World Of Warcraft
   SeeAllGroups,
   CreateGroups,
   EditGroups,
@@ -78,8 +80,8 @@ const router = createBrowserRouter([
                 action: CreateWarAction,
               },
               {
-                path: "browse-group",
-                element: <BrowseGroup />,
+                path: "world-of-warcraft",
+                element: <Wow />,
               },
               {
                 path: "my-groups",
