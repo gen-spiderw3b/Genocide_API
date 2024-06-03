@@ -17,10 +17,8 @@ import {
   UpdateGroups,
   JoinGroup,
   LeaveGroup,
+  BrowseGroups,
   //End Of War
-  //World Of Warcraft
-  Wow,
-  //End Of World Of Warcraft
   SeeAllGroups,
   CreateGroups,
   EditGroups,
@@ -36,7 +34,7 @@ import { action as CreateWarAction } from "./Pages/War/CreateGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
-import { loader as wowLoader } from "./Pages/War/World Of Warcraft/Wow";
+import { loader as browseLoader } from "./Pages/War/BrowseGroups";
 const router = createBrowserRouter([
   //HomeLayout
   {
@@ -80,9 +78,9 @@ const router = createBrowserRouter([
                 action: CreateWarAction,
               },
               {
-                path: "world-of-warcraft",
-                element: <Wow />,
-                loader: wowLoader,
+                path: "browse-groups",
+                element: <BrowseGroups />,
+                loader: browseLoader,
               },
               {
                 path: "my-groups",

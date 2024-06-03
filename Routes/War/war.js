@@ -12,9 +12,11 @@ import {
   leaveWarGroup,
   joinedGroups,
 } from "../../Controllers/War/war.js";
+import { browseGroups } from "../../Controllers/War/browseGroups.js";
 const router = Router();
 
 router.route("/create-group").post(validateWarGroup, createGroup);
+router.route("/browse-groups").get(browseGroups);
 router.route("/joined-group").get(joinedGroups);
 router.route("/my-group").get(myWarGroup);
 router.route("/delete-group/:id").delete(validateWarGroupId, deleteWarGroup);
