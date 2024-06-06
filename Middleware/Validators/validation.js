@@ -124,6 +124,7 @@ export const validateWarGroup = withValidationErrors([
     .withMessage("Please input numbers"),
   body("games").isIn(Object.values(GAMES)).withMessage("Invalid Game"),
   body("goals").isIn(Object.values(GOALS)).withMessage("Invalid Goal"),
+  body("url").notEmpty().withMessage("please provide a discord link"),
 ]);
 
 export const validateWarGroupId = withValidationErrors([

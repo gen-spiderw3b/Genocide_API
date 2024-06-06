@@ -23,6 +23,18 @@ export const action = async ({ request }) => {
 const CreateGroup = () => {
   return (
     <Wrapper>
+      <div className="warning">
+        <h2>warning</h2>
+        <ul>
+          <li>
+            1. create a discord account and create a <span>game</span> server
+          </li>
+          <li>
+            2. go to voice chat and copy the link and paste it in the discord
+            link form
+          </li>
+        </ul>
+      </div>
       <header>create war group</header>
       <Form method="post" className="form">
         <SelectOption
@@ -43,6 +55,7 @@ const CreateGroup = () => {
           defaultValue={GOALS.NONE}
           list={Object.values(GOALS)}
         />
+        <FormInput type="url" name="url" placeholder="Discord Link" />
         <label htmlFor="desc">description</label>
         <textarea
           name="desc"

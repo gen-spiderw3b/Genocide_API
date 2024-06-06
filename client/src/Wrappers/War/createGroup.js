@@ -3,9 +3,28 @@ import styled from "styled-components";
 const Wrapper = styled.main`
   /* display: grid;
   place-items: center; */
-  min-height: 100vh;
+  min-height: 110vh;
   background: black;
+  .warning {
+    background: red;
+    margin-bottom: 3rem;
+  }
 
+  .warning h2 {
+    text-align: center;
+    color: black;
+    letter-spacing: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+  ul li {
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+  }
+  li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
   header {
     color: red;
     text-transform: uppercase;
@@ -15,6 +34,7 @@ const Wrapper = styled.main`
   }
   .form {
     margin: 0 auto;
+    margin-top: -5rem;
     display: flex;
     flex-direction: column;
     max-width: 60vw;
@@ -56,6 +76,9 @@ const Wrapper = styled.main`
   @media (min-width: 800px) {
     header {
       font-size: 3rem;
+    }
+    .warning {
+      text-align: center;
     }
   }
 `;

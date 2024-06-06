@@ -34,7 +34,7 @@ import { action as CreateWarAction } from "./Pages/War/CreateGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
-import { loader as browseLoader } from "./Pages/War/BrowseGroups";
+import { loader as warLoader } from "./Pages/War/WarLayout";
 const router = createBrowserRouter([
   //HomeLayout
   {
@@ -71,6 +71,7 @@ const router = createBrowserRouter([
           {
             path: "war/",
             element: <WarLayout />,
+            loader: warLoader,
             children: [
               {
                 path: "create-group",
@@ -80,7 +81,6 @@ const router = createBrowserRouter([
               {
                 path: "browse-groups",
                 element: <BrowseGroups />,
-                loader: browseLoader,
               },
               {
                 path: "my-groups",

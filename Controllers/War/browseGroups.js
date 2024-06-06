@@ -5,10 +5,10 @@ export const browseGroups = async (req, res) => {
   const { goals, games } = req.query;
   const queryObject = {};
 
-  if (goals && goals !== "none") {
+  if (goals && goals !== "allGoals") {
     queryObject.goals = goals;
   }
-  if (games && games !== "none") {
+  if (games && games !== "allGames") {
     queryObject.games = games;
   }
 

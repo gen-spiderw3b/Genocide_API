@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-const SelectOption = ({ name, labelText, list, defaultValue = "" }) => {
+const SelectOption = ({
+  name,
+  labelText,
+  list,
+  defaultValue = "",
+  onChange,
+}) => {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
@@ -10,6 +16,7 @@ const SelectOption = ({ name, labelText, list, defaultValue = "" }) => {
         name={name}
         id={name}
         defaultValue={defaultValue}
+        onChange={onChange}
       >
         {list.map((itemValue) => {
           return (

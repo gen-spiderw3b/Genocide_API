@@ -5,6 +5,7 @@ const CreateGroup = new mongoose.Schema(
     groupName: String,
     players: Number,
     desc: String,
+    url: String,
     games: {
       type: String,
       enum: Object.values(GAMES),
