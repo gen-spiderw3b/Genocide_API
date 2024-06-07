@@ -17,7 +17,7 @@ const Wrapper = styled.main`
     height: 10rem;
     border-radius: 10px;
     overflow: scroll;
-    scrollbar-color: blue white;
+    scrollbar-color: black white;
     scrollbar-width: thin;
   }
   .games {

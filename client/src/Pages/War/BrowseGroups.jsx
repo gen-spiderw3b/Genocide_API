@@ -1,9 +1,10 @@
 import Wrapper from "../../Wrappers/War/browseGroups";
 import { useOutletContext } from "react-router-dom";
-import { SearchContainer } from "../../Components";
+import { SearchContainer, PageBtnContainer } from "../../Components";
 const BrowseGroups = () => {
-  const { data } = useOutletContext();
-  const { groups, totalGroups, numOfPages, currentPage } = data;
+  const {
+    data: { groups, totalGroups },
+  } = useOutletContext();
 
   return (
     <Wrapper>
@@ -34,6 +35,7 @@ const BrowseGroups = () => {
           );
         })}
       </div>
+      {totalGroups <= 9 ? null : <PageBtnContainer />}
     </Wrapper>
   );
 };

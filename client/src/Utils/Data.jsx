@@ -73,7 +73,7 @@ const subLinks = [
         id: nanoid(),
         label: "juniorDeveloper",
         icon: <SiBookstack />,
-        url: "education/junior-dev",
+        url: "education",
       },
     ],
   },

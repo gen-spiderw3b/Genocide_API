@@ -18,7 +18,8 @@ export const loader = async ({ request }) => {
 };
 
 const WarLayout = () => {
-  const { searchValues, data } = useLoaderData();
+  const { searchValues, data, numofPages, currentPage, totalGroups } =
+    useLoaderData();
 
   return (
     <>

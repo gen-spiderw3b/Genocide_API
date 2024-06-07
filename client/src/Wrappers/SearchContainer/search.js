@@ -20,7 +20,9 @@ const Wrapper = styled.div`
   }
   .form-select {
     color: red;
+    text-transform: uppercase;
   }
+
   .btn {
     text-decoration: none;
     color: black;
