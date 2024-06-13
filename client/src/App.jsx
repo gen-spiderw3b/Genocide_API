@@ -13,9 +13,7 @@ import {
   CreateGroup,
   MyGroups,
   JoinedGroups,
-  DeleteGroup,
   UpdateGroups,
-  JoinGroup,
   LeaveGroup,
   BrowseGroups,
   //End Of War
@@ -31,10 +29,13 @@ import {
 import { action as registerAction } from "./Pages/Register/Register";
 import { action as loginAction } from "./Pages/Login/Login";
 import { action as CreateWarAction } from "./Pages/War/CreateGroup";
+import { action as joinAction } from "./Pages/War/JoinGroup";
+import { action as deleteAction } from "./Pages/War/DeleteGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
 import { loader as warLoader } from "./Pages/War/WarLayout";
+import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 const router = createBrowserRouter([
   //HomeLayout
   {
@@ -85,22 +86,23 @@ const router = createBrowserRouter([
               {
                 path: "my-groups",
                 element: <MyGroups />,
+                loader: myGroupsLoader,
               },
               {
                 path: "joined-groups",
                 element: <JoinedGroups />,
               },
               {
-                path: "delete-group",
-                element: <DeleteGroup />,
+                path: "delete-group/:id",
+                action: deleteAction,
               },
               {
                 path: "update-groups",
                 element: <UpdateGroups />,
               },
               {
-                path: "join-group",
-                element: <JoinGroup />,
+                path: "join-group/:id",
+                action: joinAction,
               },
               {
                 path: "leave-group",

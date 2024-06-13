@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { GAMES, GOALS } from "../../Utils/Constants/constants.js";
+
 const CreateGroup = new mongoose.Schema(
   {
     groupName: String,

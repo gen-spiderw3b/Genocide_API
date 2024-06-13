@@ -26,6 +26,9 @@ const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("not authorized")) {
           throw new UnauthorizedError(errMessage);
         }
+        if (errMessage[0].startsWith("you already")) {
+          throw new BadRequestError(errMessage);
+        }
         throw new BadRequestError(errMessage);
       }
       next();
@@ -138,5 +141,21 @@ export const validateWarGroupId = withValidationErrors([
     const isOwner = req.user.userId === warGroup.createdBy.toString();
     if (!isAdmin && !isOwner)
       throw new UnauthorizedError("not authorized to access this route!");
+  }),
+]);
+
+//Join Group
+export const joinWarGroupId = withValidationErrors([
+  param("id").custom(async (value, { req }) => {
+    const isValidId = mongoose.Types.ObjectId.isValid(value);
+    if (!isValidId) throw new BadRequestError("Invalid MongoDB Id");
+    const warGroup = await War.findById(value);
+    if (!warGroup)
+      throw new NotFoundError(`No Group with an Id of ${value} exists!`);
+    const user = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+    const result = warGroup.joinedBy.find((person) => {
+      return person.toString() === user.toString();
+    });
+    if (result) throw new BadRequestError("you already joined this group!");
   }),
 ]);

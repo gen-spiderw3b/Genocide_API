@@ -2,16 +2,21 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
-  .total-groups {
+  .title h2 {
+    color: red;
+  }
+  .title span {
+    color: black;
+  }
+  .title-underline {
+    color: red;
     margin-bottom: 3rem;
   }
   .section-center {
     width: 90vw;
     margin: 0 auto;
   }
-  .hide-article {
-    display: none;
-  }
+
   .article {
     margin: 0 auto;
     background: red;
@@ -51,6 +56,7 @@ const Wrapper = styled.main`
     text-decoration: none;
     color: yellow;
   }
+
   .desc {
     text-align: center;
     margin: 0 auto;
@@ -65,10 +71,11 @@ const Wrapper = styled.main`
     letter-spacing: 0.2rem;
   }
   .btn-container {
-    display: grid;
-    place-items: center;
-    margin-bottom: 2rem;
-    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
   }
   .btn {
     color: black;
@@ -76,6 +83,7 @@ const Wrapper = styled.main`
     background: transparent;
     cursor: pointer;
     transition: var(--transition);
+    width: 100px;
   }
   .btn:hover {
     color: red;

@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useOutletContext } from "react-router-dom";
 import customFetch from "../../Utils/customFetch";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -18,12 +18,12 @@ export const loader = async ({ request }) => {
 };
 
 const WarLayout = () => {
-  const { searchValues, data, numofPages, currentPage, totalGroups } =
-    useLoaderData();
+  const { searchValues, data } = useLoaderData();
+  const { user } = useOutletContext();
 
   return (
     <>
-      <Outlet context={{ data, searchValues }} />
+      <Outlet context={{ data, searchValues, user }} />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import Wrapper from "../../Wrappers/War/browseGroups";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Form } from "react-router-dom";
 import { SearchContainer, PageBtnContainer } from "../../Components";
 const BrowseGroups = () => {
   const {
@@ -14,8 +14,14 @@ const BrowseGroups = () => {
         {groups.map((items) => {
           const { _id, groupName, players, desc, games, joinedBy, goals, url } =
             items;
+
           return (
-            <article key={_id} className="article">
+            <article
+              key={_id}
+              className={
+                joinedBy.length >= players ? "hide-article" : "article"
+              }
+            >
               <h3 className="games">{games}</h3>
               <h4 className="groupName">{groupName}</h4>
               <h5 className="players">
@@ -27,7 +33,13 @@ const BrowseGroups = () => {
                   {url}
                 </a>
               </div>
-
+              <div className="btn-container">
+                <Form method="post" action={`../join-group/${_id}`}>
+                  <button type="submit" className="btn join-btn">
+                    join group
+                  </button>
+                </Form>
+              </div>
               <div className="desc">
                 <p>{desc ? desc : "none"}</p>
               </div>

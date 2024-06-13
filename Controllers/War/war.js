@@ -1,6 +1,6 @@
 import CreateGroup from "../../Schemas/War/war.js";
 import { StatusCodes } from "http-status-codes";
-
+import mongoose from "mongoose";
 //Create Groups
 export const createGroup = async (req, res) => {
   //Create a Group
@@ -12,7 +12,21 @@ export const createGroup = async (req, res) => {
 
 //My Groups
 export const myWarGroup = async (req, res) => {
-  const myGroup = await CreateGroup.find({ createdBy: req.user.userId });
+  const myGroup = await CreateGroup.aggregate([
+    {
+      $match: {
+        createdBy: mongoose.Types.ObjectId.createFromHexString(req.user.userId),
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "people",
+      },
+    },
+  ]);
   res.status(StatusCodes.OK).json({ myGroup });
 };
 
@@ -30,14 +44,10 @@ export const deleteWarGroup = async (req, res) => {
 
 //Update My Groups
 export const updateWarGroup = async (req, res) => {
-  const updateGroup = await CreateGroup.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    {
-      new: true,
-    }
-  );
-  res.status(StatusCodes.OK).json({ msg: "Group has been Updated!" });
+  const updateGroup = await CreateGroup.updateOne({ _id: req.params.id });
+
+  const test = await CreateGroup.getIndexes();
+  res.status(StatusCodes.OK).json({ updateGroup, test });
 };
 
 //Join Group
@@ -51,7 +61,7 @@ export const joinWarGroup = async (req, res) => {
       new: true,
     }
   );
-  res.status(StatusCodes.OK).json({ msg: "You Have Joined A WarBand!" });
+  res.status(StatusCodes.OK).json({ joinGroup });
 };
 //Leave Group
 export const leaveWarGroup = async (req, res) => {
