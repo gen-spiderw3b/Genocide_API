@@ -13,4 +13,4 @@ export { default as CreateGroupForm } from "./Group/CreateGroupForm";
 export { default as PageBtnContainer } from "./Pagination/PageBtnContainer";
 export { default as SearchContainer } from "./Search Container/SearchContainer";
 export { default as SelectOption } from "./FormInput/SelectOption";
-export { default as PeopleList } from "./People/PeopleList";
+export { default as People } from "./People/People";

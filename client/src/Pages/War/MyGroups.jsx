@@ -1,8 +1,8 @@
 import { Form, useLoaderData } from "react-router-dom";
 import Wrapper from "../../Wrappers/War/myGroups";
-import { PeopleList } from "../../Components/index";
 import { useState } from "react";
 import customFetch from "../../Utils/customFetch";
+import { People } from "../../Components/index";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
@@ -63,12 +63,11 @@ const MyGroups = () => {
                     delete group
                   </button>
                 </Form>
-                <div className="btn people-btn" onClick={togglePeople}>
-                  {isPeople ? (
-                    <PeopleList people={people} createdBy={createdBy} />
-                  ) : (
-                    "people"
-                  )}
+                <div
+                  className={isPeople ? "people show-people" : "people"}
+                  onClick={togglePeople}
+                >
+                  <People people={people} groupId={_id} createdBy={createdBy} />
                 </div>
               </div>
               <div className="desc">

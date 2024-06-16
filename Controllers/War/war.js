@@ -41,6 +41,13 @@ export const deleteWarGroup = async (req, res) => {
   const deleteGroup = await CreateGroup.findByIdAndDelete(req.params.id);
   res.status(StatusCodes.OK).json({ msg: "WarBand Deleted !" });
 };
+//Delete Members
+export const deleteMember = async (req, res) => {
+  const deleteMember = await CreateGroup.findByIdAndUpdate(req.params.id, {
+    $pull: { joinedBy: req.params.user },
+  });
+  res.status(StatusCodes.OK).json({ msg: "Member Deleted !" });
+};
 
 //Update My Groups
 export const updateWarGroup = async (req, res) => {

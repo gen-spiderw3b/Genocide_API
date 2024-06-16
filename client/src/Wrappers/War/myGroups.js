@@ -78,9 +78,10 @@ const Wrapper = styled.main`
     margin-bottom: 1.5rem;
   }
   .btn {
+    text-align: center;
     color: black;
     border: transparent;
-    background: transparent;
+    background: red;
     cursor: pointer;
     transition: var(--transition);
     width: 100px;
