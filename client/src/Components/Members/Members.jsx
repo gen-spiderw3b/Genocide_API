@@ -1,18 +1,19 @@
 import PropTypes from "prop-types";
 import { Form } from "react-router-dom";
-const People = ({ people, groupId, createdBy }) => {
+const Members = ({ members, groupId }) => {
   return (
     <div>
-      {people.map((items) => {
-        const { _id, firstName } = items;
+      {members.map((item) => {
+        const { _id, firstName } = item;
         return (
           <Form
             key={_id}
             method="post"
+            className="links"
             action={`../delete-member/${groupId}/${_id}`}
           >
-            <button type="submit" className="btn">
-              {createdBy === _id ? null : firstName}
+            <button type="submit" className=" btn btn-links">
+              {firstName}
             </button>
           </Form>
         );
@@ -20,9 +21,8 @@ const People = ({ people, groupId, createdBy }) => {
     </div>
   );
 };
-People.propTypes = {
-  people: PropTypes.array,
+Members.propTypes = {
+  members: PropTypes.array,
   groupId: PropTypes.string,
-  createdBy: PropTypes.string,
 };
-export default People;
+export default Members;

@@ -16,80 +16,40 @@ const Wrapper = styled.main`
     width: 90vw;
     margin: 0 auto;
   }
-
   .article {
-    margin: 0 auto;
-    background: red;
-    margin-bottom: 3rem;
-    width: 300px;
-    height: 10rem;
+    background: black;
     border-radius: 10px;
-    overflow: scroll;
-    scrollbar-color: black white;
-    scrollbar-width: thin;
+    padding: 0.7rem 0;
   }
   .games {
     text-align: center;
-    padding-top: 0.25rem;
-    margin-bottom: 0.8rem;
-  }
-  .groupName {
-    text-align: center;
-    color: yellow;
-    margin-bottom: 0.8rem;
-  }
-  .players {
-    text-align: center;
-    color: green;
-    margin-bottom: 0.8rem;
-  }
-  .goals {
-    text-align: center;
-    color: blue;
+    color: red;
     margin-bottom: 0.5rem;
   }
-  .discord {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  a {
+  .links {
+    display: block;
     text-decoration: none;
-    color: yellow;
+    color: white;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+  .text {
+    text-align: center;
+    text-transform: capitalize;
+    color: white;
+    margin-bottom: 0.9rem;
+  }
+  .btn-block {
+    background: none;
+    color: white;
+    text-transform: capitalize;
+    border: none;
+    transition: var(--transition);
+  }
+  .btn-block:hover {
+    color: red;
   }
 
-  .desc {
-    text-align: center;
-    margin: 0 auto;
-    margin-bottom: 2rem;
-    width: 15em;
-  }
-  .desc p {
-    word-wrap: break-word;
-    color: white;
-    line-height: 1;
-    text-transform: capitalize;
-    letter-spacing: 0.2rem;
-  }
-  .btn-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .btn {
-    text-align: center;
-    color: black;
-    border: transparent;
-    background: red;
-    cursor: pointer;
-    transition: var(--transition);
-    width: 100px;
-  }
-  .btn:hover {
-    color: red;
-    background: black;
-  }
   @media (min-width: 700px) {
     .section-center {
       width: 60vw;

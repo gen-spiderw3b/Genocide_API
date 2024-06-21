@@ -8,7 +8,6 @@ import {
   createGroup,
   myWarGroup,
   deleteWarGroup,
-  updateWarGroup,
   joinWarGroup,
   leaveWarGroup,
   joinedGroups,
@@ -25,7 +24,6 @@ router.route("/delete-group/:id").delete(validateWarGroupId, deleteWarGroup);
 router
   .route("/delete-member/:id/:user")
   .patch(validateWarGroupId, deleteMember);
-router.route("/update-group/:id").patch(validateWarGroupId, updateWarGroup);
 router.route("/join-group/:id").patch(joinWarGroupId, joinWarGroup);
 router.route("/leave-group/:id").patch(validateWarGroupId, leaveWarGroup);
 

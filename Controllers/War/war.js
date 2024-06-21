@@ -1,9 +1,9 @@
 import CreateGroup from "../../Schemas/War/war.js";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
-//Create Groups
+
+//Create Groups Finished
 export const createGroup = async (req, res) => {
-  //Create a Group
   req.body.createdBy = req.user.userId;
   req.body.joinedBy = req.user.userId;
   const warGroup = await CreateGroup.create(req.body);
@@ -12,7 +12,11 @@ export const createGroup = async (req, res) => {
 
 //My Groups
 export const myWarGroup = async (req, res) => {
-  const myGroup = await CreateGroup.aggregate([
+  let page = Number(req.query.page) || 1;
+  let docPerPage = 1;
+  let skip = (page - 1) * docPerPage;
+  let limit = docPerPage;
+  let pipeline = [
     {
       $match: {
         createdBy: mongoose.Types.ObjectId.createFromHexString(req.user.userId),
@@ -23,11 +27,22 @@ export const myWarGroup = async (req, res) => {
         from: "users",
         localField: "joinedBy",
         foreignField: "_id",
-        as: "people",
+        as: "members",
       },
     },
-  ]);
-  res.status(StatusCodes.OK).json({ myGroup });
+    {
+      $facet: {
+        data: [{ $skip: skip }, { $limit: limit }],
+      },
+    },
+    {
+      $project: {
+        docs: "$data",
+      },
+    },
+  ];
+  const people = await CreateGroup.aggregate(pipeline);
+  res.status(StatusCodes.OK).json({ people });
 };
 
 //Joined Groups
@@ -47,14 +62,6 @@ export const deleteMember = async (req, res) => {
     $pull: { joinedBy: req.params.user },
   });
   res.status(StatusCodes.OK).json({ msg: "Member Deleted !" });
-};
-
-//Update My Groups
-export const updateWarGroup = async (req, res) => {
-  const updateGroup = await CreateGroup.updateOne({ _id: req.params.id });
-
-  const test = await CreateGroup.getIndexes();
-  res.status(StatusCodes.OK).json({ updateGroup, test });
 };
 
 //Join Group

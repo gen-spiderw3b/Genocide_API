@@ -51,12 +51,6 @@ const subLinks = [
         icon: <GiBatteredAxe />,
         url: "war/joined-groups",
       },
-      {
-        id: nanoid(),
-        label: "update groups",
-        icon: <GiBatteredAxe />,
-        url: "war/update-groups",
-      },
     ],
   },
   {

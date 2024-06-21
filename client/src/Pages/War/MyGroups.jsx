@@ -1,8 +1,7 @@
-import { Form, useLoaderData } from "react-router-dom";
+import { useLoaderData, Form } from "react-router-dom";
 import Wrapper from "../../Wrappers/War/myGroups";
-import { useState } from "react";
 import customFetch from "../../Utils/customFetch";
-import { People } from "../../Components/index";
+import { Members } from "../../Components/index";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
@@ -15,12 +14,10 @@ export const loader = async () => {
 };
 
 const MyGroups = () => {
-  const [isPeople, setIsPeople] = useState(false);
-  const { myGroup } = useLoaderData();
+  const { people } = useLoaderData();
+  const [data] = people;
+  const { docs } = data;
 
-  const togglePeople = () => {
-    setIsPeople(!isPeople);
-  };
   return (
     <Wrapper>
       <div className="title">
@@ -30,49 +27,19 @@ const MyGroups = () => {
       </div>
       <div className="title-underline"></div>
       <div className="section-center">
-        {myGroup.map((items) => {
-          const {
-            _id,
-            groupName,
-            players,
-            desc,
-            games,
-            joinedBy,
-            goals,
-            url,
-            people,
-            createdBy,
-          } = items;
-
+        {docs.map((items) => {
+          const { _id, games, members } = items;
           return (
-            <article key={_id} className="article">
+            <article className="article" key={_id}>
               <h3 className="games">{games}</h3>
-              <h4 className="groupName">{groupName}</h4>
-              <h5 className="players">
-                {joinedBy.length} / {players}
-              </h5>
-              <h5 className="goals">{goals}</h5>
-              <div className="discord">
-                <a href={url} target="_blank">
-                  {url}
-                </a>
-              </div>
-              <div className="btn-container">
-                <Form method="post" action={`../delete-group/${_id}`}>
-                  <button type="submit" className="btn join-btn">
-                    delete group
-                  </button>
-                </Form>
-                <div
-                  className={isPeople ? "people show-people" : "people"}
-                  onClick={togglePeople}
-                >
-                  <People people={people} groupId={_id} createdBy={createdBy} />
-                </div>
-              </div>
-              <div className="desc">
-                <p>{desc ? desc : "none"}</p>
-              </div>
+              <p className="text">delete members</p>
+              <Members members={members} groupId={_id} />
+              <p className="text">delete group</p>
+              <Form method="post" action={`../delete-group/${_id}`}>
+                <button type="submit" className="btn-block">
+                  delete group
+                </button>
+              </Form>
             </article>
           );
         })}

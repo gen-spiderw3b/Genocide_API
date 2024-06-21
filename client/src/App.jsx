@@ -13,7 +13,6 @@ import {
   CreateGroup,
   MyGroups,
   JoinedGroups,
-  UpdateGroups,
   LeaveGroup,
   BrowseGroups,
   //End Of War
@@ -102,10 +101,7 @@ const router = createBrowserRouter([
                 path: "delete-group/:id",
                 action: deleteAction,
               },
-              {
-                path: "update-groups",
-                element: <UpdateGroups />,
-              },
+
               {
                 path: "join-group/:id",
                 action: joinAction,
