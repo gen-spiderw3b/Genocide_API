@@ -1,20 +1,26 @@
 import { useLoaderData, Form } from "react-router-dom";
 import Wrapper from "../../Wrappers/War/myGroups";
 import customFetch from "../../Utils/customFetch";
-import { Members } from "../../Components/index";
+import { Members, MyGroupPagination } from "../../Components/index";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader = async () => {
+export const loader = async ({ request }) => {
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+
   try {
-    const { data } = await customFetch.get("/war/my-group");
-    return data;
+    const { data } = await customFetch.get("/war/my-group", { params });
+    return { data, searchParams: { ...params } };
   } catch (error) {
     return error;
   }
 };
 
 const MyGroups = () => {
-  const { people } = useLoaderData();
+  const {
+    data: { people, currentPage, numOfPages },
+  } = useLoaderData();
   const [data] = people;
   const { docs } = data;
 
@@ -28,10 +34,11 @@ const MyGroups = () => {
       <div className="title-underline"></div>
       <div className="section-center">
         {docs.map((items) => {
-          const { _id, games, members } = items;
+          const { _id, games, members, groupName } = items;
           return (
             <article className="article" key={_id}>
               <h3 className="games">{games}</h3>
+              <h4 className="groupName">{groupName}</h4>
               <p className="text">delete members</p>
               <Members members={members} groupId={_id} />
               <p className="text">delete group</p>
@@ -44,6 +51,9 @@ const MyGroups = () => {
           );
         })}
       </div>
+      {numOfPages > 1 && (
+        <MyGroupPagination currentPage={currentPage} numOfPages={numOfPages} />
+      )}
     </Wrapper>
   );
 };

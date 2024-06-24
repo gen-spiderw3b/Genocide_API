@@ -11,6 +11,8 @@ export { default as NavLinks } from "./SideBars/NavLinks";
 export { default as LogoutContainer } from "./SideBars/LogoutContainer";
 export { default as CreateGroupForm } from "./Group/CreateGroupForm";
 export { default as PageBtnContainer } from "./Pagination/PageBtnContainer";
+export { default as MyGroupPagination } from "./Pagination/MyGroupPagination";
 export { default as SearchContainer } from "./Search Container/SearchContainer";
 export { default as SelectOption } from "./FormInput/SelectOption";
 export { default as Members } from "./Members/Members";
+export { default as JoinedMembers } from "./Members/JoinedMembers";

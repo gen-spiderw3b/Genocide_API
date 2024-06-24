@@ -1,10 +1,5 @@
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
-import {
-  useLocation,
-  // Link,
-  useNavigate,
-  useOutletContext,
-} from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import Wrapper from "../../Wrappers/Pageination/PageBtnContainer";
 
 const PageBtnContainer = () => {

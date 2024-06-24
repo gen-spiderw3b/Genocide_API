@@ -12,20 +12,31 @@ const BrowseGroups = () => {
       <SearchContainer />
       <div className="section-center">
         {groups.map((items) => {
-          const { _id, groupName, players, desc, games, joinedBy, goals, url } =
-            items;
+          const {
+            _id,
+            groupName,
+            players,
+            desc,
+            games,
+            joinedBy,
+            goals,
+            url,
+            createdBy,
+          } = items;
+          let num = parseInt(createdBy);
+          let one = num - num + 1;
 
           return (
             <article
               key={_id}
               className={
-                joinedBy.length >= players ? "hide-article" : "article"
+                joinedBy.length + one >= players ? "hide-article" : "article"
               }
             >
               <h3 className="games">{games}</h3>
               <h4 className="groupName">{groupName}</h4>
               <h5 className="players">
-                {joinedBy.length} / {players}
+                {joinedBy.length + one} / {players}
               </h5>
               <h5 className="goals">{goals}</h5>
               <div className="discord">

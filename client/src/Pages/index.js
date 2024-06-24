@@ -48,6 +48,5 @@ export { default as CreateGroup } from "./War/CreateGroup";
 export { default as BrowseGroups } from "./War/BrowseGroups";
 export { default as MyGroups } from "./War/MyGroups";
 export { default as JoinedGroups } from "./War/JoinedGroups";
-export { default as UpdateGroups } from "./War/UpdateGroups";
 export { default as LeaveGroup } from "./War/LeaveGroup";
 //End Of WarRoutes

@@ -20,13 +20,16 @@ const withValidationErrors = (validateValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errMessage = errors.array().map((error) => error.msg);
-        if (errMessage[0].startsWith("No Group")) {
+        if (errMessage[0].startsWith("No Group with an Id")) {
           throw new NotFoundError(errMessage);
         }
-        if (errMessage[0].startsWith("not authorized")) {
+        if (errMessage[0].startsWith("not authorized to access this route!")) {
           throw new UnauthorizedError(errMessage);
         }
-        if (errMessage[0].startsWith("you already")) {
+        if (errMessage[0].startsWith("you already joined this group!")) {
+          throw new BadRequestError(errMessage);
+        }
+        if (errMessage[0].startsWith("you can only delete yourself!")) {
           throw new BadRequestError(errMessage);
         }
         throw new BadRequestError(errMessage);

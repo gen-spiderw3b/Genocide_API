@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 //Create Groups Finished
 export const createGroup = async (req, res) => {
   req.body.createdBy = req.user.userId;
-  req.body.joinedBy = req.user.userId;
   const warGroup = await CreateGroup.create(req.body);
   res.status(StatusCodes.CREATED).json({ warGroup });
 };
@@ -13,9 +12,13 @@ export const createGroup = async (req, res) => {
 //My Groups
 export const myWarGroup = async (req, res) => {
   let page = Number(req.query.page) || 1;
-  let docPerPage = 1;
+  let docPerPage = 5;
   let skip = (page - 1) * docPerPage;
   let limit = docPerPage;
+  const totalGroups = await CreateGroup.find({
+    createdBy: req.user.userId,
+  }).countDocuments();
+  const numOfPages = Math.ceil(totalGroups / limit);
   let pipeline = [
     {
       $match: {
@@ -41,14 +44,53 @@ export const myWarGroup = async (req, res) => {
       },
     },
   ];
+
   const people = await CreateGroup.aggregate(pipeline);
-  res.status(StatusCodes.OK).json({ people });
+  res.status(StatusCodes.OK).json({ people, numOfPages, currentPage: page });
 };
 
 //Joined Groups
 export const joinedGroups = async (req, res) => {
-  const joinedGroups = await CreateGroup.find({ joinedBy: req.user.userId });
-  res.status(StatusCodes.OK).json({ joinedGroups });
+  let page = Number(req.query.page) || 1;
+  let docPerPage = 5;
+  let skip = (page - 1) * docPerPage;
+  let limit = docPerPage;
+  const totalGroups = await CreateGroup.find({
+    joinedBy: req.user.userId,
+  }).countDocuments();
+  const numOfPages = Math.ceil(totalGroups / limit);
+  let pipeline = [
+    {
+      $match: {
+        joinedBy: mongoose.Types.ObjectId.createFromHexString(req.user.userId),
+      },
+    },
+
+    {
+      $lookup: {
+        from: "users",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+    {
+      $facet: {
+        data: [{ $skip: skip }, { $limit: limit }],
+      },
+    },
+    {
+      $project: {
+        docs: "$data",
+      },
+    },
+  ];
+
+  const joinedGroups = await CreateGroup.aggregate(pipeline);
+
+  res
+    .status(StatusCodes.OK)
+    .json({ joinedGroups, numOfPages, currentPage: page });
 };
 
 //Delete My Groups
@@ -59,6 +101,13 @@ export const deleteWarGroup = async (req, res) => {
 //Delete Members
 export const deleteMember = async (req, res) => {
   const deleteMember = await CreateGroup.findByIdAndUpdate(req.params.id, {
+    $pull: { joinedBy: req.params.user },
+  });
+  res.status(StatusCodes.OK).json({ msg: "Member Deleted !" });
+};
+//Delete Own Self
+export const deleteSelf = async (req, res) => {
+  const deleteSelf = await CreateGroup.findByIdAndUpdate(req.params.id, {
     $pull: { joinedBy: req.params.user },
   });
   res.status(StatusCodes.OK).json({ msg: "Member Deleted !" });

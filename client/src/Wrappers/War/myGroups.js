@@ -20,10 +20,16 @@ const Wrapper = styled.main`
     background: black;
     border-radius: 10px;
     padding: 0.7rem 0;
+    margin-bottom: 1.5rem;
   }
   .games {
     text-align: center;
     color: red;
+    margin-bottom: 0.5rem;
+  }
+  .groupName {
+    color: purple;
+    text-align: center;
     margin-bottom: 0.5rem;
   }
   .links {
@@ -41,13 +47,25 @@ const Wrapper = styled.main`
   }
   .btn-block {
     background: none;
-    color: white;
+    color: red;
     text-transform: capitalize;
     border: none;
     transition: var(--transition);
   }
   .btn-block:hover {
+    color: black;
+    background: red;
+  }
+  .member-form {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .member-btn {
+    font-size: 1.2rem;
+    background: transparent;
+    border: transparent;
     color: red;
+    text-transform: capitalize;
   }
 
   @media (min-width: 700px) {

@@ -31,11 +31,13 @@ import { action as CreateWarAction } from "./Pages/War/CreateGroup";
 import { action as joinAction } from "./Pages/War/JoinGroup";
 import { action as deleteAction } from "./Pages/War/DeleteGroup";
 import { action as deleteMemberAction } from "./Pages/War/DeleteMember";
+import { action as deleteSelfAction } from "./Pages/War/DeleteSelf";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
 import { loader as warLoader } from "./Pages/War/WarLayout";
 import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
+import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -94,8 +96,13 @@ const router = createBrowserRouter([
                 action: deleteMemberAction,
               },
               {
+                path: "delete-self/:id/:user",
+                action: deleteSelfAction,
+              },
+              {
                 path: "joined-groups",
                 element: <JoinedGroups />,
+                loader: joinedLoader,
               },
               {
                 path: "delete-group/:id",
