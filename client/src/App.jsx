@@ -16,10 +16,12 @@ import {
   LeaveGroup,
   BrowseGroups,
   //End Of War
-  SeeAllGroups,
-  CreateGroups,
-  EditGroups,
+  //Investment Groups
+  GroupLayout,
+  BrowseAllGroups,
+  CreateInvestmentGroup,
   UserGroups,
+  //End Of Investment Groups
   Education,
   UpdateUser,
 } from "./Pages/index";
@@ -121,24 +123,24 @@ const router = createBrowserRouter([
           },
           //See All Groups
           {
-            path: "see-all-groups",
-            element: <SeeAllGroups />,
+            path: "investment/",
+            element: <GroupLayout />,
+            children: [
+              {
+                path: "browse-all-groups",
+                element: <BrowseAllGroups />,
+              },
+              {
+                path: "create-groups",
+                element: <CreateInvestmentGroup />,
+              },
+              {
+                path: "user-groups",
+                element: <UserGroups />,
+              },
+            ],
           },
-          //Create Groups
-          {
-            path: "create-groups",
-            element: <CreateGroups />,
-          },
-          //Edit Groups
-          {
-            path: "Edit-groups",
-            element: <EditGroups />,
-          },
-          //User Groups
-          {
-            path: "user-groups",
-            element: <UserGroups />,
-          },
+
           //Education
           {
             path: "education",

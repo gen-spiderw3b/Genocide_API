@@ -28,8 +28,9 @@ export { default as Headline } from "./Headline/Headline";
 //End Of Headline
 
 //Static Groups
-export { default as SeeAllGroups } from "./Groups/SeeAllGroups";
-export { default as CreateGroups } from "./Groups/CreateGroups";
+export { default as GroupLayout } from "./Groups/GroupLayout";
+export { default as BrowseAllGroups } from "./Groups/BrowseAllGroups";
+export { default as CreateInvestmentGroup } from "./Groups/CreateInvestmentGroup";
 export { default as EditGroups } from "./Groups/EditGroup";
 export { default as UserGroups } from "./Groups/UserGroups";
 //End Of Static Groups

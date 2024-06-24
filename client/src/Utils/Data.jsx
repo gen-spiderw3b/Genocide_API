@@ -3,10 +3,10 @@ import { GiBatteredAxe } from "react-icons/gi";
 import { SiBookstack } from "react-icons/si";
 import { IoNewspaperSharp } from "react-icons/io5";
 import { GiBabyfootPlayers } from "react-icons/gi";
-import { GiPlayerTime } from "react-icons/gi";
 import { GiPlayerNext } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
+
 //NanoId
 import { nanoid } from "nanoid";
 
@@ -67,31 +67,25 @@ const subLinks = [
   },
   {
     pageId: nanoid(),
-    page: "groups",
+    page: "Investment Groups",
     links: [
       {
         id: nanoid(),
-        label: "see all groups",
+        label: "Browse All Groups",
         icon: <GiBabyfootPlayers />,
-        url: "groups/see-all-groups",
+        url: "Investment/browse-all-groups",
       },
       {
         id: nanoid(),
-        label: "create groups",
+        label: "Create Investment Groups",
         icon: <IoCreate />,
-        url: "groups/create-groups",
+        url: "Investment/create-groups",
       },
       {
         id: nanoid(),
-        label: "edit groups",
-        icon: <GiPlayerTime />,
-        url: "groups/edit-groups",
-      },
-      {
-        id: nanoid(),
-        label: "your groups",
+        label: "Your Groups",
         icon: <GiPlayerNext />,
-        url: "groups/user-groups",
+        url: "Investment/user-groups",
       },
     ],
   },
