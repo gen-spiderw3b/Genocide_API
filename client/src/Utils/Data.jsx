@@ -3,7 +3,6 @@ import { GiBatteredAxe } from "react-icons/gi";
 import { SiBookstack } from "react-icons/si";
 import { IoNewspaperSharp } from "react-icons/io5";
 import { GiBabyfootPlayers } from "react-icons/gi";
-import { GiPlayerNext } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
 
@@ -73,19 +72,13 @@ const subLinks = [
         id: nanoid(),
         label: "Browse All Groups",
         icon: <GiBabyfootPlayers />,
-        url: "Investment/browse-all-groups",
+        url: "investment/browse-all-groups",
       },
       {
         id: nanoid(),
         label: "Create Investment Groups",
         icon: <IoCreate />,
-        url: "Investment/create-groups",
-      },
-      {
-        id: nanoid(),
-        label: "Your Groups",
-        icon: <GiPlayerNext />,
-        url: "Investment/user-groups",
+        url: "investment/create-groups",
       },
     ],
   },

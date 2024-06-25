@@ -12,3 +12,13 @@ export const GOALS = {
   ARENA: "arena",
   RANKED_BATTLEGROUNDS: "ranked battlegrounds",
 };
+
+export const INVESTMENTS = {
+  VIDEO_GAME_STUDIO: "Video Game Studio",
+  MUSIC_STUDIO: "Music Studio",
+  VIDEO_GAME_GUILDS: "Video Game Guilds",
+  YOUTUBE_GUILDS: "Youtube Guilds",
+  FILM_PRODUCTION: "Film Production",
+  THEATER: "Theater",
+  SOFTWARE_DEVELOPMENT: "Software Development",
+};

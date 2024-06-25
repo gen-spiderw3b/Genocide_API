@@ -1,4 +1,9 @@
+import { InvestmentContainer } from "../../Components";
 const BrowseAllGroups = () => {
-  return <div>BrowseAllGroups</div>;
+  return (
+    <div>
+      <InvestmentContainer />
+    </div>
+  );
 };
 export default BrowseAllGroups;

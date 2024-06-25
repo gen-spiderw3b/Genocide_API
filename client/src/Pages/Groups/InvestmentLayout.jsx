@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-const GroupLayout = () => {
+const InvestmentLayout = () => {
   return (
     <div>
       <Outlet />
     </div>
   );
 };
-export default GroupLayout;
+export default InvestmentLayout;

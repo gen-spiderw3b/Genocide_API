@@ -17,10 +17,9 @@ import {
   BrowseGroups,
   //End Of War
   //Investment Groups
-  GroupLayout,
+  InvestmentLayout,
   BrowseAllGroups,
   CreateInvestmentGroup,
-  UserGroups,
   //End Of Investment Groups
   Education,
   UpdateUser,
@@ -121,26 +120,21 @@ const router = createBrowserRouter([
               },
             ],
           },
-          //See All Groups
+          //Investment Groups
           {
             path: "investment/",
-            element: <GroupLayout />,
+            element: <InvestmentLayout />,
             children: [
-              {
-                path: "browse-all-groups",
-                element: <BrowseAllGroups />,
-              },
               {
                 path: "create-groups",
                 element: <CreateInvestmentGroup />,
               },
               {
-                path: "user-groups",
-                element: <UserGroups />,
+                path: "browse-all-groups",
+                element: <BrowseAllGroups />,
               },
             ],
           },
-
           //Education
           {
             path: "education",

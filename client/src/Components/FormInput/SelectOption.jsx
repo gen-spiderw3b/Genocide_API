@@ -4,6 +4,7 @@ const SelectOption = ({
   labelText,
   list,
   defaultValue = "",
+  // eslint-disable-next-line react/prop-types
   onChange,
 }) => {
   return (
