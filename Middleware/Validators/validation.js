@@ -6,8 +6,16 @@ import {
 } from "../../Middleware/RequestErrors/errors.js";
 import Users from "../../Schemas/userSchema.js";
 import War from "../../Schemas/War/war.js";
-import { GAMES, GOALS } from "../../Utils/Constants/constants.js";
+import Investment from "../../Schemas/Investments/investments.js";
+import {
+  GAMES,
+  GOALS,
+  INVESTMENTS,
+  MEMBER_COUNT,
+  DUES,
+} from "../../Utils/Constants/constants.js";
 import mongoose from "mongoose";
+
 /*
 =================
 Validation Errors
@@ -161,4 +169,22 @@ export const joinWarGroupId = withValidationErrors([
     });
     if (result) throw new BadRequestError("you already joined this group!");
   }),
+]);
+
+/*
+=============
+Investments
+=============
+*/
+
+export const investmentValidation = withValidationErrors([
+  body("groupName").notEmpty().withMessage("please provide a groupName"),
+  body("desc").notEmpty().withMessage("please provide a description"),
+  body("investment")
+    .isIn(Object.values(INVESTMENTS))
+    .withMessage("Invalid investment group"),
+  body("members")
+    .isIn(Object.values(MEMBER_COUNT))
+    .withMessage("Invalid Member Count"),
+  body("dues").isIn(Object.values(DUES)).withMessage("Invalid Price Of Dues"),
 ]);

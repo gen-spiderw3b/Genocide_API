@@ -33,6 +33,7 @@ import { action as joinAction } from "./Pages/War/JoinGroup";
 import { action as deleteAction } from "./Pages/War/DeleteGroup";
 import { action as deleteMemberAction } from "./Pages/War/DeleteMember";
 import { action as deleteSelfAction } from "./Pages/War/DeleteSelf";
+import { action as investmentAction } from "./Pages/Groups/CreateInvestmentGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -128,6 +129,7 @@ const router = createBrowserRouter([
               {
                 path: "create-groups",
                 element: <CreateInvestmentGroup />,
+                action: investmentAction,
               },
               {
                 path: "browse-all-groups",

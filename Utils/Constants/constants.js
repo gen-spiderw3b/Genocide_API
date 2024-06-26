@@ -22,3 +22,22 @@ export const INVESTMENTS = {
   THEATER: "Theater",
   SOFTWARE_DEVELOPMENT: "Software Development",
 };
+
+export const MEMBER_COUNT = {
+  ONE: 1,
+  TEN: 10,
+  FIFTY: 50,
+  HUNDRED: 100,
+  THOUSAND: 1000,
+  ONE_HUNDRED_THOUSAND: 100e3,
+  ONE_MILLION: 100e4,
+};
+
+export const DUES = {
+  TEN: 10,
+  FIFTY: 50,
+  HUNDRED: 100,
+  THOUSAND: 1000,
+  ONE_HUNDRED_THOUSAND: 100e3,
+  ONE_MILLION: 100e4,
+};
