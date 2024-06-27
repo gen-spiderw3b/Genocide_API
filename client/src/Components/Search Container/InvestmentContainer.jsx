@@ -1,11 +1,9 @@
 import { SelectOption } from "../index";
 import { Form, useSubmit, Link } from "react-router-dom";
 import { INVESTMENTS } from "../../../../Utils/Constants/constants";
-import Wrapper from "../../Wrappers/SearchContainer/search";
+import Wrapper from "../../Wrappers/SearchContainer/investmentSearch";
 
 const SearchContainer = () => {
-  //   const { searchValues } = useOutletContext();
-  //   const {  } = searchValues;
   const submit = useSubmit();
 
   return (
@@ -15,8 +13,8 @@ const SearchContainer = () => {
         <div className="form-center">
           <SelectOption
             labelText="investments"
-            name="investments"
-            list={["allInvestments", ...Object.values(INVESTMENTS)]}
+            name="investment"
+            list={["all", ...Object.values(INVESTMENTS)]}
             defaultValue="investments"
             onChange={(e) => {
               submit(e.currentTarget.form);
@@ -24,7 +22,7 @@ const SearchContainer = () => {
           />
         </div>
         <Link
-          to="/dashboard/war/browse-groups"
+          to="/dashboard/investment/browse-all-groups"
           className="btn form-btn delete-btn"
         >
           Reset Search Values

@@ -11,8 +11,12 @@ export const createInvestmentGroup = async (req, res) => {
 
 //Browse Investment Groups
 export const browseInvestmentGroups = async (req, res) => {
-  const { search } = req.query;
+  const { investment } = req.query;
   const queryObject = {};
+
+  if (investment && investment !== "all") {
+    queryObject.investment = investment;
+  }
   const groups = await Investment.find(queryObject);
   res.status(StatusCodes.OK).json({ groups });
 };

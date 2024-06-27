@@ -14,13 +14,13 @@ export const GOALS = {
 };
 
 export const INVESTMENTS = {
-  VIDEO_GAME_STUDIO: "Video Game Studio",
-  MUSIC_STUDIO: "Music Studio",
-  VIDEO_GAME_GUILDS: "Video Game Guilds",
-  YOUTUBE_GUILDS: "Youtube Guilds",
-  FILM_PRODUCTION: "Film Production",
+  VIDEO_GAME_STUDIO: "VideoGameStudio",
+  MUSIC_STUDIO: "MusicStudio",
+  VIDEO_GAME_GUILDS: "VideoGameGuilds",
+  YOUTUBE_GUILDS: "YoutubeGuilds",
+  FILM_PRODUCTION: "FilmProduction",
   THEATER: "Theater",
-  SOFTWARE_DEVELOPMENT: "Software Development",
+  SOFTWARE_DEVELOPMENT: "SoftwareDevelopment",
 };
 
 export const MEMBER_COUNT = {
