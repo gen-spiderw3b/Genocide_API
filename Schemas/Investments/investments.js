@@ -20,13 +20,29 @@ const Investment = new mongoose.Schema(
       enum: Object.values(DUES),
     },
     desc: String,
-    joinedBy: [
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "Users",
+    },
+    associate: [
       {
         type: mongoose.Types.ObjectId,
         ref: "Users",
       },
     ],
-    createdBy: {
+    president: {
+      type: mongoose.Types.ObjectId,
+      ref: "Users",
+    },
+    vice_president: {
+      type: mongoose.Types.ObjectId,
+      ref: "Users",
+    },
+    treasurer: {
+      type: mongoose.Types.ObjectId,
+      ref: "Users",
+    },
+    lieutenant: {
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },

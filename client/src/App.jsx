@@ -34,12 +34,14 @@ import { action as deleteAction } from "./Pages/War/DeleteGroup";
 import { action as deleteMemberAction } from "./Pages/War/DeleteMember";
 import { action as deleteSelfAction } from "./Pages/War/DeleteSelf";
 import { action as investmentAction } from "./Pages/Groups/CreateInvestmentGroup";
+import { action as joinInvestmentAction } from "./Pages/Groups/JoinInvestmentGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
 import { loader as warLoader } from "./Pages/War/WarLayout";
 import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
+import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -125,6 +127,7 @@ const router = createBrowserRouter([
           {
             path: "investment/",
             element: <InvestmentLayout />,
+            loader: investmentLoader,
             children: [
               {
                 path: "create-groups",
@@ -134,6 +137,10 @@ const router = createBrowserRouter([
               {
                 path: "browse-all-groups",
                 element: <BrowseAllGroups />,
+              },
+              {
+                path: "join-group/:id/:userId",
+                action: joinInvestmentAction,
               },
             ],
           },

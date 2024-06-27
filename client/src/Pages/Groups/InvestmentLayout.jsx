@@ -1,8 +1,24 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData, useOutletContext } from "react-router-dom";
+import customFetch from "../../Utils/customFetch";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get(
+      "/investment/browse-investment-group"
+    );
+    return { data };
+  } catch (error) {
+    return error;
+  }
+};
+
 const InvestmentLayout = () => {
+  const { data } = useLoaderData();
+  const { user } = useOutletContext();
   return (
     <div>
-      <Outlet />
+      <Outlet context={{ data, user }} />
     </div>
   );
 };
