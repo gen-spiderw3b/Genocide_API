@@ -10,6 +10,7 @@ const Wrapper = styled.main`
     margin-bottom: 1.5rem;
   }
   .form-label {
+    font-size: 1.2rem;
     color: red;
     margin-bottom: 0.8rem;
   }
@@ -18,14 +19,14 @@ const Wrapper = styled.main`
     background: grey;
   }
   .label {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: red;
     text-transform: capitalize;
   }
   .area {
     margin-top: 1rem;
     width: 100%;
-    background: grey;
+    background: white;
   }
   .btn {
     margin-top: 2rem;

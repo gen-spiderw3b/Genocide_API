@@ -14,13 +14,13 @@ export const GOALS = {
 };
 
 export const INVESTMENTS = {
-  VIDEO_GAME_STUDIO: "VideoGameStudio",
-  MUSIC_STUDIO: "MusicStudio",
-  VIDEO_GAME_GUILDS: "VideoGameGuilds",
-  YOUTUBE_GUILDS: "YoutubeGuilds",
-  FILM_PRODUCTION: "FilmProduction",
+  VIDEO_GAME_STUDIO: "Video Game Studio",
+  MUSIC_STUDIO: "Music Studio",
+  VIDEO_GAME_GUILDS: "Video Game Guilds",
+  YOUTUBE_GUILDS: "Youtube Guilds",
+  FILM_PRODUCTION: "Film Production",
   THEATER: "Theater",
-  SOFTWARE_DEVELOPMENT: "SoftwareDevelopment",
+  SOFTWARE_DEVELOPMENT: "Software Development",
 };
 
 export const MEMBER_COUNT = {
@@ -34,6 +34,7 @@ export const MEMBER_COUNT = {
 };
 
 export const DUES = {
+  ZERO: 0,
   TEN: 10,
   FIFTY: 50,
   HUNDRED: 100,

@@ -17,9 +17,16 @@ export const browseInvestmentGroups = async (req, res) => {
   if (investment && investment !== "all") {
     queryObject.investment = investment;
   }
-  const groups = await Investment.find(queryObject);
-  res.status(StatusCodes.OK).json({ groups });
+
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 6;
+  const skip = (page - 1) * limit;
+  const totalGroups = await Investment.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalGroups / limit);
+  const groups = await Investment.find(queryObject).skip(skip).limit(limit);
+  res.status(StatusCodes.OK).json({ groups, numOfPages, currentPage: page });
 };
+
 //Join Investment Groups
 export const joinInvestmentGroups = async (req, res) => {
   const groups = await Investment.findByIdAndUpdate(

@@ -1,9 +1,10 @@
-import { InvestmentContainer } from "../../Components";
+import { InvestmentContainer, InvestmentPagination } from "../../Components";
 import { useOutletContext, Form } from "react-router-dom";
 import Wrapper from "../../Wrappers/Investments/browseInvestments";
+
 const BrowseAllGroups = () => {
   const {
-    data: { groups },
+    data: { groups, numOfPages },
     user,
   } = useOutletContext();
 
@@ -37,6 +38,9 @@ const BrowseAllGroups = () => {
             </article>
           );
         })}
+      </div>
+      <div className="pagination">
+        {numOfPages > 1 ? <InvestmentPagination /> : null}
       </div>
     </Wrapper>
   );

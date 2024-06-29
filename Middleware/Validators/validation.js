@@ -7,6 +7,7 @@ import {
 import Users from "../../Schemas/userSchema.js";
 import War from "../../Schemas/War/war.js";
 import Investment from "../../Schemas/Investments/investments.js";
+
 import {
   GAMES,
   GOALS,
@@ -187,4 +188,19 @@ export const investmentValidation = withValidationErrors([
     .isIn(Object.values(MEMBER_COUNT))
     .withMessage("Invalid Member Count"),
   body("dues").isIn(Object.values(DUES)).withMessage("Invalid Price Of Dues"),
+]);
+
+export const alreadyJoined = withValidationErrors([
+  param("id").custom(async (value, { req }) => {
+    const isValidId = mongoose.Types.ObjectId.isValid(value);
+    if (!isValidId) throw new BadRequestError("Invalid MongoDB Id");
+    const investGroup = await Investment.findById(value);
+    if (!investGroup)
+      throw new NotFoundError(`No Group with an Id of ${value} exists!`);
+    const checkUser = req.user.userId;
+    const user = investGroup.associate.find((person) => {
+      return person._id.toString() === checkUser;
+    });
+    if (user) throw new BadRequestError("you already joined this group!");
+  }),
 ]);

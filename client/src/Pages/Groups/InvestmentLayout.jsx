@@ -22,6 +22,7 @@ export const loader = async ({ request }) => {
 const InvestmentLayout = () => {
   const { data } = useLoaderData();
   const { user } = useOutletContext();
+
   return (
     <div>
       <Outlet context={{ data, user }} />
