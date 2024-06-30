@@ -21,6 +21,10 @@ import {
   BrowseAllGroups,
   CreateInvestmentGroup,
   //End Of Investment Groups
+  //My Investment Group
+  GroupLayout,
+  GroupHome,
+  //End Of My Investment Group
   Education,
   UpdateUser,
 } from "./Pages/index";
@@ -142,6 +146,18 @@ const router = createBrowserRouter([
                 path: "join-group/:id/:userId",
                 action: joinInvestmentAction,
               },
+              //My Investment Group
+              {
+                path: "my-investment-group",
+                element: <GroupLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <GroupHome />,
+                  },
+                ],
+              },
+              //End Of My Investment Group
             ],
           },
           //Education

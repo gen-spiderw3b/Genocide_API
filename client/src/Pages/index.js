@@ -33,6 +33,11 @@ export { default as BrowseAllGroups } from "./Groups/BrowseAllGroups";
 export { default as CreateInvestmentGroup } from "./Groups/CreateInvestmentGroup";
 //End Of Static Groups
 
+//My Investment Group
+export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
+export { default as GroupHome } from "./MyInvestmentGroup/GroupHome";
+//End Of My Investment Group
+
 //Education
 export { default as Education } from "./Education/Education";
 //End Of Education

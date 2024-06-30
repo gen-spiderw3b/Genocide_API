@@ -80,6 +80,12 @@ const subLinks = [
         icon: <IoCreate />,
         url: "investment/create-groups",
       },
+      {
+        id: nanoid(),
+        label: "My Investment Groups",
+        icon: <IoCreate />,
+        url: "investment/my-investment-group",
+      },
     ],
   },
   {
