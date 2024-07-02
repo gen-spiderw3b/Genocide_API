@@ -15,6 +15,7 @@ import UserRouter from "./Routes/userRoutes.js";
 import warRoutes from "./Routes/War/war.js";
 import UserAuthRouter from "./Routes/Users/user.js";
 import InvestmentRouter from "./Routes/Investments/investment.js";
+import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 
@@ -32,9 +33,9 @@ app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
 app.use("/api/v1/war", authMiddleWare, warRoutes);
 app.use("/api/v1/investment", authMiddleWare, InvestmentRouter);
+app.use("/api/v1/investment/group", authMiddleWare, GroupInvestmentRouter);
 
 //Building Front-End Progomatically
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.static(path.resolve(__dirname, "./client/dist")));

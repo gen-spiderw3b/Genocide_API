@@ -34,7 +34,7 @@ const Investment = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },
-    vice_president: {
+    vicePresident: {
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },

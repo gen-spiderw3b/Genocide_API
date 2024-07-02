@@ -24,6 +24,8 @@ import {
   //My Investment Group
   GroupLayout,
   GroupHome,
+  CreateSchedule,
+  CreateHeadline,
   //End Of My Investment Group
   Education,
   UpdateUser,
@@ -154,6 +156,14 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     element: <GroupHome />,
+                  },
+                  {
+                    path: "headline/create-headline",
+                    element: <CreateHeadline />,
+                  },
+                  {
+                    path: "schedule/create-schedule",
+                    element: <CreateSchedule />,
                   },
                 ],
               },

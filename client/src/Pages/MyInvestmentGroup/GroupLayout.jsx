@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { InvestmentSidebar, InvestmentNavbar } from "../../Components/index";
+import { InvestmentSidebar } from "../../Components/index";
 import Wrapper from "../../Wrappers/Investments/investmentLayout";
 const GroupLayout = () => {
   return (
@@ -8,7 +8,6 @@ const GroupLayout = () => {
         <InvestmentSidebar />
       </div>
       <div className="main">
-        <InvestmentNavbar />
         <Outlet />
       </div>
     </Wrapper>

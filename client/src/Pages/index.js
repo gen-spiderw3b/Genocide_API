@@ -36,6 +36,8 @@ export { default as CreateInvestmentGroup } from "./Groups/CreateInvestmentGroup
 //My Investment Group
 export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
 export { default as GroupHome } from "./MyInvestmentGroup/GroupHome";
+export { default as CreateSchedule } from "./MyInvestmentGroup/CreateSchedule";
+export { default as CreateHeadline } from "./MyInvestmentGroup/CreateHeadline";
 //End Of My Investment Group
 
 //Education
