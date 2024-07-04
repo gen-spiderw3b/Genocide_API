@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
-
+import mongoose from "mongoose";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   req.body.createdBy = req.user.userId;
@@ -11,11 +11,13 @@ export const createInvestmentGroup = async (req, res) => {
 
 //Browse Investment Groups
 export const browseInvestmentGroups = async (req, res) => {
-  const { investment } = req.query;
+  const { investment, state } = req.query;
   const queryObject = {};
-
   if (investment && investment !== "all") {
     queryObject.investment = investment;
+  }
+  if (state && state !== "all") {
+    queryObject.state = state;
   }
 
   const page = Number(req.query.page) || 1;
@@ -23,8 +25,28 @@ export const browseInvestmentGroups = async (req, res) => {
   const skip = (page - 1) * limit;
   const totalGroups = await Investment.countDocuments(queryObject);
   const numOfPages = Math.ceil(totalGroups / limit);
-  const groups = await Investment.find(queryObject).skip(skip).limit(limit);
-  res.status(StatusCodes.OK).json({ groups, numOfPages, currentPage: page });
+  const groups = await Investment.find(queryObject).limit(limit).skip(skip);
+  res.status(StatusCodes.OK).json({ numOfPages, currentPage: page, groups });
+};
+
+export const getGroupInfo = async (req, res) => {
+  const groupInfo = await Investment.aggregate([
+    {
+      $match: {
+        president: mongoose.Types.ObjectId.createFromHexString(req.params.id),
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "president",
+        foreignField: "_id",
+        as: "president",
+      },
+    },
+  ]);
+
+  res.status(StatusCodes.OK).json({ groupInfo });
 };
 
 //Join Investment Groups

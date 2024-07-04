@@ -14,6 +14,7 @@ import {
   INVESTMENTS,
   MEMBER_COUNT,
   DUES,
+  STATES,
 } from "../../Utils/Constants/constants.js";
 import mongoose from "mongoose";
 
@@ -72,16 +73,10 @@ export const validateRegister = withValidationErrors([
     .isLength({ min: 6 })
     .withMessage("password must be at least 6 characters long! ")
     .trim(),
-  body("state")
-    .notEmpty()
-    .withMessage("Name of State is required")
-    .toLowerCase()
-    .isLength({ min: 2, max: 2 })
-    .withMessage("example:al ... example:ky")
-    .trim(),
+  body("state").isIn(Object.values(STATES)).withMessage("please pick a state"),
   body("city")
     .notEmpty()
-    .withMessage("Name of city is required")
+    .withMessage("Name of city is required, please spell correct!")
     .toLowerCase()
     .isLength({ min: 4, max: 30 })
     .withMessage("city name is too small or to large. 4-30 characters long!")
@@ -197,8 +192,10 @@ export const alreadyJoined = withValidationErrors([
     const investGroup = await Investment.findById(value);
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
-    const checkUser = req.user.userId;
 
+    const checkUser = req.user.userId;
+    const presidant = investGroup.president.toString();
+    console.log(presidant);
     //Check For Associates
     const user = investGroup.associate.find((person) => {
       return person._id.toString() === checkUser;
@@ -206,20 +203,20 @@ export const alreadyJoined = withValidationErrors([
     if (user) throw new BadRequestError("you already joined this group!");
 
     //Check For the Presidant
-    const presidant = investGroup.president.toString() === checkUser;
-    if (presidant) throw new BadRequestError("you already joined this group!");
 
-    //Check For VicePresidant
-    const vicePresidant = investGroup.vicePresident.toString() === checkUser;
-    if (vicePresidant)
-      throw new BadRequestError("you already joined this group!");
+    // if (presidant) throw new BadRequestError("you already joined this group!");
 
-    //Check For Treasurer
-    const treasurer = investGroup.treasurer.toString() === checkUser;
-    if (treasurer) throw new BadRequestError("you already joined this group!");
+    // //Check For VicePresidant
+    // const vicePresidant = investGroup.vicePresident === checkUser;
+    // if (vicePresidant)
+    //   throw new BadRequestError("you already joined this group!");
 
-    //Check For Lieutenant
-    const lieutenant = investGroup.president.toString() === checkUser;
-    if (lieutenant) throw new BadRequestError("you already joined this group!");
+    // //Check For Treasurer
+    // const treasurer = investGroup.treasurer === checkUser;
+    // if (treasurer) throw new BadRequestError("you already joined this group!");
+
+    // //Check For Lieutenant
+    // const lieutenant = investGroup.lieutenant === checkUser;
+    // if (lieutenant) throw new BadRequestError("you already joined this group!");
   }),
 ]);

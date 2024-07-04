@@ -1,9 +1,10 @@
 import { Form, redirect, useNavigation } from "react-router-dom";
 import Wrapper from "../../Wrappers/Register/register";
-import { FormInput } from "../../Components/index";
+import { FormInput, SelectOption } from "../../Components/index";
 import customFetch from "../../Utils/customFetch";
 import { toast } from "react-toastify";
 import { Navbar } from "../../Components/index";
+import { STATES } from "../../../../Utils/Constants/constants";
 //Actions
 // eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request }) => {
@@ -35,7 +36,7 @@ const Register = () => {
         <FormInput type="text" name="lastName" placeholder="LastName" />
         <FormInput type="email" name="email" placeholder="email" />
         <FormInput type="password" name="password" placeholder="Password" />
-        <FormInput type="text" name="state" placeholder="a.l" />
+        <SelectOption name="state" list={Object.values(STATES)} />
         <FormInput type="text" name="city" placeholder="city" />
         <FormInput type="text" name="phoneNumber" placeholder="xxx-xxx-xxxx" />
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>

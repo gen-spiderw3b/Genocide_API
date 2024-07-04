@@ -32,6 +32,11 @@ const Wrapper = styled.div`
   .btn {
     margin-top: 2rem;
   }
+  .form-select {
+    width: 100%;
+    padding: 0.5rem 0;
+    color: red;
+  }
 `;
 
 export default Wrapper;

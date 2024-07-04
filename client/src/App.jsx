@@ -20,6 +20,7 @@ import {
   InvestmentLayout,
   BrowseAllGroups,
   CreateInvestmentGroup,
+  GroupInfo,
   //End Of Investment Groups
   //My Investment Group
   GroupLayout,
@@ -48,6 +49,7 @@ import { loader as warLoader } from "./Pages/War/WarLayout";
 import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
+import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -143,6 +145,11 @@ const router = createBrowserRouter([
               {
                 path: "browse-all-groups",
                 element: <BrowseAllGroups />,
+              },
+              {
+                path: "group-info/:id",
+                element: <GroupInfo />,
+                loader: groupLoader,
               },
               {
                 path: "join-group/:id/:userId",

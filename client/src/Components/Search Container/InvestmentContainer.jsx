@@ -1,6 +1,6 @@
 import { SelectOption } from "../index";
 import { Form, useSubmit, Link } from "react-router-dom";
-import { INVESTMENTS } from "../../../../Utils/Constants/constants";
+import { INVESTMENTS, STATES } from "../../../../Utils/Constants/constants";
 import Wrapper from "../../Wrappers/SearchContainer/investmentSearch";
 
 const SearchContainer = () => {
@@ -16,6 +16,14 @@ const SearchContainer = () => {
             name="investment"
             list={["all", ...Object.values(INVESTMENTS)]}
             defaultValue="investments"
+            onChange={(e) => {
+              submit(e.currentTarget.form);
+            }}
+          />
+          <SelectOption
+            labelText="state"
+            name="state"
+            list={["all", ...Object.values(STATES)]}
             onChange={(e) => {
               submit(e.currentTarget.form);
             }}

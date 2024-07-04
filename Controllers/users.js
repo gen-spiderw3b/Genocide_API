@@ -2,7 +2,11 @@ import { StatusCodes } from "http-status-codes";
 import Users from "../Schemas/userSchema.js";
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
 import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
-import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
+import {
+  createToken,
+  createGroupToken,
+} from ".././Utils/JsonWebToken/jsonWebToken.js";
+import Investment from "../Schemas/Investments/investments.js";
 
 // Register
 export const registerUser = async (req, res) => {
@@ -31,11 +35,11 @@ export const LoginUser = async (req, res) => {
   if (!isUserVerify) {
     throw new UnauthorizedError("Invalid Login!");
   }
-  //Create Token
+  //Create User Token
   const oneDay = 1000 * 60 * 60 * 24;
   const token = createToken({ userId: user._id, role: user.role });
 
-  //Create Cookie
+  //Create User Cookie
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
