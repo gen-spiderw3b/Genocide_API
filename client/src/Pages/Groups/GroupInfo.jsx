@@ -31,7 +31,7 @@ const GroupInfo = () => {
               const { _id, state, city, firstName, role } = item;
               return (
                 <ul key={_id}>
-                  <p>firstName</p>
+                  <p>President</p>
                   <li>{firstName}</li>
                   <p>state</p>
                   <li>{state}</li>

@@ -53,11 +53,11 @@ export const getGroupInfo = async (req, res) => {
 export const joinInvestmentGroups = async (req, res) => {
   const user = await Investment.findById(req.params.id);
 
-  const checkUser = user.associate.find((person) => {
+  const checkForUser = user.associate.find((person) => {
     return person._id.toString() === req.user.userId;
   });
 
-  if (!checkUser || checkUser === undefined) {
+  if (!checkForUser || checkForUser === undefined) {
     const groups = await Investment.findByIdAndUpdate(
       req.params.id,
       {

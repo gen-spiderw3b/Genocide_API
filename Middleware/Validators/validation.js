@@ -193,18 +193,17 @@ export const alreadyJoined = withValidationErrors([
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
 
-    const user = req.user.userId;
-    const presidant = investGroup.president.toString();
+    const president = investGroup.president.toString();
+    const user = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+
+    //Check For President
+    if (president === req.user.userId)
+      throw new BadRequestError("you already joined this group!");
 
     //Check For Associates
     const checkUser = investGroup.associate.find((person) => {
-      return person._id.toString() === checkUser;
+      return person._id.toString() === user.toString();
     });
-    const checkPresident = investGroup.associate.find((person) => {
-      return person._id.toString() === presidant;
-    });
-
-    if (checkUser || checkPresident)
-      throw new BadRequestError("you already joined this group!");
+    if (checkUser) throw new BadRequestError("you already joined this group!");
   }),
 ]);
