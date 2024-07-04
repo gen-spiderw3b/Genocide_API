@@ -51,15 +51,24 @@ export const getGroupInfo = async (req, res) => {
 
 //Join Investment Groups
 export const joinInvestmentGroups = async (req, res) => {
-  const groups = await Investment.findByIdAndUpdate(
-    req.params.id,
-    {
-      $push: { associate: req.params.userId },
-    },
-    {
-      new: true,
-    }
-  );
+  const user = await Investment.findById(req.params.id);
+
+  const checkUser = user.associate.find((person) => {
+    return person._id.toString() === req.user.userId;
+  });
+
+  if (!checkUser || checkUser === undefined) {
+    const groups = await Investment.findByIdAndUpdate(
+      req.params.id,
+      {
+        $push: { associate: req.params.userId },
+      },
+      {
+        new: true,
+      }
+    );
+  }
+
   res
     .status(StatusCodes.OK)
     .json({ msg: "You Have Joined A Investment Group! " });

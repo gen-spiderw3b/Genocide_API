@@ -195,28 +195,13 @@ export const alreadyJoined = withValidationErrors([
 
     const checkUser = req.user.userId;
     const presidant = investGroup.president.toString();
-    console.log(presidant);
+
     //Check For Associates
     const user = investGroup.associate.find((person) => {
       return person._id.toString() === checkUser;
     });
-    if (user) throw new BadRequestError("you already joined this group!");
 
-    //Check For the Presidant
-
-    // if (presidant) throw new BadRequestError("you already joined this group!");
-
-    // //Check For VicePresidant
-    // const vicePresidant = investGroup.vicePresident === checkUser;
-    // if (vicePresidant)
-    //   throw new BadRequestError("you already joined this group!");
-
-    // //Check For Treasurer
-    // const treasurer = investGroup.treasurer === checkUser;
-    // if (treasurer) throw new BadRequestError("you already joined this group!");
-
-    // //Check For Lieutenant
-    // const lieutenant = investGroup.lieutenant === checkUser;
-    // if (lieutenant) throw new BadRequestError("you already joined this group!");
+    if (user || user === presidant)
+      throw new BadRequestError("you already joined this group!");
   }),
 ]);
