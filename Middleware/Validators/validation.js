@@ -193,15 +193,18 @@ export const alreadyJoined = withValidationErrors([
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
 
-    const checkUser = req.user.userId;
+    const user = req.user.userId;
     const presidant = investGroup.president.toString();
 
     //Check For Associates
-    const user = investGroup.associate.find((person) => {
+    const checkUser = investGroup.associate.find((person) => {
       return person._id.toString() === checkUser;
     });
+    const checkPresident = investGroup.associate.find((person) => {
+      return person._id.toString() === presidant;
+    });
 
-    if (user || user === presidant)
+    if (checkUser || checkPresident)
       throw new BadRequestError("you already joined this group!");
   }),
 ]);
