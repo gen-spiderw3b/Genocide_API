@@ -41,7 +41,6 @@ const MyGroups = () => {
               <h4 className="groupName">{groupName}</h4>
               <p className="text">delete members</p>
               <Members members={members} groupId={_id} />
-              <p className="text">delete group</p>
               <Form method="post" action={`../delete-group/${_id}`}>
                 <button type="submit" className="btn-block">
                   delete group

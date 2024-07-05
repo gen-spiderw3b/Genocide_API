@@ -13,7 +13,7 @@ const Members = ({ members, groupId }) => {
             action={`../delete-member/${groupId}/${_id}`}
           >
             <button type="submit" className="btn btn-links">
-              {firstName}
+              Delete: {firstName}
             </button>
           </Form>
         );

@@ -46,10 +46,11 @@ const Wrapper = styled.main`
     margin-bottom: 0.9rem;
   }
   .btn-block {
-    background: none;
+    background: black;
     color: red;
     text-transform: capitalize;
     border: none;
+    cursor: pointer;
     transition: var(--transition);
   }
   .btn-block:hover {

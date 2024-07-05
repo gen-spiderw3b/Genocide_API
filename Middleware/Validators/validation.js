@@ -135,6 +135,9 @@ export const validateWarGroup = withValidationErrors([
   body("games").isIn(Object.values(GAMES)).withMessage("Invalid Game"),
   body("goals").isIn(Object.values(GOALS)).withMessage("Invalid Goal"),
   body("url").notEmpty().withMessage("please provide a discord link"),
+  body("desc")
+    .isLength({ min: 0, max: 200 })
+    .withMessage("no more than 200 Characters!"),
 ]);
 
 export const validateWarGroupId = withValidationErrors([
@@ -160,6 +163,13 @@ export const joinWarGroupId = withValidationErrors([
     if (!warGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
     const user = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+
+    //Check for creator
+    const checkOwner = warGroup.createdBy.toString();
+    if (checkOwner === req.user.userId)
+      throw new BadRequestError("you already joined this group!");
+
+    //Check for users
     const result = warGroup.joinedBy.find((person) => {
       return person.toString() === user.toString();
     });

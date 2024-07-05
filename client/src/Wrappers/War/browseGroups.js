@@ -14,16 +14,12 @@ const Wrapper = styled.main`
   }
   .article {
     margin: 0 auto;
-    background: red;
+    background: black;
     margin-bottom: 3rem;
-    width: 300px;
-    height: 10rem;
     border-radius: 10px;
-    overflow: scroll;
-    scrollbar-color: black white;
-    scrollbar-width: thin;
   }
   .games {
+    color: red;
     text-align: center;
     padding-top: 0.25rem;
     margin-bottom: 0.8rem;
@@ -49,7 +45,8 @@ const Wrapper = styled.main`
   }
   a {
     text-decoration: none;
-    color: yellow;
+    color: red;
+    cursor: pointer;
   }
   .desc {
     text-align: center;
@@ -73,13 +70,14 @@ const Wrapper = styled.main`
   .btn {
     color: black;
     border: transparent;
-    background: transparent;
+    background: red;
     cursor: pointer;
     transition: var(--transition);
   }
   .btn:hover {
     color: red;
-    background: black;
+    background: none;
+    box-shadow: none;
   }
   @media (min-width: 700px) {
     .section-center {
