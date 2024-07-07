@@ -9,6 +9,7 @@ const BrowseAllGroups = () => {
     data: { groups, numOfPages },
     user,
   } = useOutletContext();
+
   const [isInfo, setIsInfo] = useState(false);
   const handleInfo = () => {
     setIsInfo(!isInfo);
@@ -18,16 +19,8 @@ const BrowseAllGroups = () => {
       <InvestmentContainer />
       <div className="section-center">
         {groups.map((items) => {
-          const {
-            _id,
-            groupName,
-            desc,
-            dues,
-            investment,
-            members,
-            associate,
-            president,
-          } = items;
+          const { _id, groupName, desc, dues, investment, members, associate } =
+            items;
           let num = 1 + associate.length;
 
           return (
@@ -36,7 +29,7 @@ const BrowseAllGroups = () => {
                 <h5 className="info-text">groupInfo</h5>
                 <Link
                   className="btn-group"
-                  to={`../group-info/${president}`}
+                  to={`../group-info/${_id}`}
                   onClick={handleInfo}
                 >
                   <TiArrowSyncOutline />

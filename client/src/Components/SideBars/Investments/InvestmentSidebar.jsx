@@ -10,7 +10,7 @@ const InvestmentSidebar = () => {
         return (
           <article key={page}>
             <div className="title">
-              <h5>{headline}</h5>
+              <h5 className="headline">{headline}</h5>
               <div className="title-underline"></div>
               <div className="navbar"></div>
               <div className="links">

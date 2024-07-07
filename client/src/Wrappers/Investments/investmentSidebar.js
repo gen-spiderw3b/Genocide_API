@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 const Wrapper = styled.aside`
   min-height: 100vh;
-  background: grey;
+
+  background: black;
 
   .title {
+    color: red;
     font-size: 0.9rem;
     padding-bottom: 3rem;
+  }
+  .headline {
+    padding: 1rem 0;
   }
   .title-underline {
     background-color: red;

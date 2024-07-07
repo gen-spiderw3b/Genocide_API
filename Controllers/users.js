@@ -2,11 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import Users from "../Schemas/userSchema.js";
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
 import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
-import {
-  createToken,
-  createGroupToken,
-} from ".././Utils/JsonWebToken/jsonWebToken.js";
-import Investment from "../Schemas/Investments/investments.js";
+import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
 
 // Register
 export const registerUser = async (req, res) => {

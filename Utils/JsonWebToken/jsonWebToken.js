@@ -7,13 +7,6 @@ export const createToken = (payload) => {
   });
   return token;
 };
-//Create Group Token
-export const createGroupToken = (payload) => {
-  const token = jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
-  return token;
-};
 
 //Verify Token
 export const verifyToken = (token) => {

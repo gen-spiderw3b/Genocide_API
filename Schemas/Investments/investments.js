@@ -4,9 +4,11 @@ import {
   MEMBER_COUNT,
   DUES,
 } from "../../Utils/Constants/constants.js";
+
 const Investment = new mongoose.Schema(
   {
     groupName: String,
+    desc: String,
     investment: {
       type: String,
       enum: Object.values(INVESTMENTS),
@@ -15,26 +17,18 @@ const Investment = new mongoose.Schema(
       type: Number,
       enum: Object.values(MEMBER_COUNT),
     },
+
     dues: {
       type: Number,
       enum: Object.values(DUES),
     },
-    desc: String,
-    createdBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "Users",
-    },
-    associate: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Users",
-      },
-    ],
+
     president: {
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },
-    vicePresident: {
+
+    VicePresident: {
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },
@@ -42,7 +36,19 @@ const Investment = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },
-    lieutenant: {
+    groupLeader: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
+    associate: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Users",
+      },
+    ],
+    createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "Users",
     },

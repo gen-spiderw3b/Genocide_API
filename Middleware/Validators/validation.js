@@ -204,7 +204,7 @@ export const alreadyJoined = withValidationErrors([
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
 
     const president = investGroup.president.toString();
-    const user = mongoose.Types.ObjectId.createFromHexString(req.user.userId);
+    const user = req.user.userId;
 
     //Check For President
     if (president === req.user.userId)
