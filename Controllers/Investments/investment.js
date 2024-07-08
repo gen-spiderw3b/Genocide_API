@@ -56,8 +56,9 @@ export const joinInvestmentGroups = async (req, res) => {
   const groups = await Investment.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { associate: req.params.userId },
+      $push: { associate: req.params.userId, joinedBy: req.params.userId },
     },
+
     {
       new: true,
     }
