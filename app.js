@@ -33,7 +33,11 @@ app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
 app.use("/api/v1/war", authMiddleWare, warRoutes);
 app.use("/api/v1/investment", authMiddleWare, InvestmentRouter);
-app.use("/api/v1/investment/group", authMiddleWare, GroupInvestmentRouter);
+app.use(
+  "/api/v1/investment/my-investment-group",
+  authMiddleWare,
+  GroupInvestmentRouter
+);
 
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));

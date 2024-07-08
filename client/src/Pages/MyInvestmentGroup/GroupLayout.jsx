@@ -6,7 +6,7 @@ import customFetch from "../../Utils/customFetch";
 export const loader = async () => {
   try {
     const { data } = await customFetch.get(
-      "/investment/group/get-all-user-groups"
+      "/investment/my-investment-group/get-all-user-groups"
     );
     return data;
   } catch (error) {
@@ -16,6 +16,7 @@ export const loader = async () => {
 
 const GroupLayout = () => {
   const { group } = useLoaderData();
+  console.log(group);
   return (
     <Wrapper>
       <div className="main">

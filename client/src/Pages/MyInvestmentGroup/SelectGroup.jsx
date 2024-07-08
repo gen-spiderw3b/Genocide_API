@@ -2,6 +2,7 @@ import Wrapper from "../../Wrappers/Investments/investmentHome";
 import { useOutletContext, Link } from "react-router-dom";
 const SelectGroup = () => {
   const { group } = useOutletContext();
+  console.log(group);
   return (
     <Wrapper>
       <div className="section-center">
