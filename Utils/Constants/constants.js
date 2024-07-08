@@ -95,3 +95,10 @@ export const STATES = {
   WI: "Wisconsin",
   WY: "Wyoming",
 };
+
+export const HEADLINE = {
+  HOME: ".",
+};
+export const SCHEDULE = {
+  BROWSE: "Browse Schedule",
+};

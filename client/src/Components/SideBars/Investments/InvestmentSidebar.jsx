@@ -1,7 +1,9 @@
 import Wrapper from "../../../Wrappers/Investments/investmentSidebar";
 import { subLinks } from "../../../Utils/InvestmentData";
 import { Link } from "react-router-dom";
-const InvestmentSidebar = () => {
+import PropTypes from "prop-types";
+const InvestmentSidebar = ({ group }) => {
+  console.log(group);
   return (
     <Wrapper>
       {subLinks.map((items) => {
@@ -32,5 +34,8 @@ const InvestmentSidebar = () => {
       })}
     </Wrapper>
   );
+};
+InvestmentSidebar.propTypes = {
+  group: PropTypes.array,
 };
 export default InvestmentSidebar;

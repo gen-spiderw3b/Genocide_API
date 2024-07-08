@@ -37,9 +37,14 @@ export { default as GroupInfo } from "./Groups/GroupInfo";
 
 //My Investment Group
 export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
-export { default as GroupHome } from "./MyInvestmentGroup/GroupHome";
-export { default as CreateSchedule } from "./MyInvestmentGroup/CreateSchedule";
-export { default as CreateHeadline } from "./MyInvestmentGroup/CreateHeadline";
+export { default as SelectGroup } from "./MyInvestmentGroup/SelectGroup";
+export { default as CreateSchedule } from "./MyInvestmentGroup/Group/President/CreateSchedule";
+export { default as CreateHeadline } from "./MyInvestmentGroup/Group/President/CreateHeadline";
+export { default as BrowseSchedule } from "./MyInvestmentGroup/Group/BrowseSchedule";
+export { default as BrowseHeadline } from "./MyInvestmentGroup/Group/BrowseHeadline";
+//GroupHomeLayout
+export { default as GroupHomeLayout } from "./MyInvestmentGroup/Group/GroupHomeLayout";
+//End Of GroupHomeLayout
 //End Of My Investment Group
 
 //Education

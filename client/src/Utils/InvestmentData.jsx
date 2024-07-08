@@ -17,12 +17,6 @@ export const subLinks = [
         icon: <IoNewspaperSharp />,
         url: ".",
       },
-      {
-        id: nanoid(),
-        label: "Create A Headline",
-        icon: <IoCreate />,
-        url: "headline/create-headline",
-      },
     ],
   },
   {
@@ -31,9 +25,27 @@ export const subLinks = [
     links: [
       {
         id: nanoid(),
+        label: "Browse schedule",
+        icon: <IoNewspaperSharp />,
+        url: "schedule/browse-schedule",
+      },
+    ],
+  },
+  {
+    page: nanoid(),
+    headline: "President Controls",
+    links: [
+      {
+        id: nanoid(),
         label: "Create A schedule",
         icon: <IoNewspaperSharp />,
         url: "schedule/create-schedule",
+      },
+      {
+        id: nanoid(),
+        label: "Create A Headline",
+        icon: <IoCreate />,
+        url: "headline/create-headline",
       },
     ],
   },

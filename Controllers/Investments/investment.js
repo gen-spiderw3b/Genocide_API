@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 export const createInvestmentGroup = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.president = req.user.userId;
+  req.body.joinedBy = req.user.userId;
   const group = await Investment.create(req.body);
   res.status(StatusCodes.CREATED).json({ group });
 };

@@ -23,10 +23,8 @@ import {
   GroupInfo,
   //End Of Investment Groups
   //My Investment Group
-  GroupLayout,
-  GroupHome,
-  CreateSchedule,
-  CreateHeadline,
+  SelectGroup,
+  GroupHomeLayout,
   //End Of My Investment Group
   Education,
   UpdateUser,
@@ -50,6 +48,9 @@ import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
+import GroupLayout, {
+  loader as myGroupLoader,
+} from "./Pages/MyInvestmentGroup/GroupLayout";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -159,18 +160,16 @@ const router = createBrowserRouter([
               {
                 path: "my-investment-group",
                 element: <GroupLayout />,
+                loader: myGroupLoader,
                 children: [
                   {
                     index: true,
-                    element: <GroupHome />,
+                    element: <SelectGroup />,
                   },
                   {
-                    path: "headline/create-headline",
-                    element: <CreateHeadline />,
-                  },
-                  {
-                    path: "schedule/create-schedule",
-                    element: <CreateSchedule />,
+                    path: "my-group/:groupName",
+                    element: <GroupHomeLayout />,
+                    children: [{}],
                   },
                 ],
               },

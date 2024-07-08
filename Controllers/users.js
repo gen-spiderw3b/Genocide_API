@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import Users from "../Schemas/userSchema.js";
+
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
 import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
 import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
