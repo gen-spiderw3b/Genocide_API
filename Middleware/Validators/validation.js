@@ -7,6 +7,7 @@ import {
 import Users from "../../Schemas/userSchema.js";
 import War from "../../Schemas/War/war.js";
 import Investment from "../../Schemas/Investments/investments.js";
+import Member from "../../Schemas/Investments/member.js";
 
 import {
   GAMES,
@@ -202,18 +203,13 @@ export const alreadyJoined = withValidationErrors([
     const investGroup = await Investment.findById(value);
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
+    const member = await Member.findOne({ createdBy: req.user.userId });
 
-    const president = investGroup.president.toString();
-    const user = req.user.userId;
-
-    //Check For President
-    if (president === req.user.userId)
-      throw new BadRequestError("you already joined this group!");
-
-    //Check For Associates
-    const checkUser = investGroup.associate.find((person) => {
-      return person._id.toString() === user.toString();
+    const checkUser = investGroup.joinedBy.find((person) => {
+      return member._id.toString() === person.toString();
     });
+    console.log(checkUser);
+
     if (checkUser) throw new BadRequestError("you already joined this group!");
   }),
 ]);

@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.main`
   min-height: 100vh;
   .section-center {
-    border: 1px solid red;
     width: 90vw;
   }
   .article {

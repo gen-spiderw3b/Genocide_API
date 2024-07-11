@@ -1,6 +1,5 @@
 import { StatusCodes } from "http-status-codes";
 import Users from "../Schemas/userSchema.js";
-
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
 import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
 import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
@@ -34,7 +33,10 @@ export const LoginUser = async (req, res) => {
   }
   //Create User Token
   const oneDay = 1000 * 60 * 60 * 24;
-  const token = createToken({ userId: user._id, role: user.role });
+  const token = createToken({
+    userId: user._id,
+    role: user.role,
+  });
 
   //Create User Cookie
   res.cookie("token", token, {

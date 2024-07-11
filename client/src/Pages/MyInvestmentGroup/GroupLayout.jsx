@@ -1,5 +1,4 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import Wrapper from "../../Wrappers/Investments/investmentLayout";
+import { Outlet, useLoaderData, useOutletContext } from "react-router-dom";
 import customFetch from "../../Utils/customFetch";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -15,14 +14,13 @@ export const loader = async () => {
 };
 
 const GroupLayout = () => {
+  const { user } = useOutletContext();
   const { group } = useLoaderData();
-  console.log(group);
+
   return (
-    <Wrapper>
-      <div className="main">
-        <Outlet context={{ group }} />
-      </div>
-    </Wrapper>
+    <>
+      <Outlet context={{ group, user }} />
+    </>
   );
 };
 export default GroupLayout;

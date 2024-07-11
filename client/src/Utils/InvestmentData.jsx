@@ -1,51 +1,35 @@
 import { nanoid } from "nanoid";
-// import { GiBatteredAxe } from "react-icons/gi";
-// import { SiBookstack } from "react-icons/si";
-import { IoNewspaperSharp } from "react-icons/io5";
-// import { GiBabyfootPlayers } from "react-icons/gi";
-import { IoCreate } from "react-icons/io5";
-// import { FaUserSecret } from "react-icons/fa6";
+// // import { GiBatteredAxe } from "react-icons/gi";
+// // import { SiBookstack } from "react-icons/si";
+// import { IoNewspaperSharp } from "react-icons/io5";
+// // import { GiBabyfootPlayers } from "react-icons/gi";
+// import { IoCreate } from "react-icons/io5";
+// // import { FaUserSecret } from "react-icons/fa6";
+
+let president = "president";
 
 export const subLinks = [
   {
-    page: nanoid(),
-    headline: "headline",
+    pageId: nanoid(),
+    page: "Headline News",
+
     links: [
       {
         id: nanoid(),
-        label: "bulletBoard",
-        icon: <IoNewspaperSharp />,
-        url: ".",
+        label: "Browse News",
+        url: "",
       },
     ],
   },
   {
-    page: nanoid(),
-    headline: "schedule",
+    pageId: nanoid(),
+    page: "President",
+    permission: president,
     links: [
       {
         id: nanoid(),
-        label: "Browse schedule",
-        icon: <IoNewspaperSharp />,
-        url: "schedule/browse-schedule",
-      },
-    ],
-  },
-  {
-    page: nanoid(),
-    headline: "President Controls",
-    links: [
-      {
-        id: nanoid(),
-        label: "Create A schedule",
-        icon: <IoNewspaperSharp />,
-        url: "schedule/create-schedule",
-      },
-      {
-        id: nanoid(),
-        label: "Create A Headline",
-        icon: <IoCreate />,
-        url: "headline/create-headline",
+        label: "Create Headline",
+        url: "",
       },
     ],
   },

@@ -19,9 +19,9 @@ const BrowseAllGroups = () => {
       <InvestmentContainer />
       <div className="section-center">
         {groups.map((items) => {
-          const { _id, groupName, desc, dues, investment, members, associate } =
+          const { _id, groupName, desc, dues, investment, members, joinedBy } =
             items;
-          let num = 1 + associate.length;
+          let num = joinedBy.length;
 
           return (
             <article key={_id} className="article">

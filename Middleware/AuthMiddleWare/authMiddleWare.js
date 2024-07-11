@@ -12,6 +12,7 @@ export const authMiddleWare = async (req, res, next) => {
   try {
     const { userId, role } = verifyToken(token);
     req.user = { userId, role };
+
     next();
   } catch (error) {
     console.log(error);

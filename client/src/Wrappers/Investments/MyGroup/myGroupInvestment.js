@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.aside`
   min-height: 100vh;
-
-  background: black;
-
+  /* background: black; */
+  /* 
   .title {
     color: red;
     font-size: 0.9rem;
@@ -50,7 +49,7 @@ const Wrapper = styled.aside`
       align-items: center;
       gap: 0.2rem;
     }
-  }
+  } */
 `;
 
 export default Wrapper;

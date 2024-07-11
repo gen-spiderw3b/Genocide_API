@@ -16,6 +16,7 @@ router
   .post(investmentValidation, createInvestmentGroup);
 router.route("/browse-investment-group").get(browseInvestmentGroups);
 router.route("/group-info/:id").get(getGroupInfo);
+
 router
   .route("/join-group/:id/:userId")
   .patch(alreadyJoined, joinInvestmentGroups);

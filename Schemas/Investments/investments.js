@@ -1,11 +1,8 @@
 import mongoose from "mongoose";
-
 import {
   INVESTMENTS,
   MEMBER_COUNT,
   DUES,
-  HEADLINE,
-  SCHEDULE,
 } from "../../Utils/Constants/constants.js";
 
 const Investment = new mongoose.Schema(
@@ -28,38 +25,12 @@ const Investment = new mongoose.Schema(
     joinedBy: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Users",
+        ref: "Member",
       },
     ],
-    president: {
-      type: mongoose.Types.ObjectId,
-      ref: "Users",
-    },
-
-    VicePresident: {
-      type: mongoose.Types.ObjectId,
-      ref: "Users",
-    },
-    treasurer: {
-      type: mongoose.Types.ObjectId,
-      ref: "Users",
-    },
-    groupLeader: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Users",
-      },
-    ],
-    associate: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Users",
-      },
-    ],
-
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "Users",
+      ref: "users",
     },
   },
   { timestamps: true }
