@@ -1,4 +1,4 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, Link } from "react-router-dom";
 import customFetch from "../../Utils/customFetch";
 import Wrapper from "../../Wrappers/Investments/createMember";
 import { FormInput } from "../../Components/index";
@@ -31,6 +31,11 @@ const CreateMember = () => {
           create member
         </button>
       </Form>
+      <div className="link-container">
+        <Link className="btn btn-block" to="../browse-all-groups">
+          change mind
+        </Link>
+      </div>
     </Wrapper>
   );
 };
