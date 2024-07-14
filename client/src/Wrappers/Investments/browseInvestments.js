@@ -8,6 +8,7 @@ const Wrapper = styled.main`
     width: 90vw;
   }
   .article {
+    width: 80vw;
     position: relative;
     margin: 0 auto;
     background: black;
@@ -110,14 +111,20 @@ const Wrapper = styled.main`
     background: white;
     color: black;
   }
+  @media (min-width: 700px) {
+    .article {
+      width: 50vw;
+    }
+  }
   @media (min-width: 800px) {
     .section-center {
       display: grid;
-      grid-template-columns: 0.2fr 0.5fr 0.3fr;
+      grid-template-columns: 0.2fr 0.5fr;
     }
     .article {
       position: relative;
       width: 40vw;
+      margin-right: 4rem;
     }
     .btn-block {
       position: absolute;
