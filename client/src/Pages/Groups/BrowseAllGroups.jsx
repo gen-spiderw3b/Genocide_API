@@ -1,5 +1,5 @@
 import { InvestmentContainer, InvestmentPagination } from "../../Components";
-import { useOutletContext, Form, Link } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
 import { useState } from "react";
 import { TiArrowSyncOutline } from "react-icons/ti";
 import Wrapper from "../../Wrappers/Investments/browseInvestments";
@@ -7,7 +7,6 @@ import Wrapper from "../../Wrappers/Investments/browseInvestments";
 const BrowseAllGroups = () => {
   const {
     data: { groups, numOfPages },
-    user,
   } = useOutletContext();
 
   const [isInfo, setIsInfo] = useState(false);
@@ -21,7 +20,7 @@ const BrowseAllGroups = () => {
         {groups.map((items) => {
           const { _id, groupName, desc, dues, investment, members, joinedBy } =
             items;
-          let num = joinedBy.length;
+          let num = 1;
 
           return (
             <article key={_id} className="article">
@@ -41,17 +40,17 @@ const BrowseAllGroups = () => {
               <p>how much $$$/month:</p>
               <h4 className="dues">${dues}</h4>
               <p>how many members are needed:</p>
-              <h4 className="members">{`${num} / ${members}`}</h4>
+              <h4 className="members">{`${
+                num + joinedBy.length
+              }  / ${members}`}</h4>
               <div className="desc">
                 <p>desc:</p>
                 <q>{desc}</q>
               </div>
 
-              <Form method="post" action={`../join-group/${_id}/${user._id}`}>
-                <button type="submit" className="btn btn-block">
-                  join group
-                </button>
-              </Form>
+              <Link to={`../create-member/${_id}`} className="btn btn-block">
+                join group
+              </Link>
             </article>
           );
         })}

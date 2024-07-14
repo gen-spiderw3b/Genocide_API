@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
-  .search-form {
-  }
+
   .section-center {
     margin: 0 auto;
     width: 90vw;
@@ -99,12 +98,17 @@ const Wrapper = styled.main`
     text-transform: uppercase;
     margin-bottom: 1.2rem;
   }
+  a {
+    text-decoration: none;
+    text-align: center;
+  }
+
   .btn-block {
     transition: var(--transition);
   }
   .btn-block:hover {
     background: white;
-    color: red;
+    color: black;
   }
   @media (min-width: 800px) {
     .section-center {
@@ -113,11 +117,16 @@ const Wrapper = styled.main`
     }
     .article {
       position: relative;
-      width: 20vw;
+      width: 40vw;
     }
     .btn-block {
       position: absolute;
       bottom: 0;
+    }
+  }
+  @media (min-width: 950px) {
+    .article {
+      width: 30vw;
     }
   }
 `;

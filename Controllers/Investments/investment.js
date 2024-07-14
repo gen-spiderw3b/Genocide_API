@@ -1,18 +1,27 @@
 import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
-import Member from "../../Schemas/Investments/member.js";
 import mongoose from "mongoose";
-
+import Member from "../../Schemas/Investments/member.js";
+import { POSITION } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
-  req.body.joinedBy = req.user.memberId;
+  //Creating President
   req.body.createdBy = req.user.userId;
-  req.body.president = {
-    user: mongoose.Types.ObjectId.createFromHexString(req.user.memberId),
-    role: "president",
-  };
+  const member = await Member.create({ role: POSITION.PRESIDENT });
+
+  //Creating Group
+  req.body.createdBy = req.user.userId;
   const group = await Investment.create(req.body);
-  res.status(StatusCodes.CREATED).json({ group });
+  const updateGroup = await Investment.findOneAndUpdate(
+    { _id: group._id },
+    {
+      $push: { joinedBy: member._id, users: req.user.userId },
+    },
+    {
+      new: true,
+    }
+  );
+  res.status(StatusCodes.CREATED).json({ updateGroup });
 };
 
 //Browse Investment Groups
@@ -55,19 +64,19 @@ export const getGroupInfo = async (req, res) => {
   res.status(StatusCodes.OK).json({ groupInfo });
 };
 
-//Join Investment Groups
-export const joinInvestmentGroups = async (req, res) => {
-  const member = await Investment.findByIdAndUpdate(
-    req.params.id,
+export const createMember = async (req, res) => {
+  req.body.users = req.user.userId;
+  req.body.createdBy = req.user.userId;
+  const member = await Member.create(req.body);
+  const group = await Investment.findByIdAndUpdate(
+    req.params.groupId,
     {
-      $push: { joinedBy: req.user.memberId },
+      $push: { joinedBy: member._id, users: req.user.userId },
     },
     {
       new: true,
     }
   );
 
-  res
-    .status(StatusCodes.OK)
-    .json({ msg: "You Have Joined A Investment Group! " });
+  res.status(StatusCodes.CREATED).json({ member, group });
 };

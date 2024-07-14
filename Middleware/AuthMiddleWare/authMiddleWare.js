@@ -10,8 +10,8 @@ export const authMiddleWare = async (req, res, next) => {
     throw new UnauthenticatedError("authentication invalid!");
   }
   try {
-    const { userId, role, memberId } = verifyToken(token);
-    req.user = { userId, role, memberId };
+    const { userId, role } = verifyToken(token);
+    req.user = { userId, role };
     next();
   } catch (error) {
     console.log(error);

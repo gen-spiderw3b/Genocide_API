@@ -21,6 +21,7 @@ import {
   BrowseAllGroups,
   CreateInvestmentGroup,
   GroupInfo,
+  CreateMember,
   //End Of Investment Groups
   //My Investment Group
   SelectGroup,
@@ -40,6 +41,7 @@ import { action as deleteMemberAction } from "./Pages/War/DeleteMember";
 import { action as deleteSelfAction } from "./Pages/War/DeleteSelf";
 import { action as investmentAction } from "./Pages/Groups/CreateInvestmentGroup";
 import { action as joinInvestmentAction } from "./Pages/Groups/JoinInvestmentGroup";
+import { action as memberAction } from "./Pages/Groups/CreateMember";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -142,6 +144,11 @@ const router = createBrowserRouter([
                 path: "create-groups",
                 element: <CreateInvestmentGroup />,
                 action: investmentAction,
+              },
+              {
+                path: "create-member/:groupId",
+                element: <CreateMember />,
+                action: memberAction,
               },
               {
                 path: "browse-all-groups",

@@ -2,12 +2,12 @@ import { Router } from "express";
 import {
   createInvestmentGroup,
   browseInvestmentGroups,
-  joinInvestmentGroups,
   getGroupInfo,
+  createMember,
 } from "../../Controllers/Investments/investment.js";
 import {
   investmentValidation,
-  alreadyJoined,
+  joinInvestmentGroup,
 } from "../../Middleware/Validators/validation.js";
 const router = Router();
 
@@ -16,9 +16,6 @@ router
   .post(investmentValidation, createInvestmentGroup);
 router.route("/browse-investment-group").get(browseInvestmentGroups);
 router.route("/group-info/:id").get(getGroupInfo);
-
-router
-  .route("/join-group/:id/:userId")
-  .patch(alreadyJoined, joinInvestmentGroups);
+router.route("/create-member/:groupId").post(joinInvestmentGroup, createMember);
 
 export default router;

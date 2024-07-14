@@ -3,19 +3,19 @@ import Users from "../Schemas/userSchema.js";
 import { hashPassword, checkPassword } from ".././Utils/Bcrypt/hash.js";
 import { UnauthorizedError } from ".././Middleware/RequestErrors/errors.js";
 import { createToken } from ".././Utils/JsonWebToken/jsonWebToken.js";
-import Member from "../Schemas/Investments/member.js";
+
 // Register
 export const registerUser = async (req, res) => {
   //Creating Admin
   const isFirstAccount = (await Users.countDocuments()) === 0;
   req.body.role = isFirstAccount ? "admin" : "member";
+
   //Hashing Password
   const hashedPassword = await hashPassword(req.body.password);
   req.body.password = hashedPassword;
+
   //Creating User && Member
   const user = await Users.create(req.body);
-  const member = await Member.create({ createdBy: user._id });
-
   res
     .status(StatusCodes.CREATED)
     .json({ msg: "You have register with genocide" });
@@ -25,7 +25,7 @@ export const registerUser = async (req, res) => {
 // Login
 export const LoginUser = async (req, res) => {
   const user = await Users.findOne({ email: req.body.email });
-  const member = await Member.findOne({ createdBy: user._id });
+
   const isUserVerify =
     user && (await checkPassword(req.body.password, user.password));
 
@@ -37,7 +37,6 @@ export const LoginUser = async (req, res) => {
   const token = createToken({
     userId: user._id,
     role: user.role,
-    memberId: member._id,
   });
 
   //Create User Cookie

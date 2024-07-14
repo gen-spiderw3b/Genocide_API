@@ -1,4 +1,5 @@
 import { body, param, validationResult } from "express-validator";
+import mongoose from "mongoose";
 import {
   BadRequestError,
   NotFoundError,
@@ -8,7 +9,6 @@ import Users from "../../Schemas/userSchema.js";
 import War from "../../Schemas/War/war.js";
 import Investment from "../../Schemas/Investments/investments.js";
 import Member from "../../Schemas/Investments/member.js";
-
 import {
   GAMES,
   GOALS,
@@ -17,7 +17,6 @@ import {
   DUES,
   STATES,
 } from "../../Utils/Constants/constants.js";
-import mongoose from "mongoose";
 
 /*
 =================
@@ -197,19 +196,25 @@ export const investmentValidation = withValidationErrors([
   body("dues").isIn(Object.values(DUES)).withMessage("Invalid Price Of Dues"),
 ]);
 
-export const alreadyJoined = withValidationErrors([
-  param("id").custom(async (value, { req }) => {
+export const joinInvestmentGroup = withValidationErrors([
+  body("name").notEmpty().withMessage("please provide a name"),
+  body("phoneNumber")
+    .notEmpty()
+    .withMessage("phoneNumber is required")
+    .isLength({ min: 12, max: 12 })
+    .withMessage("format must be xxx-xxx-xxxx")
+    .trim(),
+  param("groupId").custom(async (value, { req }) => {
     const isValidId = mongoose.Types.ObjectId.isValid(value);
     if (!isValidId) throw new BadRequestError("Invalid MongoDB Id");
     const investGroup = await Investment.findById(value);
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
-    const member = req.user.memberId;
-
-    const checkMember = investGroup.joinedBy.find((person) => {
-      return person.toString() === member;
-    });
-    if (checkMember)
+    //Check for duplicate members
+    const member = req.user.userId;
+    const checkMember = investGroup.users.includes(member);
+    const checkowner = investGroup.users.includes(member);
+    if (checkMember || checkowner)
       throw new BadRequestError("you already joined this group!");
   }),
 ]);

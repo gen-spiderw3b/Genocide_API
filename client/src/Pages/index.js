@@ -32,6 +32,7 @@ export { default as InvestmentLayout } from "./Groups/InvestmentLayout";
 export { default as BrowseAllGroups } from "./Groups/BrowseAllGroups";
 export { default as CreateInvestmentGroup } from "./Groups/CreateInvestmentGroup";
 export { default as GroupInfo } from "./Groups/GroupInfo";
+export { default as CreateMember } from "./Groups/CreateMember";
 
 //End Of Static Groups
 
