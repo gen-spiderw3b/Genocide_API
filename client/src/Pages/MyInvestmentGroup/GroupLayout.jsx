@@ -14,12 +14,12 @@ export const loader = async () => {
 };
 
 const GroupLayout = () => {
-  const { user } = useOutletContext();
+  const { user, member } = useOutletContext();
   const { group } = useLoaderData();
 
   return (
     <>
-      <Outlet context={{ group, user }} />
+      <Outlet context={{ group, member, user }} />
     </>
   );
 };

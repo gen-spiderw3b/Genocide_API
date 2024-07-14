@@ -20,9 +20,8 @@ export const loader = async () => {
 };
 
 const DashboardContext = createContext();
-
 const DashboardLayout = () => {
-  const { user } = useLoaderData();
+  const { user, member } = useLoaderData();
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -45,7 +44,7 @@ const DashboardLayout = () => {
           <div className="navbar">
             <DashboardNavbar />
             <div className="dashboard-page">
-              <Outlet context={{ user }} />
+              <Outlet context={{ user, member }} />
             </div>
           </div>
         </main>

@@ -40,6 +40,7 @@ const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("you already joined this group!")) {
           throw new BadRequestError(errMessage);
         }
+
         if (errMessage[0].startsWith("you can only delete yourself!")) {
           throw new BadRequestError(errMessage);
         }
@@ -203,13 +204,12 @@ export const alreadyJoined = withValidationErrors([
     const investGroup = await Investment.findById(value);
     if (!investGroup)
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
-    const member = await Member.findOne({ createdBy: req.user.userId });
+    const member = req.user.memberId;
 
-    const checkUser = investGroup.joinedBy.find((person) => {
-      return member._id.toString() === person.toString();
+    const checkMember = investGroup.joinedBy.find((person) => {
+      return person.toString() === member;
     });
-    console.log(checkUser);
-
-    if (checkUser) throw new BadRequestError("you already joined this group!");
+    if (checkMember)
+      throw new BadRequestError("you already joined this group!");
   }),
 ]);

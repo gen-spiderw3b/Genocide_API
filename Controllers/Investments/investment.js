@@ -2,17 +2,15 @@ import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
 import Member from "../../Schemas/Investments/member.js";
 import mongoose from "mongoose";
-import { POSITION } from "../../Utils/Classes/class.js";
 
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
-  //Create Member
-  req.body.role = POSITION.PRESIDENT;
+  req.body.joinedBy = req.user.memberId;
   req.body.createdBy = req.user.userId;
-  const member = await Member.create(req.body);
-  //Create Group
-  req.body.joinedBy = member._id;
-  req.body.createdBy = req.user.userId;
+  req.body.president = {
+    user: mongoose.Types.ObjectId.createFromHexString(req.user.memberId),
+    role: "president",
+  };
   const group = await Investment.create(req.body);
   res.status(StatusCodes.CREATED).json({ group });
 };
@@ -59,12 +57,11 @@ export const getGroupInfo = async (req, res) => {
 
 //Join Investment Groups
 export const joinInvestmentGroups = async (req, res) => {
-  const groups = await Investment.findByIdAndUpdate(
+  const member = await Investment.findByIdAndUpdate(
     req.params.id,
     {
-      $push: { joinedBy: member._id },
+      $push: { joinedBy: req.user.memberId },
     },
-
     {
       new: true,
     }

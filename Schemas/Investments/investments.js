@@ -22,10 +22,32 @@ const Investment = new mongoose.Schema(
       type: Number,
       enum: Object.values(DUES),
     },
+
+    president: {
+      type: Map,
+      of: String,
+    },
+
+    vicePresident: {
+      type: Map,
+      of: String,
+    },
+    treasurer: {
+      type: Map,
+      of: String,
+    },
+    captain: {
+      type: Map,
+      of: String,
+    },
+    teamLeader: {
+      type: Map,
+      of: String,
+    },
     joinedBy: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Member",
+        ref: "member",
       },
     ],
     createdBy: {

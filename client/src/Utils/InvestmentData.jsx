@@ -6,29 +6,25 @@ import { nanoid } from "nanoid";
 // import { IoCreate } from "react-icons/io5";
 // // import { FaUserSecret } from "react-icons/fa6";
 
-let president = "president";
-
 export const subLinks = [
   {
     pageId: nanoid(),
-    page: "Headline News",
-
+    page: "headline news",
     links: [
       {
         id: nanoid(),
-        label: "Browse News",
+        label: "browse news",
         url: "",
       },
     ],
   },
   {
     pageId: nanoid(),
-    page: "President",
-    permission: president,
+    page: "president",
     links: [
       {
         id: nanoid(),
-        label: "Create Headline",
+        label: "create headline",
         url: "",
       },
     ],

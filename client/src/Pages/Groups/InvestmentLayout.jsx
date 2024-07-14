@@ -21,11 +21,11 @@ export const loader = async ({ request }) => {
 
 const InvestmentLayout = () => {
   const { data } = useLoaderData();
-  const { user } = useOutletContext();
+  const { user, member } = useOutletContext();
 
   return (
     <div>
-      <Outlet context={{ data, user }} />
+      <Outlet context={{ data, member, user }} />
     </div>
   );
 };
