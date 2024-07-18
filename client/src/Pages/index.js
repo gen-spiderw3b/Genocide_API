@@ -39,15 +39,10 @@ export { default as CreateMember } from "./Groups/CreateMember";
 //My Investment Group
 export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
 export { default as SelectGroup } from "./MyInvestmentGroup/SelectGroup";
-export { default as CreateSchedule } from "./MyInvestmentGroup/Group/President/CreateSchedule";
-export { default as CreateHeadline } from "./MyInvestmentGroup/Group/President/CreateHeadline";
-export { default as BrowseSchedule } from "./MyInvestmentGroup/Group/BrowseSchedule";
-export { default as BrowseHeadline } from "./MyInvestmentGroup/Group/BrowseHeadline";
-//GroupHomeLayout
-export { default as GroupHomeLayout } from "./MyInvestmentGroup/Group/GroupHomeLayout";
-//End Of GroupHomeLayout
 //End Of My Investment Group
-
+//User Layout
+export { default as UserLayout } from "./UserGroup/UserLayout";
+//End Of User Layout
 //Education
 export { default as Education } from "./Education/Education";
 //End Of Education

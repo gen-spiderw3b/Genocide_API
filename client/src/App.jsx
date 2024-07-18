@@ -25,8 +25,10 @@ import {
   //End Of Investment Groups
   //My Investment Group
   SelectGroup,
-  GroupHomeLayout,
   //End Of My Investment Group
+  //User Layout
+  UserLayout,
+  //End Of User Layout
   Education,
   UpdateUser,
 } from "./Pages/index";
@@ -42,6 +44,7 @@ import { action as deleteSelfAction } from "./Pages/War/DeleteSelf";
 import { action as investmentAction } from "./Pages/Groups/CreateInvestmentGroup";
 import { action as joinInvestmentAction } from "./Pages/Groups/JoinInvestmentGroup";
 import { action as memberAction } from "./Pages/Groups/CreateMember";
+import { action as groupCookieAction } from "./Pages/MyInvestmentGroup/SetGroupCookie";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -50,6 +53,7 @@ import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
+
 import GroupLayout, {
   loader as myGroupLoader,
 } from "./Pages/MyInvestmentGroup/GroupLayout";
@@ -165,7 +169,7 @@ const router = createBrowserRouter([
               },
               //My Investment Group
               {
-                path: "my-investment-group",
+                path: "select-group",
                 element: <GroupLayout />,
                 loader: myGroupLoader,
                 children: [
@@ -174,11 +178,14 @@ const router = createBrowserRouter([
                     element: <SelectGroup />,
                   },
                   {
-                    path: "my-group/:groupName",
-                    element: <GroupHomeLayout />,
-                    children: [{}],
+                    path: "user-group/:id",
+                    action: groupCookieAction,
                   },
                 ],
+              },
+              {
+                path: "user-group",
+                element: <UserLayout />,
               },
               //End Of My Investment Group
             ],

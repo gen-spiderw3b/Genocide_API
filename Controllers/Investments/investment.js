@@ -6,8 +6,10 @@ import { POSITION } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   //Creating President
-  req.body.createdBy = req.user.userId;
-  const member = await Member.create({ role: POSITION.PRESIDENT });
+  const member = await Member.create({
+    role: POSITION.PRESIDENT,
+    createdBy: req.user.userId,
+  });
 
   //Creating Group
   req.body.createdBy = req.user.userId;

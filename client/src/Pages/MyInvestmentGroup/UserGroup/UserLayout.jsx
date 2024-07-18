@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Wrapper from "../../../Wrappers/Investments/MyGroup/groupLayout";
-import { MyGroupInvestment } from "../../../Components/index";
+import Wrapper from "../../Wrappers/Investments/MyGroup/groupLayout";
+import { MyGroupInvestment } from "../../Components/index";
+
 const GroupHomeLayout = () => {
   return (
     <Wrapper>

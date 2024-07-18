@@ -19,6 +19,11 @@ export const authMiddleWare = async (req, res, next) => {
   }
 };
 
+export const groupMiddleware = async (req, res, next) => {
+  console.log("Group Middleware");
+  next();
+};
+
 export const authorizeAdmin = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {

@@ -56,6 +56,10 @@ export const logoutUser = (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now()),
   });
+  res.cookie("groupMember", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
   res.status(200).json({ msg: "User Logged Out" });
 };
 //End Of Logout

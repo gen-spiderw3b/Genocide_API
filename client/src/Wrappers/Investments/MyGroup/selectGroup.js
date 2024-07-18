@@ -22,14 +22,13 @@ const Wrapper = styled.main`
     color: red;
     margin-bottom: 1rem;
   }
-  a {
-    text-decoration: none;
-    text-transform: capitalize;
-    color: white;
-    margin-bottom: 1rem;
+  .btn {
+    background: red;
+    padding: 0 2.5rem;
     transition: var(--transition);
   }
-  a:hover {
+  .btn:hover {
+    background: white;
     color: red;
   }
   @media (min-width: 600px) {

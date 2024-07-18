@@ -34,7 +34,7 @@ app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
 app.use("/api/v1/war", authMiddleWare, warRoutes);
 app.use("/api/v1/investment", authMiddleWare, InvestmentRouter);
 app.use(
-  "/api/v1/investment/my-investment-group",
+  "/api/v1/investment/select-group",
   authMiddleWare,
   GroupInvestmentRouter
 );

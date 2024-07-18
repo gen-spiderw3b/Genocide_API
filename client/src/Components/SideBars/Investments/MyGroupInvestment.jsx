@@ -1,10 +1,8 @@
 import Wrapper from "../../../Wrappers/Investments/MyGroup/myGroupInvestment";
 import { subLinks } from "../../../Utils/InvestmentData";
-import { Link, useOutletContext } from "react-router-dom";
-const MyGroupInvestment = () => {
-  const { group } = useOutletContext();
-  console.log(group);
+import { Link } from "react-router-dom";
 
+const MyGroupInvestment = () => {
   return (
     <Wrapper>
       {subLinks.map((items) => {

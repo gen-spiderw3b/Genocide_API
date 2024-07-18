@@ -20,7 +20,6 @@ const BrowseAllGroups = () => {
         {groups.map((items) => {
           const { _id, groupName, desc, dues, investment, members, joinedBy } =
             items;
-          let num = 1;
 
           return (
             <article key={_id} className="article">
@@ -40,9 +39,7 @@ const BrowseAllGroups = () => {
               <p>how much $$$/month:</p>
               <h4 className="dues">${dues}</h4>
               <p>how many members are needed:</p>
-              <h4 className="members">{`${
-                num + joinedBy.length
-              }  / ${members}`}</h4>
+              <h4 className="members">{`${joinedBy.length}  / ${members}`}</h4>
               <div className="desc">
                 <p>desc:</p>
                 <q>{desc}</q>
