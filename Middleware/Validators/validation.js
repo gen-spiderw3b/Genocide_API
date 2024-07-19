@@ -43,6 +43,9 @@ const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("you can only delete yourself!")) {
           throw new BadRequestError(errMessage);
         }
+        if (errMessage[0].startsWith("wrong unique name!")) {
+          throw new UnauthorizedError(errMessage);
+        }
         throw new BadRequestError(errMessage);
       }
       next();
@@ -197,7 +200,13 @@ export const investmentValidation = withValidationErrors([
 ]);
 
 export const joinInvestmentGroup = withValidationErrors([
-  body("name").notEmpty().withMessage("please provide a name"),
+  body("uniqueName")
+    .notEmpty()
+    .withMessage("please provide a  unique name")
+    .custom(async (uniqueName) => {
+      const userName = await Member.findOne({ uniqueName: uniqueName });
+      if (userName) throw new BadRequestError("uniqueName already exists");
+    }),
   body("phoneNumber")
     .notEmpty()
     .withMessage("phoneNumber is required")
@@ -217,4 +226,27 @@ export const joinInvestmentGroup = withValidationErrors([
     if (checkMember || checkowner)
       throw new BadRequestError("you already joined this group!");
   }),
+]);
+
+/*
+=============================
+Setting Cookie For User Group
+=============================
+*/
+
+export const userGroupCookie = withValidationErrors([
+  body("uniqueName")
+    .notEmpty()
+    .withMessage("please provide a unique name used at creation ")
+    .custom(async (uniqueName, { req }) => {
+      const member = await Member.findOne({ uniqueName: uniqueName });
+      if (member === null) {
+        throw new BadRequestError("please provide a unique name");
+      }
+      const userId = req.user.userId;
+      const isOwner = member.createdBy.toString() === userId;
+      if (!isOwner) {
+        throw new UnauthorizedError("wrong unique name!");
+      }
+    }),
 ]);

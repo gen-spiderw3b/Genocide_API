@@ -39,6 +39,7 @@ export { default as CreateMember } from "./Groups/CreateMember";
 //My Investment Group
 export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
 export { default as SelectGroup } from "./MyInvestmentGroup/SelectGroup";
+export { default as SetGroupCookie } from "./MyInvestmentGroup/SetGroupCookie";
 //End Of My Investment Group
 //User Layout
 export { default as UserLayout } from "./UserGroup/UserLayout";

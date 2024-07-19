@@ -1,34 +1,31 @@
 import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
-import { groupToken } from "../../Utils/JsonWebToken/jsonWebToken.js";
-
+import Member from "../../Schemas/Investments/member.js";
+import mongoose from "mongoose";
+import { createGroupToken } from "../../Utils/JsonWebToken/jsonWebToken.js";
+import { UnauthorizedError } from "../../Middleware/RequestErrors/errors.js";
 //Get All User Groups
 export const getAllUserGroups = async (req, res) => {
-  console.log(req);
   const group = await Investment.find({ users: req.user.userId });
   res.status(StatusCodes.OK).json({ group });
 };
 
 //Get Single Group Info
 export const setGroupCookie = async (req, res) => {
-  const user = await Investment.findById(req.params.id);
-  const currentUser = req.user.userId;
+  const member = await Member.findOne({ uniqueName: req.body.uniqueName });
 
-  const getCurrentUser = user.users.find((item) => {
-    return item.toString() === currentUser;
-  });
+  if (!member) throw new UnauthorizedError("Invalid Unique Name!");
 
   const oneHour = 1000 * 60 * 60;
-  const groupMember = groupToken({ memberId: getCurrentUser.toString() });
-  res.cookie("groupMember", groupMember, {
+  const groupToken = createGroupToken({
+    memberId: member._id,
+    role: member.role,
+  });
+  res.cookie("groupToken", groupToken, {
     httpOnly: true,
     expiresIn: new Date(Date.now() + oneHour),
     secure: process.env.NODE_ENV === "production",
   });
-  res.status(StatusCodes.OK).json({ msg: "Group Initalized!" });
-};
 
-//Get CurrentMember
-export const getCurrentMember = async (req, res) => {
-  res.status(StatusCodes.OK).json({ msg: "member" });
+  res.status(StatusCodes.OK).json({ msg: "intializing group!" });
 };

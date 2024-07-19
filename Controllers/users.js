@@ -56,7 +56,7 @@ export const logoutUser = (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now()),
   });
-  res.cookie("groupMember", "logout", {
+  res.cookie("groupToken", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),
   });

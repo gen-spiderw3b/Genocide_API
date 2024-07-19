@@ -6,8 +6,10 @@ import { POSITION } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   //Creating President
+  // req.body.uniqueName = req.body;
   const member = await Member.create({
     role: POSITION.PRESIDENT,
+    uniqueName: req.body.uniqueName,
     createdBy: req.user.userId,
   });
 
@@ -67,7 +69,6 @@ export const getGroupInfo = async (req, res) => {
 };
 
 export const createMember = async (req, res) => {
-  req.body.users = req.user.userId;
   req.body.createdBy = req.user.userId;
   const member = await Member.create(req.body);
   const group = await Investment.findByIdAndUpdate(

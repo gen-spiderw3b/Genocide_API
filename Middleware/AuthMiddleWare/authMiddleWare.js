@@ -2,7 +2,10 @@ import {
   UnauthenticatedError,
   UnauthorizedError,
 } from "../../Middleware/RequestErrors/errors.js";
-import { verifyToken } from "../../Utils/JsonWebToken/jsonWebToken.js";
+import {
+  verifyToken,
+  verifyGroupToken,
+} from "../../Utils/JsonWebToken/jsonWebToken.js";
 
 export const authMiddleWare = async (req, res, next) => {
   const { token } = req.cookies;
@@ -20,7 +23,15 @@ export const authMiddleWare = async (req, res, next) => {
 };
 
 export const groupMiddleware = async (req, res, next) => {
-  console.log("Group Middleware");
+  const { groupToken } = req.cookies;
+  // if (!groupToken) throw new UnauthenticatedError("authentication invalid!");
+  // try {
+  //   const user = verifyGroupToken(groupToken);
+  //   // console.log(user);
+  //   next();
+  // } catch (error) {
+  //   throw new UnauthenticatedError("authentication invalid!");
+  // }
   next();
 };
 

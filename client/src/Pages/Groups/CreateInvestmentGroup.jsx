@@ -33,6 +33,11 @@ const CreateInvestmentGroup = () => {
         </div>
         <div className="form-container">
           <Form method="post" className="form">
+            <FormInput
+              type="text"
+              name="uniqueName"
+              placeholder="Special Name"
+            />
             <FormInput type="text" name="groupName" placeholder="GroupName" />
             <SelectOption
               name="investment"

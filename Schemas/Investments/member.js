@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { POSITION } from "../../Utils/Classes/class.js";
 const Member = new mongoose.Schema(
   {
-    name: String,
+    uniqueName: String,
     phoneNumber: String,
     role: {
       type: String,

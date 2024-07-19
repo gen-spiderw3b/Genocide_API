@@ -25,6 +25,7 @@ import {
   //End Of Investment Groups
   //My Investment Group
   SelectGroup,
+  SetGroupCookie,
   //End Of My Investment Group
   //User Layout
   UserLayout,
@@ -53,6 +54,7 @@ import { loader as myGroupsLoader } from "./Pages/War/MyGroups";
 import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
+import { loader as userGroupLoader } from "./Pages/UserGroup/UserLayout";
 
 import GroupLayout, {
   loader as myGroupLoader,
@@ -179,13 +181,15 @@ const router = createBrowserRouter([
                   },
                   {
                     path: "user-group/:id",
+                    element: <SetGroupCookie />,
                     action: groupCookieAction,
                   },
                 ],
               },
               {
-                path: "user-group",
+                path: "user-group/:groupId",
                 element: <UserLayout />,
+                loader: userGroupLoader,
               },
               //End Of My Investment Group
             ],

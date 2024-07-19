@@ -16,8 +16,10 @@ import warRoutes from "./Routes/War/war.js";
 import UserAuthRouter from "./Routes/Users/user.js";
 import InvestmentRouter from "./Routes/Investments/investment.js";
 import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
+import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
+import { groupMiddleware } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 
 //Variables && MiddleWare
 const app = express();
@@ -37,6 +39,11 @@ app.use(
   "/api/v1/investment/select-group",
   authMiddleWare,
   GroupInvestmentRouter
+);
+app.use(
+  "/api/v1/investment/user-group",
+  [authMiddleWare, groupMiddleware],
+  UserGroupRouter
 );
 
 //Building Front-End Progomatically

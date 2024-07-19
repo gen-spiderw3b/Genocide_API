@@ -25,7 +25,7 @@ const CreateMember = () => {
         <div className="title">
           <h3>create member</h3>
         </div>
-        <FormInput type="text" name="name" placeholder="username" />
+        <FormInput type="text" name="uniqueName" placeholder="special Name" />
         <FormInput type="text" name="phoneNumber" placeholder="123-456-7890" />
         <button type="submit" className="btn btn-block">
           create member

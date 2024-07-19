@@ -22,12 +22,14 @@ const Wrapper = styled.main`
     color: red;
     margin-bottom: 1rem;
   }
-  .btn {
+  a {
+    text-align: center;
+    text-decoration: none;
     background: red;
-    padding: 0 2.5rem;
+    padding: 0.3rem 2.5rem;
     transition: var(--transition);
   }
-  .btn:hover {
+  a:hover {
     background: white;
     color: red;
   }
@@ -47,7 +49,6 @@ const Wrapper = styled.main`
     }
     .article {
       width: 30vw;
-      height: 10rem;
     }
   }
 `;
