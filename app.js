@@ -19,7 +19,6 @@ import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
-import { groupMiddleware } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 
 //Variables && MiddleWare
 const app = express();
@@ -40,11 +39,7 @@ app.use(
   authMiddleWare,
   GroupInvestmentRouter
 );
-app.use(
-  "/api/v1/investment/user-group",
-  [authMiddleWare, groupMiddleware],
-  UserGroupRouter
-);
+app.use("/api/v1/investment/user-group", authMiddleWare, UserGroupRouter);
 
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));

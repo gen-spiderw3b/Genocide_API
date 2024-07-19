@@ -30,6 +30,7 @@ const SetGroupCookie = () => {
             <h3>Initalize group</h3>
           </div>
           <FormInput type="text" name="uniqueName" placeholder="Special Name" />
+          <FormInput type="email" name="email" placeholder="login email" />
           <button type="submit" className="btn btn-block">
             initalize group
           </button>

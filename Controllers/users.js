@@ -52,14 +52,8 @@ export const LoginUser = async (req, res) => {
 
 // Logout
 export const logoutUser = (req, res) => {
-  res.cookie("token", "logout", {
-    httpOnly: true,
-    expires: new Date(Date.now()),
-  });
-  res.cookie("groupToken", "logout", {
-    httpOnly: true,
-    expires: new Date(Date.now()),
-  });
+  res.clearCookie("token");
+  res.clearCookie("groupToken");
   res.status(200).json({ msg: "User Logged Out" });
 };
 //End Of Logout

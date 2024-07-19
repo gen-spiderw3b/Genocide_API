@@ -249,4 +249,9 @@ export const userGroupCookie = withValidationErrors([
         throw new UnauthorizedError("wrong unique name!");
       }
     }),
+  body("email")
+    .notEmpty()
+    .withMessage("email is required")
+    .isEmail()
+    .withMessage("invalid email format"),
 ]);

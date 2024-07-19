@@ -2,10 +2,7 @@ import {
   UnauthenticatedError,
   UnauthorizedError,
 } from "../../Middleware/RequestErrors/errors.js";
-import {
-  verifyToken,
-  verifyGroupToken,
-} from "../../Utils/JsonWebToken/jsonWebToken.js";
+import { verifyToken } from "../../Utils/JsonWebToken/jsonWebToken.js";
 
 export const authMiddleWare = async (req, res, next) => {
   const { token } = req.cookies;
@@ -13,26 +10,13 @@ export const authMiddleWare = async (req, res, next) => {
     throw new UnauthenticatedError("authentication invalid!");
   }
   try {
-    const { userId, role } = verifyToken(token);
-    req.user = { userId, role };
+    const { userId, role, memberId, groupRole } = verifyToken(token);
+    req.user = { userId, role, memberId, groupRole };
     next();
   } catch (error) {
     console.log(error);
     throw new UnauthenticatedError("authentication invalid!");
   }
-};
-
-export const groupMiddleware = async (req, res, next) => {
-  const { groupToken } = req.cookies;
-  // if (!groupToken) throw new UnauthenticatedError("authentication invalid!");
-  // try {
-  //   const user = verifyGroupToken(groupToken);
-  //   // console.log(user);
-  //   next();
-  // } catch (error) {
-  //   throw new UnauthenticatedError("authentication invalid!");
-  // }
-  next();
 };
 
 export const authorizeAdmin = (...roles) => {
