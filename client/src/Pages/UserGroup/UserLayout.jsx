@@ -2,6 +2,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import Wrapper from "../../Wrappers/UserGroup/userLayout";
 import { MyGroupInvestment } from "../../Components/index";
 import customFetch from "../../Utils/customFetch";
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async ({ params }) => {
   try {
@@ -15,13 +16,12 @@ export const loader = async ({ params }) => {
 };
 
 const UserLayout = () => {
-  const { test } = useLoaderData();
-  console.log(test);
+  const { member, investmentGroup } = useLoaderData();
   return (
     <Wrapper>
-      <MyGroupInvestment />
+      <MyGroupInvestment member={member} />
       <div className="main">
-        <Outlet />
+        <Outlet context={{ investmentGroup }} />
       </div>
     </Wrapper>
   );
