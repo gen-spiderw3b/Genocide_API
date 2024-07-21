@@ -1,13 +1,17 @@
 import Wrapper from "../../../Wrappers/Investments/MyGroup/myGroupInvestment";
 import { subLinks } from "../../../Utils/InvestmentData";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-const MyGroupInvestment = ({ member }) => {
+const MyGroupInvestment = ({ member, group }) => {
   return (
     <Wrapper>
+      <div className="title">
+        <h3>{group.groupName}</h3>
+      </div>
       {subLinks.map((items) => {
         const { pageId, page, links } = items;
-        if (page === "president" && member.role !== "president") return;
+        if (page === "create" && member.create !== "create") return;
+        if (page === "delete" && member.delete !== "delete") return;
         return (
           <article key={pageId}>
             <div className="title">
@@ -19,7 +23,7 @@ const MyGroupInvestment = ({ member }) => {
                   const { id, label, url } = items;
                   return (
                     <ul key={id}>
-                      <Link to={url}>{label}</Link>
+                      <NavLink to={url}>{label}</NavLink>
                     </ul>
                   );
                 })}
@@ -33,5 +37,6 @@ const MyGroupInvestment = ({ member }) => {
 };
 MyGroupInvestment.propTypes = {
   member: PropTypes.object,
+  group: PropTypes.object,
 };
 export default MyGroupInvestment;

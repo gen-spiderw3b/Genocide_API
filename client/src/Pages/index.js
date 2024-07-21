@@ -33,7 +33,6 @@ export { default as BrowseAllGroups } from "./Groups/BrowseAllGroups";
 export { default as CreateInvestmentGroup } from "./Groups/CreateInvestmentGroup";
 export { default as GroupInfo } from "./Groups/GroupInfo";
 export { default as CreateMember } from "./Groups/CreateMember";
-
 //End Of Static Groups
 
 //My Investment Group
@@ -41,9 +40,21 @@ export { default as GroupLayout } from "./MyInvestmentGroup/GroupLayout";
 export { default as SelectGroup } from "./MyInvestmentGroup/SelectGroup";
 export { default as SetGroupCookie } from "./MyInvestmentGroup/SetGroupCookie";
 //End Of My Investment Group
+
 //User Layout
 export { default as UserLayout } from "./UserGroup/UserLayout";
+export { default as CreateHeadline } from "./UserGroup/CreateHeadline/CreateHeadline";
+export { default as CreateSchedule } from "./UserGroup/Create Schedule/CreateSchedule";
+export { default as CreateSubGroups } from "./UserGroup/Create Sub Groups/CreateSubGroups";
+export { default as Promotion } from "./UserGroup/Promotion/Promotion";
+export { default as DeleteHeadline } from "./UserGroup/Delete Headline/DeleteHeadline";
+export { default as DeleteSchedule } from "./UserGroup/Delete Schedule/DeleteSchedule";
+export { default as DeleteSubgroup } from "./UserGroup/Delete Subgroup/DeleteSubgroup";
+export { default as ViewHeadline } from "./UserGroup/Views/ViewHeadline";
+export { default as ViewSchedule } from "./UserGroup/Views/ViewSchedule";
+export { default as ViewSubgroup } from "./UserGroup/Views/ViewSubgroup";
 //End Of User Layout
+
 //Education
 export { default as Education } from "./Education/Education";
 //End Of Education

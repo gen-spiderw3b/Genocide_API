@@ -1,31 +1,71 @@
 import { nanoid } from "nanoid";
-// // import { GiBatteredAxe } from "react-icons/gi";
-// // import { SiBookstack } from "react-icons/si";
-// import { IoNewspaperSharp } from "react-icons/io5";
-// // import { GiBabyfootPlayers } from "react-icons/gi";
-// import { IoCreate } from "react-icons/io5";
-// // import { FaUserSecret } from "react-icons/fa6";
 
 export const subLinks = [
   {
     pageId: nanoid(),
-    page: "headline news",
+    page: "create",
     links: [
       {
         id: nanoid(),
-        label: "browse news",
-        url: "",
+        label: "create headline",
+        url: "create/create-headline",
+      },
+      {
+        id: nanoid(),
+        label: "create schedule",
+        url: "create/create-schedule",
+      },
+      {
+        id: nanoid(),
+        label: "create sub groups",
+        url: "create/create-sub-groups",
+      },
+      {
+        id: nanoid(),
+        label: "promotion",
+        url: "create/promotion",
       },
     ],
   },
   {
     pageId: nanoid(),
-    page: "president",
+    page: "delete",
     links: [
       {
         id: nanoid(),
-        label: "create headline",
-        url: "",
+        label: "delete headline",
+        url: "delete/delete-headline",
+      },
+      {
+        id: nanoid(),
+        label: "delete schedule",
+        url: "delete/delete-schedule",
+      },
+      {
+        id: nanoid(),
+        label: "delete sub groups",
+        url: "delete/delete-subgroups",
+      },
+    ],
+  },
+  {
+    pageId: nanoid(),
+    page: "views",
+    links: [
+      {
+        id: nanoid(),
+        label: "headline news",
+        url: "views/headline-news",
+      },
+      {
+        id: nanoid(),
+        label: "view schedule",
+        url: "views/view-schedule",
+      },
+      {
+        id: nanoid(),
+        label: "view subgroup",
+        url: "views/view-subgroup",
       },
     ],
   },

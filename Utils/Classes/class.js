@@ -10,3 +10,11 @@ export const POSITION = {
   TEAM_LEADER: "team leader",
   ASSOCIATE: "associate",
 };
+export const CREATE = {
+  CREATE: "create",
+  NONE: "none",
+};
+export const DELETE = {
+  DELETE: "delete",
+  NONE: "none",
+};

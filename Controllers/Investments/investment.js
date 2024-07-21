@@ -2,13 +2,14 @@ import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
 import mongoose from "mongoose";
 import Member from "../../Schemas/Investments/member.js";
-import { POSITION } from "../../Utils/Classes/class.js";
+import { POSITION, CREATE, DELETE } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   //Creating President
-  // req.body.uniqueName = req.body;
   const member = await Member.create({
     role: POSITION.PRESIDENT,
+    create: CREATE.CREATE,
+    delete: DELETE.DELETE,
     uniqueName: req.body.uniqueName,
     createdBy: req.user.userId,
   });

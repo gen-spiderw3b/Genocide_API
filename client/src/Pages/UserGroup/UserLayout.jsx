@@ -19,7 +19,7 @@ const UserLayout = () => {
   const { member, investmentGroup } = useLoaderData();
   return (
     <Wrapper>
-      <MyGroupInvestment member={member} />
+      <MyGroupInvestment member={member} group={investmentGroup} />
       <div className="main">
         <Outlet context={{ investmentGroup }} />
       </div>

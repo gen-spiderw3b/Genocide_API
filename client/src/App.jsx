@@ -27,9 +27,19 @@ import {
   SelectGroup,
   SetGroupCookie,
   //End Of My Investment Group
-  //User Layout
+  //User Groups Layout
   UserLayout,
-  //End Of User Layout
+  CreateHeadline,
+  CreateSchedule,
+  CreateSubGroups,
+  Promotion,
+  DeleteHeadline,
+  DeleteSchedule,
+  DeleteSubgroup,
+  ViewHeadline,
+  ViewSchedule,
+  ViewSubgroup,
+  //End Of User Groups Layout
   Education,
   UpdateUser,
 } from "./Pages/index";
@@ -190,6 +200,48 @@ const router = createBrowserRouter([
                 path: "user-group/:groupId",
                 element: <UserLayout />,
                 loader: userGroupLoader,
+                children: [
+                  {
+                    path: "create/create-headline",
+                    element: <CreateHeadline />,
+                  },
+                  {
+                    path: "create/create-schedule",
+                    element: <CreateSchedule />,
+                  },
+                  {
+                    path: "create/create-sub-groups",
+                    element: <CreateSubGroups />,
+                  },
+                  {
+                    path: "create/promotion",
+                    element: <Promotion />,
+                  },
+                  {
+                    path: "delete/delete-headline",
+                    element: <DeleteHeadline />,
+                  },
+                  {
+                    path: "delete/delete-schedule",
+                    element: <DeleteSchedule />,
+                  },
+                  {
+                    path: "delete/delete-subgroups",
+                    element: <DeleteSubgroup />,
+                  },
+                  {
+                    path: "views/headline-news",
+                    element: <ViewHeadline />,
+                  },
+                  {
+                    path: "views/view-schedule",
+                    element: <ViewSchedule />,
+                  },
+                  {
+                    path: "views/view-subgroup",
+                    element: <ViewSubgroup />,
+                  },
+                ],
               },
               //End Of My Investment Group
             ],
