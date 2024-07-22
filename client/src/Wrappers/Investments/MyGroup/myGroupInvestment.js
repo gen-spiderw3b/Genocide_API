@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.aside`
   min-height: 100vh;
+  margin-right: 3rem;
   background: black;
 
   .title {

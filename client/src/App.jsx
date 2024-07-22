@@ -56,6 +56,7 @@ import { action as investmentAction } from "./Pages/Groups/CreateInvestmentGroup
 import { action as joinInvestmentAction } from "./Pages/Groups/JoinInvestmentGroup";
 import { action as memberAction } from "./Pages/Groups/CreateMember";
 import { action as groupCookieAction } from "./Pages/MyInvestmentGroup/SetGroupCookie";
+import { action as headlineAction } from "./Pages/UserGroup/CreateHeadline/CreateHeadline";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -204,6 +205,7 @@ const router = createBrowserRouter([
                   {
                     path: "create/create-headline",
                     element: <CreateHeadline />,
+                    action: headlineAction,
                   },
                   {
                     path: "create/create-schedule",

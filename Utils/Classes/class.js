@@ -18,3 +18,8 @@ export const DELETE = {
   DELETE: "delete",
   NONE: "none",
 };
+
+export const CATEGORY = {
+  GENERAL: "general",
+  MEET_UP: "meet up",
+};
