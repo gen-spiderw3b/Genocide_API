@@ -57,6 +57,7 @@ import { action as joinInvestmentAction } from "./Pages/Groups/JoinInvestmentGro
 import { action as memberAction } from "./Pages/Groups/CreateMember";
 import { action as groupCookieAction } from "./Pages/MyInvestmentGroup/SetGroupCookie";
 import { action as headlineAction } from "./Pages/UserGroup/CreateHeadline/CreateHeadline";
+import { action as scheduleAction } from "./Pages/UserGroup/Create Schedule/CreateSchedule";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -66,6 +67,7 @@ import { loader as joinedLoader } from "./Pages/War/JoinedGroups";
 import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
 import { loader as userGroupLoader } from "./Pages/UserGroup/UserLayout";
+import { loader as scheduleLoader } from "./Pages/UserGroup/Views/ViewSchedule";
 
 import GroupLayout, {
   loader as myGroupLoader,
@@ -210,6 +212,7 @@ const router = createBrowserRouter([
                   {
                     path: "create/create-schedule",
                     element: <CreateSchedule />,
+                    action: scheduleAction,
                   },
                   {
                     path: "create/create-sub-groups",
@@ -238,6 +241,7 @@ const router = createBrowserRouter([
                   {
                     path: "views/view-schedule",
                     element: <ViewSchedule />,
+                    loader: scheduleLoader,
                   },
                   {
                     path: "views/view-subgroup",
@@ -255,7 +259,7 @@ const router = createBrowserRouter([
           },
           //Update User
           {
-            path: "update-user",
+            path: "user/update-users",
             element: <UpdateUser />,
           },
           //Version

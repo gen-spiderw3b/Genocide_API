@@ -96,7 +96,7 @@ const subLinks = [
         id: nanoid(),
         label: "user",
         icon: <FaUserSecret />,
-        url: "users/update-users",
+        url: "user/update-users",
       },
     ],
   },

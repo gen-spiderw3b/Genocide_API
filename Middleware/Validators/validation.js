@@ -197,6 +197,13 @@ export const investmentValidation = withValidationErrors([
     .isIn(Object.values(MEMBER_COUNT))
     .withMessage("Invalid Member Count"),
   body("dues").isIn(Object.values(DUES)).withMessage("Invalid Price Of Dues"),
+  body("uniqueName")
+    .notEmpty()
+    .withMessage("please provide a unique name")
+    .custom(async (uniqueName) => {
+      const userName = await Member.findOne({ uniqueName: uniqueName });
+      if (userName) throw new BadRequestError("uniqueName already exists");
+    }),
 ]);
 
 export const joinInvestmentGroup = withValidationErrors([
@@ -243,6 +250,7 @@ export const userGroupCookie = withValidationErrors([
       if (member === null) {
         throw new BadRequestError("please provide a unique name");
       }
+
       const userId = req.user.userId;
       const isOwner = member.createdBy.toString() === userId;
       if (!isOwner) {

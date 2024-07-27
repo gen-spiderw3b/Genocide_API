@@ -35,6 +35,14 @@ const Investment = new mongoose.Schema(
         ref: "users",
       },
     ],
+
+    dates: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "schedule",
+      },
+    ],
+
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "users",
