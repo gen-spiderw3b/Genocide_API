@@ -29,6 +29,7 @@ export const createHeadlineValidate = withValidationErrors([
     .isLength({ min: 20 })
     .withMessage("please write at least 20 characters!"),
 ]);
+
 //Create Schedule
 export const createScheduleValidate = withValidationErrors([
   body("title").notEmpty().withMessage("please pick a title"),
@@ -38,4 +39,11 @@ export const createScheduleValidate = withValidationErrors([
     .withMessage("please choose a the starting time"),
   body("end").notEmpty().withMessage("please choose a date"),
   body("end_time").notEmpty().withMessage("please choose a the ending time"),
+]);
+
+//View Subgroups
+export const createSubgroups = withValidationErrors([
+  body("subgroupName")
+    .notEmpty()
+    .withMessage("please provide a sub group name"),
 ]);

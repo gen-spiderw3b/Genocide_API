@@ -3,7 +3,9 @@ import Member from "../../Schemas/Investments/member.js";
 import Investment from "../../Schemas/Investments/investments.js";
 import Headline from "../../Schemas/UserDashboard/headlineSchema.js";
 import Schedule from "../../Schemas/UserDashboard/scheduleSchema.js";
+import SubGroup from "../../Schemas/UserDashboard/subGroup.js";
 import mongoose from "mongoose";
+
 //Get CurrentMember
 export const getCurrentMember = async (req, res) => {
   const member = await Member.findOne({ _id: req.user.memberId });
@@ -18,6 +20,7 @@ export const createHeadline = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ headline });
 };
 
+//Create Schedule
 export const createSchedule = async (req, res) => {
   const date = await Schedule.create({
     title: req.body.title,
@@ -37,6 +40,7 @@ export const createSchedule = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ date });
 };
 
+//Get Schedule
 export const getSchedule = async (req, res) => {
   const schedule = await Investment.aggregate([
     {
@@ -54,4 +58,31 @@ export const getSchedule = async (req, res) => {
     },
   ]);
   res.status(StatusCodes.OK).json({ schedule });
+};
+
+//Get Investment Members
+export const getInvestmentMembers = async (req, res) => {
+  const groupMembers = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ groupMembers });
+};
+
+//Create SubGroup
+export const createSubgroup = async (req, res) => {
+  req.body.createdBy = req.user.memberId;
+  const createdSubgroup = await SubGroup.create(req.body);
+  res.status(StatusCodes.CREATED).json({ createdSubgroup });
 };

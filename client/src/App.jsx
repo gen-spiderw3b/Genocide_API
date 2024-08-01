@@ -31,7 +31,8 @@ import {
   UserLayout,
   CreateHeadline,
   CreateSchedule,
-  CreateSubGroups,
+  SubGroupLayout,
+  CreateSubGroup,
   Promotion,
   DeleteHeadline,
   DeleteSchedule,
@@ -39,6 +40,7 @@ import {
   ViewHeadline,
   ViewSchedule,
   ViewSubgroup,
+  ViewSubGroups,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -58,6 +60,7 @@ import { action as memberAction } from "./Pages/Groups/CreateMember";
 import { action as groupCookieAction } from "./Pages/MyInvestmentGroup/SetGroupCookie";
 import { action as headlineAction } from "./Pages/UserGroup/CreateHeadline/CreateHeadline";
 import { action as scheduleAction } from "./Pages/UserGroup/Create Schedule/CreateSchedule";
+import { action as createSubGroupAction } from "./Pages/UserGroup/Create Sub Groups/CreateSubGroup";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -215,8 +218,19 @@ const router = createBrowserRouter([
                     action: scheduleAction,
                   },
                   {
-                    path: "create/create-sub-groups",
-                    element: <CreateSubGroups />,
+                    path: "create/sub-groups",
+                    element: <SubGroupLayout />,
+                    children: [
+                      {
+                        path: "create-subgroup",
+                        element: <CreateSubGroup />,
+                        action: createSubGroupAction,
+                      },
+                      {
+                        path: "view-subgroups",
+                        element: <ViewSubGroups />,
+                      },
+                    ],
                   },
                   {
                     path: "create/promotion",

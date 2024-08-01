@@ -18,7 +18,7 @@ export const subLinks = [
       {
         id: nanoid(),
         label: "create sub groups",
-        url: "create/create-sub-groups",
+        url: "create/sub-groups",
       },
       {
         id: nanoid(),
