@@ -6,10 +6,12 @@ const Wrapper = styled.main`
     width: 90vw;
   }
   .article {
+    width: 60vw;
     background: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
     margin-bottom: 3rem;
     border-radius: 10px;
   }
@@ -38,17 +40,18 @@ const Wrapper = styled.main`
       margin: 0 auto;
     }
     .article {
-      width: 60vw;
+      width: 40vw;
       margin: 3rem auto;
     }
   }
   @media (min-width: 1000px) {
     .section-center {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.5fr 0.2fr 0.1fr;
     }
     .article {
-      width: 30vw;
+      width: 20vw;
+      margin-right: 10rem;
     }
   }
 `;

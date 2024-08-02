@@ -43,9 +43,13 @@ const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("you can only delete yourself!")) {
           throw new BadRequestError(errMessage);
         }
-        if (errMessage[0].startsWith("wrong unique name!")) {
+        if (errMessage[0].startsWith("wrong unique name for this group!")) {
           throw new UnauthorizedError(errMessage);
         }
+        if (errMessage[0].startsWith("you are not the user!")) {
+          throw new UnauthorizedError(errMessage);
+        }
+
         throw new BadRequestError(errMessage);
       }
       next();
@@ -246,16 +250,20 @@ export const userGroupCookie = withValidationErrors([
     .notEmpty()
     .withMessage("please provide a unique name used at creation ")
     .custom(async (uniqueName, { req }) => {
-      const member = await Member.findOne({ uniqueName: uniqueName });
+      //Check if uniqueName is Null
+      const member = await Member.findOne({ uniqueName });
       if (member === null) {
         throw new BadRequestError("please provide a unique name");
       }
-
-      const userId = req.user.userId;
-      const isOwner = member.createdBy.toString() === userId;
-      if (!isOwner) {
-        throw new UnauthorizedError("wrong unique name!");
-      }
+      //Check if the User is Valid
+      const isOwner = req.user.userId === member.createdBy.toString();
+      if (!isOwner) throw new UnauthorizedError("you are not the user!");
+      //Check if the member is in this group!
+      const checkMember = member._id.toString();
+      const group = await Investment.findById(req.params.id);
+      const checkGroup = group.joinedBy.includes(checkMember);
+      if (!checkGroup)
+        throw new UnauthorizedError("wrong unique name for this group!");
     }),
   body("email")
     .notEmpty()
