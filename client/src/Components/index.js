@@ -18,4 +18,3 @@ export { default as SelectOption } from "./FormInput/SelectOption";
 export { default as Members } from "./Members/Members";
 export { default as JoinedMembers } from "./Members/JoinedMembers";
 export { default as InvestmentPagination } from "./Pagination/InvestmentPagination";
-export { default as MyGroupInvestment } from "./SideBars/Investments/MyGroupInvestment";

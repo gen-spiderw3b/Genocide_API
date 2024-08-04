@@ -1,7 +1,8 @@
-import { body, validationResult } from "express-validator";
-import { BadRequestError } from "../RequestErrors/errors.js";
+import { body, param, validationResult } from "express-validator";
+import { BadRequestError, UnauthorizedError } from "../RequestErrors/errors.js";
 import { CATEGORY } from "../../Utils/Classes/class.js";
-
+import mongoose from "mongoose";
+import Subgroup from "../../Schemas/UserDashboard/subGroup.js";
 //Validate Errors
 export const withValidationErrors = (validateValues) => {
   return [
@@ -10,6 +11,17 @@ export const withValidationErrors = (validateValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errMessage = errors.array().map((error) => error.msg);
+        if (errMessage[0].startsWith("this id is not valid")) {
+          throw new BadRequestError(errMessage);
+        }
+        if (errMessage[0].startsWith("Mongo Id is not valid!")) {
+          throw new BadRequestError(errMessage);
+        }
+        if (
+          errMessage[0].startsWith("this player already joined this subgroup")
+        ) {
+          throw new UnauthorizedError(errMessage);
+        }
         throw new BadRequestError(errMessage);
       }
       next();
@@ -46,4 +58,25 @@ export const createSubgroups = withValidationErrors([
   body("subgroupName")
     .notEmpty()
     .withMessage("please provide a sub group name"),
+]);
+// Member Subgroups
+export const checkMember = withValidationErrors([
+  param("memberId")
+    .notEmpty()
+    .withMessage("please pick a member")
+    .custom(async (value) => {
+      const member = mongoose.Types.ObjectId.isValid(value);
+      if (!member) throw new BadRequestError("this id is not valid");
+    }),
+  param("subgroupId")
+    .notEmpty()
+    .withMessage("please select a group")
+    .custom(async (value, { req }) => {
+      const group = mongoose.Types.ObjectId.isValid(value);
+      if (!group) throw new BadRequestError("Mongo Id is not valid!");
+      const subgroup = await Subgroup.findById(value);
+      if (subgroup.joinedBy.includes(req.params.memberId)) {
+        throw new UnauthorizedError("this player already joined this subgroup");
+      }
+    }),
 ]);

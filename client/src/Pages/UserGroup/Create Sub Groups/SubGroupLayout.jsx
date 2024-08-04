@@ -1,6 +1,7 @@
+import Wrapper from "../../../Wrappers/UserGroup/SubGroup/SubLayout";
 import { NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import Wrapper from "../../../Wrappers/UserGroup/SubGroup/SubLayout";
+
 const SubGroupLayout = () => {
   return (
     <Wrapper>

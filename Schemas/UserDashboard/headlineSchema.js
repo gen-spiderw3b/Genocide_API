@@ -16,4 +16,4 @@ const headlineSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Headline", headlineSchema);
+export default mongoose.model("SubHeadline", headlineSchema);

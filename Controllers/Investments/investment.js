@@ -2,15 +2,23 @@ import { StatusCodes } from "http-status-codes";
 import Investment from "../../Schemas/Investments/investments.js";
 import mongoose from "mongoose";
 import Member from "../../Schemas/Investments/member.js";
+import User from "../../Schemas/userSchema.js";
 import { POSITION, CREATE, DELETE } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
+  //Finding The User
+  const user = await User.findOne({ _id: req.user.userId });
   //Creating President
   const member = await Member.create({
     role: POSITION.PRESIDENT,
     create: CREATE.CREATE,
     delete: DELETE.DELETE,
     uniqueName: req.body.uniqueName,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    state: user.state,
+    city: user.city,
+    phoneNumber: user.phoneNumber,
     createdBy: req.user.userId,
   });
 
@@ -70,7 +78,12 @@ export const getGroupInfo = async (req, res) => {
 };
 
 export const createMember = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.userId });
   req.body.createdBy = req.user.userId;
+  req.body.firstName = user.firstName;
+  req.body.lastName = user.lastName;
+  req.body.state = user.state;
+  req.body.city = user.city;
   const member = await Member.create(req.body);
   const group = await Investment.findByIdAndUpdate(
     req.params.groupId,

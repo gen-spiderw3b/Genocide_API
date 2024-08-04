@@ -9,10 +9,28 @@ import mongoose from "mongoose";
 //Get CurrentMember
 export const getCurrentMember = async (req, res) => {
   const member = await Member.findOne({ _id: req.user.memberId });
-  const investmentGroup = await Investment.findById(req.params.groupId);
-  res.status(StatusCodes.OK).json({ member, investmentGroup });
+  res.status(StatusCodes.OK).json({ member });
 };
 
+//Create Headline
+export const getAllMembers = async (req, res) => {
+  const groupMembers = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ groupMembers });
+};
 //Create Headline
 export const createHeadline = async (req, res) => {
   req.body.createdBy = req.user.memberId;
@@ -60,29 +78,31 @@ export const getSchedule = async (req, res) => {
   res.status(StatusCodes.OK).json({ schedule });
 };
 
-//Get Investment Members
-export const getInvestmentMembers = async (req, res) => {
-  const groupMembers = await Investment.aggregate([
-    {
-      $match: {
-        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
-      },
-    },
-    {
-      $lookup: {
-        from: "members",
-        localField: "joinedBy",
-        foreignField: "_id",
-        as: "members",
-      },
-    },
-  ]);
-  res.status(StatusCodes.OK).json({ groupMembers });
-};
-
 //Create SubGroup
 export const createSubgroup = async (req, res) => {
   req.body.createdBy = req.user.memberId;
   const createdSubgroup = await SubGroup.create(req.body);
   res.status(StatusCodes.CREATED).json({ createdSubgroup });
+};
+
+//View CreatedSubGroups
+export const viewCreatedSubgroups = async (req, res) => {
+  const viewCreatedSubgroups = await SubGroup.find({
+    createdBy: req.user.memberId,
+  });
+  res.status(StatusCodes.OK).json({ viewCreatedSubgroups });
+};
+//Process Member
+export const processMember = async (req, res) => {
+  const member = await Member.findById(req.params.memberId);
+
+  const subGroup = await SubGroup.findByIdAndUpdate(
+    req.params.subgroupId,
+    {
+      $push: { joinedBy: member._id },
+    },
+    { new: true }
+  );
+
+  res.status(StatusCodes.OK).json({ msg: "you have assigned a new member!" });
 };

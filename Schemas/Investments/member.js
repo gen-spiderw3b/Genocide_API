@@ -3,7 +3,12 @@ import { POSITION, CREATE, DELETE } from "../../Utils/Classes/class.js";
 const Member = new mongoose.Schema(
   {
     uniqueName: String,
+    firstName: String,
+    lastName: String,
     phoneNumber: String,
+    state: String,
+    city: String,
+
     role: {
       type: String,
       enum: Object.values(POSITION),

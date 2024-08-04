@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import { FormInput } from "../../../Components";
 import Wrapper from "../../../Wrappers/UserGroup/SubGroup/createSubGroup";
 import { toast } from "react-toastify";
@@ -11,7 +11,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.post("/investment/user-group/create-subgroup", data);
     toast.success("SubGroup has been created!");
-    return null;
+    return redirect("../view-subgroups");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;

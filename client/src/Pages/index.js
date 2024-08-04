@@ -48,6 +48,7 @@ export { default as CreateSchedule } from "./UserGroup/Create Schedule/CreateSch
 export { default as SubGroupLayout } from "./UserGroup/Create Sub Groups/SubGroupLayout";
 export { default as CreateSubGroup } from "./UserGroup/Create Sub Groups/CreateSubGroup";
 export { default as ViewSubGroups } from "./UserGroup/Create Sub Groups/ViewSubgroups";
+export { default as SelectMembers } from "./UserGroup/Create Sub Groups/SelectMembers";
 export { default as Promotion } from "./UserGroup/Promotion/Promotion";
 export { default as DeleteHeadline } from "./UserGroup/Delete Headline/DeleteHeadline";
 export { default as DeleteSchedule } from "./UserGroup/Delete Schedule/DeleteSchedule";

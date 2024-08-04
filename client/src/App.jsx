@@ -28,11 +28,13 @@ import {
   SetGroupCookie,
   //End Of My Investment Group
   //User Groups Layout
+  GroupLayout,
   UserLayout,
   CreateHeadline,
   CreateSchedule,
   SubGroupLayout,
   CreateSubGroup,
+  SelectMembers,
   Promotion,
   DeleteHeadline,
   DeleteSchedule,
@@ -61,6 +63,7 @@ import { action as groupCookieAction } from "./Pages/MyInvestmentGroup/SetGroupC
 import { action as headlineAction } from "./Pages/UserGroup/CreateHeadline/CreateHeadline";
 import { action as scheduleAction } from "./Pages/UserGroup/Create Schedule/CreateSchedule";
 import { action as createSubGroupAction } from "./Pages/UserGroup/Create Sub Groups/CreateSubGroup";
+import { action as processAction } from "./Pages/UserGroup/Create Sub Groups/ProcessMember";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -71,10 +74,9 @@ import { loader as investmentLoader } from "./Pages/Groups/InvestmentLayout";
 import { loader as groupLoader } from "./Pages/Groups/GroupInfo";
 import { loader as userGroupLoader } from "./Pages/UserGroup/UserLayout";
 import { loader as scheduleLoader } from "./Pages/UserGroup/Views/ViewSchedule";
-
-import GroupLayout, {
-  loader as myGroupLoader,
-} from "./Pages/MyInvestmentGroup/GroupLayout";
+import { loader as viewCreatedSubgroupsLoader } from "./Pages/UserGroup/Create Sub Groups/ViewSubgroups";
+import { loader as myGroupLoader } from "./Pages/MyInvestmentGroup/GroupLayout";
+import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Groups/SelectMembers";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -220,6 +222,7 @@ const router = createBrowserRouter([
                   {
                     path: "create/sub-groups",
                     element: <SubGroupLayout />,
+
                     children: [
                       {
                         path: "create-subgroup",
@@ -229,6 +232,16 @@ const router = createBrowserRouter([
                       {
                         path: "view-subgroups",
                         element: <ViewSubGroups />,
+                        loader: viewCreatedSubgroupsLoader,
+                      },
+                      {
+                        path: "select-members/:groupId/:subgroupId",
+                        element: <SelectMembers />,
+                        loader: selectMemberLoader,
+                      },
+                      {
+                        path: "process-member/:memberId/:subgroupId",
+                        action: processAction,
                       },
                     ],
                   },
