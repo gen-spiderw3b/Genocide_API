@@ -11,7 +11,6 @@ const Wrapper = styled.main`
     background: black;
     margin: 0 auto;
     width: 40%;
-    height: 10rem;
     position: relative;
     margin-bottom: 4rem;
   }
@@ -26,6 +25,17 @@ const Wrapper = styled.main`
   }
   a {
     text-decoration: none;
+  }
+  .list {
+    display: block;
+    background: red;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+  }
+  .btn-container {
+    display: flex;
   }
   .btn {
     text-align: center;

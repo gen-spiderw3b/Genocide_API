@@ -4,19 +4,75 @@ export const ROLE = {
 };
 
 export const POSITION = {
-  PRESIDENT: "president",
-  VICE_PRESIDENT: "vice president",
-  TREASURER: "treasurer",
-  TEAM_LEADER: "team leader",
-  ASSOCIATE: "associate",
-};
-export const CREATE = {
-  CREATE: "create",
-  NONE: "none",
-};
-export const DELETE = {
-  DELETE: "delete",
-  NONE: "none",
+  PRESIDENT: {
+    role: "president",
+    headline: true,
+    schedule: true,
+    subgroups: true,
+    promotion: true,
+    delete_headline: true,
+    delete_schedule: true,
+    delete_subgroups: true,
+    view_headline: true,
+    view_schedule: true,
+    view_subgroup: true,
+  },
+
+  VICE_PRESIDENT: {
+    role: "vice president",
+    headline: true,
+    schedule: true,
+    subgroups: true,
+    promotion: true,
+    delete_headline: true,
+    delete_schedule: true,
+    delete_subgroups: true,
+    view_headline: true,
+    view_schedule: true,
+    view_subgroup: true,
+  },
+
+  TREASURER: {
+    role: "treasurer",
+    headline: true,
+    schedule: true,
+    subgroups: true,
+    promotion: true,
+    delete_headline: true,
+    delete_schedule: true,
+    delete_subgroups: true,
+    view_headline: true,
+    view_schedule: true,
+    view_subgroup: true,
+  },
+
+  TEAM_LEADER: {
+    role: "team leader",
+    headline: true,
+    schedule: true,
+    subgroups: true,
+    promotion: true,
+    delete_headline: true,
+    delete_schedule: true,
+    delete_subgroups: true,
+    view_headline: true,
+    view_schedule: true,
+    view_subgroup: true,
+  },
+
+  ASSOCIATE: {
+    role: "associate",
+    headline: false,
+    schedule: false,
+    subgroups: false,
+    promotion: false,
+    delete_headline: false,
+    delete_schedule: false,
+    delete_subgroups: false,
+    view_headline: true,
+    view_schedule: true,
+    view_subgroup: true,
+  },
 };
 
 export const CATEGORY = {

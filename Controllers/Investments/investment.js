@@ -3,16 +3,14 @@ import Investment from "../../Schemas/Investments/investments.js";
 import mongoose from "mongoose";
 import Member from "../../Schemas/Investments/member.js";
 import User from "../../Schemas/userSchema.js";
-import { POSITION, CREATE, DELETE } from "../../Utils/Classes/class.js";
+import { POSITION } from "../../Utils/Classes/class.js";
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   //Finding The User
   const user = await User.findOne({ _id: req.user.userId });
   //Creating President
   const member = await Member.create({
-    role: POSITION.PRESIDENT,
-    create: CREATE.CREATE,
-    delete: DELETE.DELETE,
+    permission: POSITION.PRESIDENT,
     uniqueName: req.body.uniqueName,
     firstName: user.firstName,
     lastName: user.lastName,
@@ -84,7 +82,9 @@ export const createMember = async (req, res) => {
   req.body.lastName = user.lastName;
   req.body.state = user.state;
   req.body.city = user.city;
+  req.body.permission = POSITION.ASSOCIATE;
   const member = await Member.create(req.body);
+
   const group = await Investment.findByIdAndUpdate(
     req.params.groupId,
     {

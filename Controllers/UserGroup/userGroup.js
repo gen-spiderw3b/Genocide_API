@@ -87,9 +87,24 @@ export const createSubgroup = async (req, res) => {
 
 //View CreatedSubGroups
 export const viewCreatedSubgroups = async (req, res) => {
-  const viewCreatedSubgroups = await SubGroup.find({
-    createdBy: req.user.memberId,
-  });
+  const viewCreatedSubgroups = await SubGroup.aggregate([
+    {
+      $match: {
+        createdBy: mongoose.Types.ObjectId.createFromHexString(
+          req.user.memberId
+        ),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+
   res.status(StatusCodes.OK).json({ viewCreatedSubgroups });
 };
 //Process Member

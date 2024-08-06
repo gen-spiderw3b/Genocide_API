@@ -1,6 +1,7 @@
 import customFetch from "../../../Utils/customFetch";
 import { useLoaderData, Link, useParams } from "react-router-dom";
 import Wrapper from "../../../Wrappers/UserGroup/SubGroup/viewCreatedSubgroup";
+import { SubgroupMembers } from "../../../Components/index";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async () => {
@@ -27,13 +28,15 @@ const ViewSubgroups = () => {
       <div className="title-underline"></div>
       <div className="section-center">
         {viewCreatedSubgroups.map((item) => {
-          const { _id, subgroupName, joinedBy } = item;
+          const { _id, subgroupName, joinedBy, members } = item;
+
           return (
             <article key={_id} className="article">
               <div className="title">
                 <h3>{subgroupName}</h3>
               </div>
               <p className="members">members:{`${joinedBy.length}`}</p>
+              <SubgroupMembers members={members} />
               <Link
                 to={`../select-members/${groupId}/${_id}`}
                 className="btn btn-block"

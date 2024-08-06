@@ -23,8 +23,6 @@ const UserLayout = () => {
       <aside className="aside">
         {subLinks.map((items) => {
           const { pageId, page, links } = items;
-          if (page === "create" && member.create !== "create") return;
-          if (page === "delete" && member.delete !== "delete") return;
           return (
             <article key={pageId}>
               <div className="title">
@@ -34,6 +32,58 @@ const UserLayout = () => {
                 <div className="links">
                   {links.map((items) => {
                     const { id, label, url } = items;
+
+                    if (
+                      label === "create headline" &&
+                      member.permission.headline !== true
+                    )
+                      return;
+                    if (
+                      label === "create schedule" &&
+                      member.permission.schedule !== true
+                    )
+                      return;
+                    if (
+                      label === "create sub groups" &&
+                      member.permission.subgroups !== true
+                    )
+                      return;
+                    if (
+                      label === "promotion" &&
+                      member.permission.promotion !== true
+                    )
+                      return;
+                    if (
+                      label === "delete headline" &&
+                      member.permission.delete_headline !== true
+                    )
+                      return;
+                    if (
+                      label === "delete schedule" &&
+                      member.permission.delete_schedule !== true
+                    )
+                      return;
+                    if (
+                      label === "delete sub groups" &&
+                      member.permission.delete_subgroups !== true
+                    )
+                      return;
+                    if (
+                      label === "headline news" &&
+                      member.permission.view_headline !== true
+                    )
+                      return;
+                    if (
+                      label === "view schedule" &&
+                      member.permission.view_schedule !== true
+                    )
+                      return;
+                    if (
+                      label === "view subgroup" &&
+                      member.permission.view_subgroup !== true
+                    )
+                      return;
+
                     return (
                       <ul key={id}>
                         <NavLink to={url}>{label}</NavLink>
