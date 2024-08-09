@@ -22,7 +22,7 @@ export const setGroupCookie = async (req, res) => {
   const oneHour = 1000 * 60 * 60;
   const groupToken = createToken({
     memberId: member._id,
-    groupRole: member.role,
+    groupRole: member.permission.role,
     userId: user._id,
     role: user.role,
   });

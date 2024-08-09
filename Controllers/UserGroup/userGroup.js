@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes";
+import mongoose from "mongoose";
 import Member from "../../Schemas/Investments/member.js";
 import Investment from "../../Schemas/Investments/investments.js";
 import Headline from "../../Schemas/UserDashboard/headlineSchema.js";
 import Schedule from "../../Schemas/UserDashboard/scheduleSchema.js";
 import SubGroup from "../../Schemas/UserDashboard/subGroup.js";
-import mongoose from "mongoose";
-
+import { POSITION } from "../../Utils/Classes/class.js";
 //Get CurrentMember
 export const getCurrentMember = async (req, res) => {
   const member = await Member.findOne({ _id: req.user.memberId });
@@ -120,4 +120,26 @@ export const processMember = async (req, res) => {
   );
 
   res.status(StatusCodes.OK).json({ msg: "you have assigned a new member!" });
+};
+
+//Update User In Subgroup
+
+export const teamLeader = async (req, res) => {
+  const teamLeader = await SubGroup.findByIdAndUpdate(
+    req.body.groupId,
+
+    {
+      teamLeader: req.body.teamLeader,
+    },
+
+    { new: true }
+  );
+  const updatedMember = await Member.findByIdAndUpdate(
+    req.body.teamLeader,
+    {
+      permission: POSITION.TEAM_LEADER,
+    },
+    { new: true }
+  );
+  res.status(StatusCodes.OK).json({ msg: "you have set a new team leader" });
 };

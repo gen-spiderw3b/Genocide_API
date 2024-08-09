@@ -3,6 +3,8 @@ import { BadRequestError, UnauthorizedError } from "../RequestErrors/errors.js";
 import { CATEGORY } from "../../Utils/Classes/class.js";
 import mongoose from "mongoose";
 import Subgroup from "../../Schemas/UserDashboard/subGroup.js";
+import Member from "../../Schemas/Investments/member.js";
+
 //Validate Errors
 export const withValidationErrors = (validateValues) => {
   return [
@@ -17,11 +19,18 @@ export const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("Mongo Id is not valid!")) {
           throw new BadRequestError(errMessage);
         }
+        if (errMessage[0].startsWith("group does not exist!")) {
+          throw new BadRequestError(errMessage);
+        }
+        if (errMessage[0].startsWith("president cant be team leader!")) {
+          throw new BadRequestError(errMessage);
+        }
         if (
           errMessage[0].startsWith("this player already joined this subgroup")
         ) {
           throw new UnauthorizedError(errMessage);
         }
+
         throw new BadRequestError(errMessage);
       }
       next();
@@ -79,4 +88,18 @@ export const checkMember = withValidationErrors([
         throw new UnauthorizedError("this player already joined this subgroup");
       }
     }),
+]);
+
+//Update Submember
+
+export const teamLeaderValidation = withValidationErrors([
+  body("teamLeader").custom(async (id, { req }) => {
+    const member = mongoose.Types.ObjectId.isValid(id);
+    if (!member) throw new BadRequestError("Mongo Id is not valid!");
+    const subGroup = await Subgroup.findById(req.body.groupId);
+    if (!subGroup) throw new BadRequestError("group does not exist!");
+    const isMemberPresident = await Member.findById(req.body.teamLeader);
+    if (isMemberPresident.permission.role === "president")
+      throw new BadRequestError("president cant be team leader!");
+  }),
 ]);

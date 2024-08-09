@@ -8,12 +8,14 @@ import {
   createSubgroup,
   processMember,
   viewCreatedSubgroups,
+  teamLeader,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
   createScheduleValidate,
   createSubgroups,
   checkMember,
+  teamLeaderValidation,
 } from "../../Middleware/Validators/userGroupValidation.js";
 
 const router = Router();
@@ -29,5 +31,5 @@ router.route("/view-created-subgroups").get(viewCreatedSubgroups);
 router
   .route("/process-member/:memberId/:subgroupId")
   .patch(checkMember, processMember);
-
+router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 export default router;
