@@ -1,14 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { redirect } from "react-router-dom";
-import customFetch from "../../Utils/customFetch";
 import { toast } from "react-toastify";
+import customFetch from "../../Utils/customFetch";
 
-// eslint-disable-next-line no-unused-vars
 const SubgroupMembers = ({ members, subId }) => {
   const [isName, setIsName] = useState(false);
   const [useName, setUseName] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const [id, setId] = useState("");
 
   const handleName = (e) => {
@@ -29,7 +26,7 @@ const SubgroupMembers = ({ members, subId }) => {
   };
   const createTeamLeader = async () => {
     const data = id;
-    const formData = { teamLeader: data, groupId: subId };
+    const formData = { memberId: data, groupId: subId };
 
     try {
       await customFetch.patch(
@@ -37,19 +34,51 @@ const SubgroupMembers = ({ members, subId }) => {
         formData
       );
       toast.success(`${useName} is now a team leader!`);
-      return redirect("../");
+      setUseName("");
+      setId("");
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  };
+  const removeMember = async () => {
+    const data = id;
+    const formData = { memberId: data, groupId: subId };
+
+    try {
+      await customFetch.patch("/investment/user-group/remove-member", formData);
+      toast.success(`${useName} has been removed!`);
+      setUseName("");
+      setId("");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     }
   };
   return (
     <div>
       <ul className="list">
         {members.map((item) => {
-          const { _id, firstName } = item;
+          const { _id, firstName, permission } = item;
+          console.log(permission.role);
+
           return (
-            <li key={_id} id={_id} className="lists" onClick={handleName}>
+            <li
+              key={_id}
+              id={_id}
+              className={
+                permission.role === "team leader" ? "teamleader" : "lists"
+              }
+              onClick={handleName}
+            >
               {firstName}
             </li>
           );
@@ -69,11 +98,7 @@ const SubgroupMembers = ({ members, subId }) => {
               make team leader
             </button>
 
-            <button type="button" className="update-btn">
-              make associate
-            </button>
-
-            <button type="button" className="update-btn">
+            <button type="button" onClick={removeMember} className="update-btn">
               remove member
             </button>
           </div>

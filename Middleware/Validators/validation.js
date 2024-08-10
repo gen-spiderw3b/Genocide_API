@@ -49,6 +49,9 @@ const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("you are not the user!")) {
           throw new UnauthorizedError(errMessage);
         }
+        if (errMessage[0].startsWith("wrong email!!")) {
+          throw new UnauthorizedError(errMessage);
+        }
 
         throw new BadRequestError(errMessage);
       }
@@ -269,5 +272,10 @@ export const userGroupCookie = withValidationErrors([
     .notEmpty()
     .withMessage("email is required")
     .isEmail()
-    .withMessage("invalid email format"),
+    .withMessage("invalid email format")
+    .custom(async (email, { req }) => {
+      const user = await Users.findOne({ email });
+      const checkEmail = user.email === req.user.email;
+      if (!checkEmail) throw new UnauthorizedError("wrong email!");
+    }),
 ]);

@@ -37,6 +37,7 @@ export const LoginUser = async (req, res) => {
   const token = createToken({
     userId: user._id,
     role: user.role,
+    email: user.email,
   });
 
   //Create User Cookie

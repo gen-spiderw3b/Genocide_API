@@ -26,6 +26,13 @@ export const withValidationErrors = (validateValues) => {
           throw new BadRequestError(errMessage);
         }
         if (
+          errMessage[0].startsWith(
+            "you can only have one team leader per group!"
+          )
+        ) {
+          throw new BadRequestError(errMessage);
+        }
+        if (
           errMessage[0].startsWith("this player already joined this subgroup")
         ) {
           throw new UnauthorizedError(errMessage);
@@ -93,13 +100,15 @@ export const checkMember = withValidationErrors([
 //Update Submember
 
 export const teamLeaderValidation = withValidationErrors([
-  body("teamLeader").custom(async (id, { req }) => {
-    const member = mongoose.Types.ObjectId.isValid(id);
+  body("memberId").custom(async (memberId, { req }) => {
+    const member = mongoose.Types.ObjectId.isValid(memberId);
     if (!member) throw new BadRequestError("Mongo Id is not valid!");
     const subGroup = await Subgroup.findById(req.body.groupId);
     if (!subGroup) throw new BadRequestError("group does not exist!");
-    const isMemberPresident = await Member.findById(req.body.teamLeader);
-    if (isMemberPresident.permission.role === "president")
+    const isMember = await Member.findById(req.body.memberId);
+    if (isMember.permission.role === "president")
       throw new BadRequestError("president cant be team leader!");
+    if (isMember.permission.role === "team leader")
+      throw new BadRequestError("you can only have one team leader per group!");
   }),
 ]);

@@ -9,6 +9,7 @@ import {
   processMember,
   viewCreatedSubgroups,
   teamLeader,
+  removeMember,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
@@ -32,4 +33,5 @@ router
   .route("/process-member/:memberId/:subgroupId")
   .patch(checkMember, processMember);
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
+router.route("/remove-member").patch(removeMember);
 export default router;

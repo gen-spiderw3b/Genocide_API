@@ -129,17 +129,49 @@ export const teamLeader = async (req, res) => {
     req.body.groupId,
 
     {
-      teamLeader: req.body.teamLeader,
+      teamLeader: req.body.memberId,
     },
 
     { new: true }
   );
   const updatedMember = await Member.findByIdAndUpdate(
-    req.body.teamLeader,
+    req.body.memberId,
     {
       permission: POSITION.TEAM_LEADER,
     },
     { new: true }
   );
   res.status(StatusCodes.OK).json({ msg: "you have set a new team leader" });
+};
+
+//Remove member
+export const removeMember = async (req, res) => {
+  const currentMember = await Member.findById(req.body.memberId);
+  if (currentMember.permission.role === "president") {
+    const removeMember = await SubGroup.findByIdAndUpdate(
+      req.body.groupId,
+      {
+        $pull: { joinedBy: req.body.memberId },
+      },
+      { new: true }
+    );
+  } else {
+    const updatedMember = await Member.findByIdAndUpdate(
+      req.body.memberId,
+
+      {
+        permission: POSITION.ASSOCIATE,
+      },
+      { new: true }
+    );
+    const removeMember = await SubGroup.findByIdAndUpdate(
+      req.body.groupId,
+      {
+        $pull: { joinedBy: req.body.memberId },
+      },
+      { new: true }
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ msg: "you have removed a member" });
 };

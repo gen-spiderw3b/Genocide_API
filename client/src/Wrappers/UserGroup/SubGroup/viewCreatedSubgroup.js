@@ -28,11 +28,18 @@ const Wrapper = styled.main`
   a {
     text-decoration: none;
   }
-
-  .lists {
+  .teamleader {
     display: block;
     background: red;
     color: white;
+    text-align: center;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+  .lists {
+    display: block;
+    background: grey;
+    color: black;
     text-align: center;
     padding: 0.5rem 0;
     margin-bottom: 1rem;
@@ -41,6 +48,7 @@ const Wrapper = styled.main`
   .btns {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
   }
   .useName {
@@ -56,9 +64,8 @@ const Wrapper = styled.main`
     border: none;
     background: white;
     border-radius: 5px;
-    padding: 0.3rem 1rem;
-    margin: 0 auto;
     margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
     color: red;
     text-transform: capitalize;
     font-size: 1rem;
@@ -88,15 +95,12 @@ const Wrapper = styled.main`
     }
     .btns {
       flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
     }
     .update-btn {
       width: auto;
       margin-bottom: 0;
+      margin-right: 0.125rem;
       font-size: 1rem;
-      padding: 0.3rem 1rem;
-      margin-right: 0.5rem;
     }
   }
   @media (min-width: 1170px) {
