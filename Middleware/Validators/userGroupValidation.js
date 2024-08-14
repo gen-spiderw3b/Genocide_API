@@ -112,3 +112,9 @@ export const teamLeaderValidation = withValidationErrors([
       throw new BadRequestError("you can only have one team leader per group!");
   }),
 ]);
+
+//Contact Validation
+export const contactValidation = withValidationErrors([
+  body("greeting").notEmpty().withMessage("please make a greeting"),
+  body("desc").notEmpty().withMessage("please send a message!"),
+]);

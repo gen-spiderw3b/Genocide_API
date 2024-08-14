@@ -10,6 +10,7 @@ import {
   viewCreatedSubgroups,
   teamLeader,
   removeMember,
+  getAllSubgroups,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
@@ -34,4 +35,5 @@ router
   .patch(checkMember, processMember);
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 router.route("/remove-member").patch(removeMember);
+router.route("/all-subgroups").get(getAllSubgroups);
 export default router;

@@ -97,7 +97,7 @@ const UserLayout = () => {
         })}
       </aside>
       <div className="main">
-        <Outlet />
+        <Outlet context={{ member }} />
       </div>
     </Wrapper>
   );

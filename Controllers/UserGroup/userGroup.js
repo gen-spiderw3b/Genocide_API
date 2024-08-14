@@ -175,3 +175,25 @@ export const removeMember = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ msg: "you have removed a member" });
 };
+
+//Get SubMembers groups
+export const getAllSubgroups = async (req, res) => {
+  const subgroups = await SubGroup.aggregate([
+    {
+      $match: {
+        joinedBy: mongoose.Types.ObjectId.createFromHexString(
+          req.user.memberId
+        ),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ subgroups });
+};

@@ -43,6 +43,7 @@ import {
   ViewSchedule,
   ViewSubgroup,
   ViewSubGroups,
+  Contact,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -64,6 +65,7 @@ import { action as headlineAction } from "./Pages/UserGroup/CreateHeadline/Creat
 import { action as scheduleAction } from "./Pages/UserGroup/Create Schedule/CreateSchedule";
 import { action as createSubGroupAction } from "./Pages/UserGroup/Create Sub Groups/CreateSubGroup";
 import { action as processAction } from "./Pages/UserGroup/Create Sub Groups/ProcessMember";
+import { action as contactAction } from "./Pages/UserGroup/ActionPages/Contact";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -77,6 +79,7 @@ import { loader as scheduleLoader } from "./Pages/UserGroup/Views/ViewSchedule";
 import { loader as viewCreatedSubgroupsLoader } from "./Pages/UserGroup/Create Sub Groups/ViewSubgroups";
 import { loader as myGroupLoader } from "./Pages/MyInvestmentGroup/GroupLayout";
 import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Groups/SelectMembers";
+import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewSubgroup";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -273,6 +276,12 @@ const router = createBrowserRouter([
                   {
                     path: "views/view-subgroup",
                     element: <ViewSubgroup />,
+                    loader: viewLoader,
+                  },
+                  {
+                    path: "contact/:groupMemberId",
+                    element: <Contact />,
+                    action: contactAction,
                   },
                 ],
               },

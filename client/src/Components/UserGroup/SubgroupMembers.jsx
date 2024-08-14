@@ -68,7 +68,6 @@ const SubgroupMembers = ({ members, subId }) => {
       <ul className="list">
         {members.map((item) => {
           const { _id, firstName, permission } = item;
-          console.log(permission.role);
 
           return (
             <li
