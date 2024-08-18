@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import Member from "../../Schemas/Investments/member.js";
 import User from "../../Schemas/userSchema.js";
 import { POSITION } from "../../Utils/Classes/class.js";
+
 //Create Investment Groups
 export const createInvestmentGroup = async (req, res) => {
   //Finding The User
@@ -26,8 +27,9 @@ export const createInvestmentGroup = async (req, res) => {
   const updateGroup = await Investment.findOneAndUpdate(
     { _id: group._id },
     {
-      $push: { joinedBy: member._id, users: req.user.userId },
+      $push: { joinedBy: member._id, authorize: req.user.userId },
     },
+
     {
       new: true,
     }
@@ -88,7 +90,7 @@ export const createMember = async (req, res) => {
   const group = await Investment.findByIdAndUpdate(
     req.params.groupId,
     {
-      $push: { joinedBy: member._id, users: req.user.userId },
+      $push: { joinedBy: member._id, authorize: req.user.userId },
     },
     {
       new: true,

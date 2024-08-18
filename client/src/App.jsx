@@ -66,6 +66,10 @@ import { action as scheduleAction } from "./Pages/UserGroup/Create Schedule/Crea
 import { action as createSubGroupAction } from "./Pages/UserGroup/Create Sub Groups/CreateSubGroup";
 import { action as processAction } from "./Pages/UserGroup/Create Sub Groups/ProcessMember";
 import { action as contactAction } from "./Pages/UserGroup/ActionPages/Contact";
+import { action as treasurerAction } from "./Pages/UserGroup/ActionPages/TreasurerLink";
+import { action as presidentAction } from "./Pages/UserGroup/ActionPages/PresidentLink";
+import { action as vicePresidentAction } from "./Pages/UserGroup/ActionPages/VicePresidentLink";
+import { action as associateAction } from "./Pages/UserGroup/ActionPages/AssociateLink";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -80,6 +84,7 @@ import { loader as viewCreatedSubgroupsLoader } from "./Pages/UserGroup/Create S
 import { loader as myGroupLoader } from "./Pages/MyInvestmentGroup/GroupLayout";
 import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Groups/SelectMembers";
 import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewSubgroup";
+import { loader as promotionLoader } from "./Pages/UserGroup/Promotion/Promotion";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -251,6 +256,23 @@ const router = createBrowserRouter([
                   {
                     path: "create/promotion",
                     element: <Promotion />,
+                    loader: promotionLoader,
+                  },
+                  {
+                    path: "president/:groupId/:memberId",
+                    action: presidentAction,
+                  },
+                  {
+                    path: "vicepresident/:groupId/:memberId",
+                    action: vicePresidentAction,
+                  },
+                  {
+                    path: "treasurer/:groupId/:memberId",
+                    action: treasurerAction,
+                  },
+                  {
+                    path: "associate/:groupId/:memberId",
+                    action: associateAction,
                   },
                   {
                     path: "delete/delete-headline",

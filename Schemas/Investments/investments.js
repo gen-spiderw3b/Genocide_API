@@ -9,6 +9,7 @@ const Investment = new mongoose.Schema(
   {
     groupName: String,
     desc: String,
+
     investment: {
       type: String,
       enum: Object.values(INVESTMENTS),
@@ -29,10 +30,10 @@ const Investment = new mongoose.Schema(
         ref: "member",
       },
     ],
-    users: [
+    authorize: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "users",
+        ref: "user",
       },
     ],
 

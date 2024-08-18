@@ -9,6 +9,7 @@ export const loader = async ({ params }) => {
     const { data } = await customFetch.get(
       `/investment/user-group/get-member/${params.groupId}`
     );
+
     return data;
   } catch (error) {
     return error;

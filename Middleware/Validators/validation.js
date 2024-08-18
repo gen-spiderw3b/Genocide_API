@@ -235,8 +235,8 @@ export const joinInvestmentGroup = withValidationErrors([
       throw new NotFoundError(`No Group with an Id of ${value} exists!`);
     //Check for duplicate members
     const member = req.user.userId;
-    const checkMember = investGroup.users.includes(member);
-    const checkowner = investGroup.users.includes(member);
+    const checkMember = investGroup.authorize.includes(member);
+    const checkowner = investGroup.authorize.includes(member);
     if (checkMember || checkowner)
       throw new BadRequestError("you already joined this group!");
   }),

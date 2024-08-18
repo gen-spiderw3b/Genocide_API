@@ -11,6 +11,10 @@ import {
   teamLeader,
   removeMember,
   getAllSubgroups,
+  createTreasurer,
+  createPresident,
+  createVicePresident,
+  createAssociate,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
@@ -18,6 +22,7 @@ import {
   createSubgroups,
   checkMember,
   teamLeaderValidation,
+  promotionValidation,
 } from "../../Middleware/Validators/userGroupValidation.js";
 
 const router = Router();
@@ -36,4 +41,17 @@ router
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 router.route("/remove-member").patch(removeMember);
 router.route("/all-subgroups").get(getAllSubgroups);
+router
+  .route("/create-president/:groupId/:memberId")
+  .patch(promotionValidation, createPresident);
+router
+  .route("/create-vicepresident/:groupId/:memberId")
+  .patch(promotionValidation, createVicePresident);
+router
+  .route("/create-treasurer/:groupId/:memberId")
+  .patch(promotionValidation, createTreasurer);
+router
+  .route("/create-associate/:groupId/:memberId")
+  .patch(promotionValidation, createAssociate);
+
 export default router;

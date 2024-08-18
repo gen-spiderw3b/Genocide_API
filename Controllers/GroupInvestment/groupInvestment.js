@@ -7,7 +7,7 @@ import { UnauthorizedError } from "../../Middleware/RequestErrors/errors.js";
 
 //Get All User Groups
 export const getAllUserGroups = async (req, res) => {
-  const group = await Investment.find({ users: req.user.userId });
+  const group = await Investment.find({ authorize: req.user.userId });
   res.status(StatusCodes.OK).json({ group });
 };
 

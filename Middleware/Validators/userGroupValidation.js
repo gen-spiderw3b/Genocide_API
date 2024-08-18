@@ -1,10 +1,10 @@
 import { body, param, validationResult } from "express-validator";
 import { BadRequestError, UnauthorizedError } from "../RequestErrors/errors.js";
-import { CATEGORY } from "../../Utils/Classes/class.js";
+import { CATEGORY, POSITION } from "../../Utils/Classes/class.js";
 import mongoose from "mongoose";
 import Subgroup from "../../Schemas/UserDashboard/subGroup.js";
 import Member from "../../Schemas/Investments/member.js";
-
+import Investment from "../../Schemas/Investments/investments.js";
 //Validate Errors
 export const withValidationErrors = (validateValues) => {
   return [
@@ -25,6 +25,9 @@ export const withValidationErrors = (validateValues) => {
         if (errMessage[0].startsWith("president cant be team leader!")) {
           throw new BadRequestError(errMessage);
         }
+        if (errMessage[0].startsWith("only one person can be treasurer")) {
+          throw new BadRequestError(errMessage);
+        }
         if (
           errMessage[0].startsWith(
             "you can only have one team leader per group!"
@@ -35,6 +38,9 @@ export const withValidationErrors = (validateValues) => {
         if (
           errMessage[0].startsWith("this player already joined this subgroup")
         ) {
+          throw new UnauthorizedError(errMessage);
+        }
+        if (errMessage[0].startsWith('this is not a valid id"')) {
           throw new UnauthorizedError(errMessage);
         }
 
@@ -117,4 +123,15 @@ export const teamLeaderValidation = withValidationErrors([
 export const contactValidation = withValidationErrors([
   body("greeting").notEmpty().withMessage("please make a greeting"),
   body("desc").notEmpty().withMessage("please send a message!"),
+]);
+//Promotion Validation
+export const promotionValidation = withValidationErrors([
+  param("groupId").custom(async (value) => {
+    const isValid = mongoose.Types.ObjectId.isValid(value);
+    if (!isValid) throw new UnauthorizedError("this is not a valid id");
+  }),
+  param("memberId").custom(async (value) => {
+    const isValid = mongoose.Types.ObjectId.isValid(value);
+    if (!isValid) throw new UnauthorizedError("this is not a valid id");
+  }),
 ]);

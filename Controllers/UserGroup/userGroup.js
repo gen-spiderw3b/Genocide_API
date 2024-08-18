@@ -12,7 +12,7 @@ export const getCurrentMember = async (req, res) => {
   res.status(StatusCodes.OK).json({ member });
 };
 
-//Create Headline
+//get All Members
 export const getAllMembers = async (req, res) => {
   const groupMembers = await Investment.aggregate([
     {
@@ -160,7 +160,7 @@ export const removeMember = async (req, res) => {
       req.body.memberId,
 
       {
-        permission: POSITION.ASSOCIATE,
+        permission: POSITION.TEAM_LEADER,
       },
       { new: true }
     );
@@ -196,4 +196,120 @@ export const getAllSubgroups = async (req, res) => {
     },
   ]);
   res.status(StatusCodes.OK).json({ subgroups });
+};
+//President
+export const createPresident = async (req, res) => {
+  const group = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "checkMembers",
+      },
+    },
+  ]);
+  const checkGroup = group[0].checkMembers.filter((person) => {
+    return person.permission.role === "president";
+  });
+
+  if (checkGroup.length === 1) {
+    const changeRole = await Member.findByIdAndUpdate(
+      req.params.memberId,
+      {
+        permission: POSITION.PRESIDENT,
+      },
+      { new: true }
+    );
+  } else {
+    throw new Error("you must remove a president!");
+  }
+  res.status(StatusCodes.OK).json({ msg: "you have selected a new president" });
+};
+//Vice President
+export const createVicePresident = async (req, res) => {
+  const group = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "checkMembers",
+      },
+    },
+  ]);
+  const checkGroup = group[0].checkMembers.filter((person) => {
+    return person.permission.role === "vice president";
+  });
+
+  if (checkGroup.length === 0) {
+    const changeRole = await Member.findByIdAndUpdate(
+      req.params.memberId,
+      {
+        permission: POSITION.VICE_PRESIDENT,
+      },
+      { new: true }
+    );
+  } else {
+    throw new Error("already have a vice president!");
+  }
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "you have selected a new vice president" });
+};
+//Treasurer
+export const createTreasurer = async (req, res) => {
+  const group = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "checkMembers",
+      },
+    },
+  ]);
+  const checkGroup = group[0].checkMembers.filter((person) => {
+    return person.permission.role === "treasurer";
+  });
+
+  if (checkGroup.length === 0) {
+    const changeRole = await Member.findByIdAndUpdate(
+      req.params.memberId,
+      {
+        permission: POSITION.TREASURER,
+      },
+      { new: true }
+    );
+  } else {
+    throw new Error("already have a treasurer!");
+  }
+  res.status(StatusCodes.OK).json({ msg: "you have selected a new treasurer" });
+};
+//Associate
+export const createAssociate = async (req, res) => {
+  const changeRole = await Member.findByIdAndUpdate(
+    req.params.memberId,
+    {
+      permission: POSITION.ASSOCIATE,
+    },
+    { new: true }
+  );
+
+  res.status(StatusCodes.OK).json({ msg: "you have selected a new associate" });
 };
