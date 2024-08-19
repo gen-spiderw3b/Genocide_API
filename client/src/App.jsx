@@ -71,6 +71,7 @@ import { action as presidentAction } from "./Pages/UserGroup/ActionPages/Preside
 import { action as vicePresidentAction } from "./Pages/UserGroup/ActionPages/VicePresidentLink";
 import { action as associateAction } from "./Pages/UserGroup/ActionPages/AssociateLink";
 import { action as deleteHeadlinesAction } from "./Pages/UserGroup/ActionPages/DeleteHeadlines";
+import { action as deleteDateAction } from "./Pages/UserGroup/ActionPages/DeleteDates";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -87,6 +88,7 @@ import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Group
 import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewSubgroup";
 import { loader as promotionLoader } from "./Pages/UserGroup/Promotion/Promotion";
 import { loader as deleteHeadlineLoader } from "./Pages/UserGroup/Delete Headline/DeleteHeadline";
+import { loader as deleteScheduleLoader } from "./Pages/UserGroup/Delete Schedule/DeleteSchedule";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -288,6 +290,11 @@ const router = createBrowserRouter([
                   {
                     path: "delete/delete-schedule",
                     element: <DeleteSchedule />,
+                    loader: deleteScheduleLoader,
+                  },
+                  {
+                    path: "delete-date/:id",
+                    action: deleteDateAction,
                   },
                   {
                     path: "delete/delete-subgroups",

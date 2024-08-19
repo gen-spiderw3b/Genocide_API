@@ -19,10 +19,12 @@ export const loader = async ({ params }) => {
 const ViewSchedule = () => {
   const localizer = dayjsLocalizer(dayjs);
   const { schedule } = useLoaderData();
+
   const newDates = schedule.map((item) => {
     return item.dates;
   });
   const [date] = newDates;
+
   const newEvent = date.map((item) => ({
     start: new Date(dayjs(item.start_time)),
     end: new Date(dayjs(item.end_time)),

@@ -7,6 +7,7 @@ import {
   deleteHeadlines,
   createSchedule,
   getSchedule,
+  deleteDates,
   createSubgroup,
   processMember,
   viewCreatedSubgroups,
@@ -59,7 +60,7 @@ router
   .route("/create-schedule/:groupId")
   .post(createScheduleValidate, createSchedule);
 router.route("/get-schedule/:groupId").get(getSchedule);
-
+router.route("/delete-date/:id").delete(deleteDates);
 /*
 ===============
 Subgroup

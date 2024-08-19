@@ -110,6 +110,12 @@ export const getSchedule = async (req, res) => {
   res.status(StatusCodes.OK).json({ schedule });
 };
 
+//Delete Schedule
+export const deleteDates = async (req, res) => {
+  const date = await Schedule.findOneAndDelete({ _id: req.params.id });
+  res.status(StatusCodes.OK).json({ msg: "date deleted!" });
+};
+
 /*
 ================
 Subgroup
