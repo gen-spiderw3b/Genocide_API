@@ -6,11 +6,14 @@ import { CATEGORY } from "../../../../../Utils/Classes/class";
 import { toast } from "react-toastify";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const action = async ({ request }) => {
+export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
-    await customFetch.post(`/investment/user-group/create-headline`, data);
+    await customFetch.post(
+      `/investment/user-group/create-headline/${params.groupId}`,
+      data
+    );
     toast.success("New Headline Created!");
     return redirect("../views/headline-news");
   } catch (error) {

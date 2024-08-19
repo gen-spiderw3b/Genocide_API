@@ -70,6 +70,7 @@ import { action as treasurerAction } from "./Pages/UserGroup/ActionPages/Treasur
 import { action as presidentAction } from "./Pages/UserGroup/ActionPages/PresidentLink";
 import { action as vicePresidentAction } from "./Pages/UserGroup/ActionPages/VicePresidentLink";
 import { action as associateAction } from "./Pages/UserGroup/ActionPages/AssociateLink";
+import { action as deleteHeadlinesAction } from "./Pages/UserGroup/ActionPages/DeleteHeadlines";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -85,6 +86,7 @@ import { loader as myGroupLoader } from "./Pages/MyInvestmentGroup/GroupLayout";
 import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Groups/SelectMembers";
 import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewSubgroup";
 import { loader as promotionLoader } from "./Pages/UserGroup/Promotion/Promotion";
+import { loader as deleteHeadlineLoader } from "./Pages/UserGroup/Delete Headline/DeleteHeadline";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -277,6 +279,11 @@ const router = createBrowserRouter([
                   {
                     path: "delete/delete-headline",
                     element: <DeleteHeadline />,
+                    loader: deleteHeadlineLoader,
+                  },
+                  {
+                    path: "delete-headlines/:id",
+                    action: deleteHeadlinesAction,
                   },
                   {
                     path: "delete/delete-schedule",

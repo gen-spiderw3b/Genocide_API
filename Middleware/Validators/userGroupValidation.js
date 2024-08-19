@@ -63,6 +63,13 @@ export const createHeadlineValidate = withValidationErrors([
     .isLength({ min: 20 })
     .withMessage("please write at least 20 characters!"),
 ]);
+//Delete Headline
+export const deleteHeadlineValidate = withValidationErrors([
+  param("id").custom(async (value) => {
+    const headline = mongoose.Types.ObjectId.isValid(value);
+    if (!headline) throw new BadRequestError("this id is not valid");
+  }),
+]);
 
 //Create Schedule
 export const createScheduleValidate = withValidationErrors([

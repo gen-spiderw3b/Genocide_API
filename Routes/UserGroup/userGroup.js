@@ -3,6 +3,8 @@ import {
   getCurrentMember,
   getAllMembers,
   createHeadline,
+  viewHeadline,
+  deleteHeadlines,
   createSchedule,
   getSchedule,
   createSubgroup,
@@ -18,21 +20,51 @@ import {
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
+  deleteHeadlineValidate,
   createScheduleValidate,
   createSubgroups,
   checkMember,
   teamLeaderValidation,
   promotionValidation,
 } from "../../Middleware/Validators/userGroupValidation.js";
-
 const router = Router();
+
+/*
+===============
+Members
+===============
+*/
 router.route("/get-member/:groupId").get(getCurrentMember);
 router.route("/get-all-members/:groupId").get(getAllMembers);
-router.route("/create-headline").post(createHeadlineValidate, createHeadline);
+
+/*
+===============
+Headline
+===============
+*/
+router
+  .route("/create-headline/:groupId")
+  .post(createHeadlineValidate, createHeadline);
+router.route("/view-headline/:groupId").get(viewHeadline);
+router
+  .route("/delete-headlines/:id")
+  .delete(deleteHeadlineValidate, deleteHeadlines);
+
+/*
+===============
+Schedule
+===============
+*/
 router
   .route("/create-schedule/:groupId")
   .post(createScheduleValidate, createSchedule);
 router.route("/get-schedule/:groupId").get(getSchedule);
+
+/*
+===============
+Subgroup
+===============
+*/
 router.route("/create-subgroup").post(createSubgroups, createSubgroup);
 router.route("/view-created-subgroups").get(viewCreatedSubgroups);
 router
@@ -41,6 +73,12 @@ router
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 router.route("/remove-member").patch(removeMember);
 router.route("/all-subgroups").get(getAllSubgroups);
+
+/*
+  ===============
+  Promotion
+  ===============
+  */
 router
   .route("/create-president/:groupId/:memberId")
   .patch(promotionValidation, createPresident);

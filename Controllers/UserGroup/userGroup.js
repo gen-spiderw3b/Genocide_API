@@ -6,6 +6,13 @@ import Headline from "../../Schemas/UserDashboard/headlineSchema.js";
 import Schedule from "../../Schemas/UserDashboard/scheduleSchema.js";
 import SubGroup from "../../Schemas/UserDashboard/subGroup.js";
 import { POSITION } from "../../Utils/Classes/class.js";
+
+/*
+================
+Members
+================
+*/
+
 //Get CurrentMember
 export const getCurrentMember = async (req, res) => {
   const member = await Member.findOne({ _id: req.user.memberId });
@@ -31,12 +38,37 @@ export const getAllMembers = async (req, res) => {
   ]);
   res.status(StatusCodes.OK).json({ groupMembers });
 };
+
+/*
+================
+Headline
+================
+*/
+
 //Create Headline
 export const createHeadline = async (req, res) => {
-  req.body.createdBy = req.user.memberId;
+  req.body.madeBy = req.params.groupId;
   const headline = await Headline.create(req.body);
   res.status(StatusCodes.CREATED).json({ headline });
 };
+//View Headline
+export const viewHeadline = async (req, res) => {
+  const viewHeadline = await Headline.find({ madeBy: req.params.groupId });
+  res.status(StatusCodes.CREATED).json({ viewHeadline });
+};
+//Delete Headline
+export const deleteHeadlines = async (req, res) => {
+  const deleteHeadlines = await Headline.findOneAndDelete({
+    _id: req.params.id,
+  });
+  res.status(StatusCodes.CREATED).json({ msg: "you have deleted a headline" });
+};
+
+/*
+================
+Schedule
+================
+*/
 
 //Create Schedule
 export const createSchedule = async (req, res) => {
@@ -78,6 +110,12 @@ export const getSchedule = async (req, res) => {
   res.status(StatusCodes.OK).json({ schedule });
 };
 
+/*
+================
+Subgroup
+================
+*/
+
 //Create SubGroup
 export const createSubgroup = async (req, res) => {
   req.body.createdBy = req.user.memberId;
@@ -107,7 +145,7 @@ export const viewCreatedSubgroups = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ viewCreatedSubgroups });
 };
-//Process Member
+//Process Subgroup Member
 export const processMember = async (req, res) => {
   const member = await Member.findById(req.params.memberId);
 
@@ -123,7 +161,6 @@ export const processMember = async (req, res) => {
 };
 
 //Update User In Subgroup
-
 export const teamLeader = async (req, res) => {
   const teamLeader = await SubGroup.findByIdAndUpdate(
     req.body.groupId,
@@ -197,6 +234,13 @@ export const getAllSubgroups = async (req, res) => {
   ]);
   res.status(StatusCodes.OK).json({ subgroups });
 };
+
+/*
+================
+Promotion
+================
+*/
+
 //President
 export const createPresident = async (req, res) => {
   const group = await Investment.aggregate([

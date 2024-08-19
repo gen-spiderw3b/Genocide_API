@@ -8,9 +8,9 @@ const headlineSchema = new mongoose.Schema(
     },
     headline: String,
     desc: String,
-    createdBy: {
+    madeBy: {
       type: mongoose.Types.ObjectId,
-      ref: "Member",
+      ref: "Investments",
     },
   },
   { timestamps: true }
