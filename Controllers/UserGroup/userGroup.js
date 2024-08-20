@@ -148,9 +148,15 @@ export const viewCreatedSubgroups = async (req, res) => {
       },
     },
   ]);
-
   res.status(StatusCodes.OK).json({ viewCreatedSubgroups });
 };
+
+//Delete Subgroup
+export const deleteSubgroup = async (req, res) => {
+  const deleteSubgroup = await SubGroup.findByIdAndDelete(req.params.id);
+  res.status(StatusCodes.OK).json({ msg: "you have deleted a subgroup!" });
+};
+
 //Process Subgroup Member
 export const processMember = async (req, res) => {
   const member = await Member.findById(req.params.memberId);

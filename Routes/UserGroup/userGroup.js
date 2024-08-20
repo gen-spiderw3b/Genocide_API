@@ -9,6 +9,7 @@ import {
   getSchedule,
   deleteDates,
   createSubgroup,
+  deleteSubgroup,
   processMember,
   viewCreatedSubgroups,
   teamLeader,
@@ -74,6 +75,7 @@ router
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 router.route("/remove-member").patch(removeMember);
 router.route("/all-subgroups").get(getAllSubgroups);
+router.route("/delete-subgroup/:id").delete(deleteSubgroup);
 
 /*
   ===============
