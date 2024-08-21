@@ -91,6 +91,7 @@ import { loader as promotionLoader } from "./Pages/UserGroup/Promotion/Promotion
 import { loader as deleteHeadlineLoader } from "./Pages/UserGroup/Delete Headline/DeleteHeadline";
 import { loader as deleteScheduleLoader } from "./Pages/UserGroup/Delete Schedule/DeleteSchedule";
 import { loader as deleteSubgroupLoader } from "./Pages/UserGroup/Delete Subgroup/DeleteSubgroup";
+import { loader as viewHeadlineLoader } from "./Pages/UserGroup/Views/ViewHeadline";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -310,6 +311,7 @@ const router = createBrowserRouter([
                   {
                     path: "views/headline-news",
                     element: <ViewHeadline />,
+                    loader: viewHeadlineLoader,
                   },
                   {
                     path: "views/view-schedule",
