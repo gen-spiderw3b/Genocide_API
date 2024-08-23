@@ -84,6 +84,11 @@ const UserLayout = () => {
                       member.permission.view_subgroup !== true
                     )
                       return;
+                    if (
+                      label === "messages" &&
+                      member.permission.view_messages !== true
+                    )
+                      return;
 
                     return (
                       <ul key={id}>

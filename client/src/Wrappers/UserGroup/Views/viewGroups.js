@@ -2,6 +2,15 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
+  .change-btn {
+    width: 20rem;
+    height: 3rem;
+    color: red;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+    background: black;
+  }
   .error {
     margin: 10rem auto;
     color: red;
@@ -46,16 +55,6 @@ const Wrapper = styled.main`
     font-size: 0.9rem;
   }
 
-  tr:hover {
-    background: whitesmoke;
-    color: red;
-    cursor: pointer;
-    font-size: 0.5rem;
-  }
-  .btn {
-    font-size: 0.7rem;
-    color: black;
-  }
   @media (max-width: 650px) {
     th {
       display: none;
@@ -76,6 +75,15 @@ const Wrapper = styled.main`
       color: black;
       text-transform: uppercase;
       font-weight: 700;
+    }
+  }
+  @media (min-width: 650px) {
+    a {
+      color: black;
+      cursor: pointer;
+    }
+    a:hover {
+      color: white;
     }
   }
   @media (min-width: 1000px) {

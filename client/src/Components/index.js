@@ -20,3 +20,4 @@ export { default as JoinedMembers } from "./Members/JoinedMembers";
 export { default as InvestmentPagination } from "./Pagination/InvestmentPagination";
 export { default as SubgroupMembers } from "./UserGroup/SubgroupMembers";
 export { default as ViewSubgroupTable } from "./UserGroup/ViewSubgroupTable";
+export { default as ViewAllGroupTable } from "./UserGroup/ViewAllGroupTable";

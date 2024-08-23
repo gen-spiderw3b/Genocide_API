@@ -55,7 +55,8 @@ export { default as DeleteSchedule } from "./UserGroup/Delete Schedule/DeleteSch
 export { default as DeleteSubgroup } from "./UserGroup/Delete Subgroup/DeleteSubgroup";
 export { default as ViewHeadline } from "./UserGroup/Views/ViewHeadline";
 export { default as ViewSchedule } from "./UserGroup/Views/ViewSchedule";
-export { default as ViewSubgroup } from "./UserGroup/Views/ViewSubgroup";
+export { default as ViewAllGroups } from "./UserGroup/Views/ViewAllGroups";
+export { default as Messages } from "./UserGroup/Views/Messages";
 // Action Pages
 export { default as Contact } from "./UserGroup/ActionPages/Contact";
 //End Of User Layout

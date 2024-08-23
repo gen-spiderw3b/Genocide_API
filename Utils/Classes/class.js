@@ -16,6 +16,7 @@ export const POSITION = {
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,
+    view_messages: true,
   },
 
   VICE_PRESIDENT: {
@@ -30,6 +31,7 @@ export const POSITION = {
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,
+    view_messages: true,
   },
 
   TREASURER: {
@@ -44,6 +46,7 @@ export const POSITION = {
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,
+    view_messages: true,
   },
 
   TEAM_LEADER: {
@@ -58,6 +61,7 @@ export const POSITION = {
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,
+    view_messages: true,
   },
 
   ASSOCIATE: {
@@ -72,6 +76,7 @@ export const POSITION = {
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,
+    view_messages: true,
   },
 };
 

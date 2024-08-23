@@ -41,9 +41,10 @@ import {
   DeleteSubgroup,
   ViewHeadline,
   ViewSchedule,
-  ViewSubgroup,
   ViewSubGroups,
+  ViewAllGroups,
   Contact,
+  Messages,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -86,7 +87,7 @@ import { loader as scheduleLoader } from "./Pages/UserGroup/Views/ViewSchedule";
 import { loader as viewCreatedSubgroupsLoader } from "./Pages/UserGroup/Create Sub Groups/ViewSubgroups";
 import { loader as myGroupLoader } from "./Pages/MyInvestmentGroup/GroupLayout";
 import { loader as selectMemberLoader } from "./Pages/UserGroup/Create Sub Groups/SelectMembers";
-import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewSubgroup";
+import { loader as viewLoader } from "./Pages/UserGroup/Views/ViewAllGroups";
 import { loader as promotionLoader } from "./Pages/UserGroup/Promotion/Promotion";
 import { loader as deleteHeadlineLoader } from "./Pages/UserGroup/Delete Headline/DeleteHeadline";
 import { loader as deleteScheduleLoader } from "./Pages/UserGroup/Delete Schedule/DeleteSchedule";
@@ -319,9 +320,13 @@ const router = createBrowserRouter([
                     loader: scheduleLoader,
                   },
                   {
-                    path: "views/view-subgroup",
-                    element: <ViewSubgroup />,
+                    path: "views/view-all-groups",
+                    element: <ViewAllGroups />,
                     loader: viewLoader,
+                  },
+                  {
+                    path: "views/messages",
+                    element: <Messages />,
                   },
                   {
                     path: "contact/:groupMemberId",

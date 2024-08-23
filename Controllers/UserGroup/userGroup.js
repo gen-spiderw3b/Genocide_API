@@ -130,8 +130,8 @@ export const createSubgroup = async (req, res) => {
 };
 
 //View CreatedSubGroups
-export const viewCreatedSubgroups = async (req, res) => {
-  const viewCreatedSubgroups = await SubGroup.aggregate([
+export const viewCreatedSubGroups = async (req, res) => {
+  const subgroups = await SubGroup.aggregate([
     {
       $match: {
         createdBy: mongoose.Types.ObjectId.createFromHexString(
@@ -148,7 +148,44 @@ export const viewCreatedSubgroups = async (req, res) => {
       },
     },
   ]);
-  res.status(StatusCodes.OK).json({ viewCreatedSubgroups });
+  res.status(StatusCodes.OK).json({ subgroups });
+};
+
+//View Both Groups
+export const allGroups = async (req, res) => {
+  const subgroups = await SubGroup.aggregate([
+    {
+      $match: {
+        createdBy: mongoose.Types.ObjectId.createFromHexString(
+          req.user.memberId
+        ),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  const groupMembers = await Investment.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId.createFromHexString(req.params.groupId),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ subgroups, groupMembers });
 };
 
 //Delete Subgroup

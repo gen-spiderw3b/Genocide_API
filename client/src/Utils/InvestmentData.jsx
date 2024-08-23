@@ -73,8 +73,14 @@ export const subLinks = [
       },
       {
         id: nanoid(),
-        label: "view subgroup",
-        url: "views/view-subgroup",
+        label: "view all groups",
+        url: "views/view-all-groups",
+        view: true,
+      },
+      {
+        id: nanoid(),
+        label: "messages",
+        url: "views/messages",
         view: true,
       },
     ],

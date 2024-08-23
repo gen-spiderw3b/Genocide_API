@@ -17,9 +17,16 @@ export const loader = async () => {
   }
 };
 const ViewSubgroups = () => {
-  const { viewCreatedSubgroups } = useLoaderData();
+  const { subgroups } = useLoaderData();
   const { groupId } = useParams();
 
+  if (subgroups.length === 0) {
+    return (
+      <Wrapper>
+        <h2 className="error-msg">no subgroups were created!</h2>
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <div className="title">
@@ -27,7 +34,7 @@ const ViewSubgroups = () => {
       </div>
       <div className="title-underline"></div>
       <div className="section-center">
-        {viewCreatedSubgroups.map((item) => {
+        {subgroups.map((item) => {
           const { _id, subgroupName, joinedBy, members } = item;
           return (
             <article key={_id} className="article">

@@ -11,10 +11,10 @@ import {
   createSubgroup,
   deleteSubgroup,
   processMember,
-  viewCreatedSubgroups,
+  viewCreatedSubGroups,
+  allGroups,
   teamLeader,
   removeMember,
-  getAllSubgroups,
   createTreasurer,
   createPresident,
   createVicePresident,
@@ -68,13 +68,13 @@ Subgroup
 ===============
 */
 router.route("/create-subgroup").post(createSubgroups, createSubgroup);
-router.route("/view-created-subgroups").get(viewCreatedSubgroups);
+router.route("/view-created-subgroups").get(viewCreatedSubGroups);
 router
   .route("/process-member/:memberId/:subgroupId")
   .patch(checkMember, processMember);
 router.route("/update-teamleader").patch(teamLeaderValidation, teamLeader);
 router.route("/remove-member").patch(removeMember);
-router.route("/all-subgroups").get(getAllSubgroups);
+router.route("/all-groups/:groupId").get(allGroups);
 router.route("/delete-subgroup/:id").delete(deleteSubgroup);
 
 /*

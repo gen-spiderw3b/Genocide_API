@@ -4,7 +4,7 @@ const contactSchema = new mongoose.Schema(
   {
     greeting: String,
     desc: String,
-    createdBy: {
+    sentBy: {
       type: mongoose.Types.ObjectId,
       ref: "member",
     },

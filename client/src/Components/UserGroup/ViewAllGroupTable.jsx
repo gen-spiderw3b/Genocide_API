@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
-const ViewSubgroupTable = ({ subgroups }) => {
-  const [contacts] = useState(subgroups);
+const ViewSubgroupTable = ({ groupMembers }) => {
+  const [contacts] = useState(groupMembers);
 
   return (
     <div className="table-container">
@@ -45,6 +45,6 @@ const ViewSubgroupTable = ({ subgroups }) => {
 };
 ViewSubgroupTable.propTypes = {
   member: PropTypes.object,
-  subgroups: PropTypes.array,
+  groupMembers: PropTypes.array,
 };
 export default ViewSubgroupTable;

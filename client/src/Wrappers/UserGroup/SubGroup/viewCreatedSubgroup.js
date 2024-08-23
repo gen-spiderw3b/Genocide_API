@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
+  .error-msg {
+    color: red;
+  }
   .section-center {
     width: 80vw;
     margin: 5rem auto;
