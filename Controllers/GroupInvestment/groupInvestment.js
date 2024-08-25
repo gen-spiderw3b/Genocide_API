@@ -25,6 +25,9 @@ export const setGroupCookie = async (req, res) => {
     groupRole: member.permission.role,
     userId: user._id,
     role: user.role,
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
   });
 
   res.cookie("token", groupToken, {

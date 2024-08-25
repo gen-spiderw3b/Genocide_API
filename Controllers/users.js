@@ -38,6 +38,8 @@ export const LoginUser = async (req, res) => {
     userId: user._id,
     role: user.role,
     email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
   });
 
   //Create User Cookie

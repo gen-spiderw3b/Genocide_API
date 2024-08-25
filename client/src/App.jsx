@@ -45,6 +45,8 @@ import {
   ViewAllGroups,
   Contact,
   Messages,
+  ReadMessages,
+  Reply,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -74,6 +76,8 @@ import { action as associateAction } from "./Pages/UserGroup/ActionPages/Associa
 import { action as deleteHeadlinesAction } from "./Pages/UserGroup/ActionPages/DeleteHeadlines";
 import { action as deleteDateAction } from "./Pages/UserGroup/ActionPages/DeleteDates";
 import { action as deleteSubgroupAction } from "./Pages/UserGroup/ActionPages/DeleteSubgroup";
+import { action as replyAction } from "./Pages/UserGroup/Views/Reply";
+import { action as deleteMessageAction } from "./Pages/UserGroup/ActionPages/DeleteMessage";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -93,6 +97,7 @@ import { loader as deleteHeadlineLoader } from "./Pages/UserGroup/Delete Headlin
 import { loader as deleteScheduleLoader } from "./Pages/UserGroup/Delete Schedule/DeleteSchedule";
 import { loader as deleteSubgroupLoader } from "./Pages/UserGroup/Delete Subgroup/DeleteSubgroup";
 import { loader as viewHeadlineLoader } from "./Pages/UserGroup/Views/ViewHeadline";
+import { loader as messageLoader } from "./Pages/UserGroup/Views/Messages";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -327,6 +332,20 @@ const router = createBrowserRouter([
                   {
                     path: "views/messages",
                     element: <Messages />,
+                    loader: messageLoader,
+                  },
+                  {
+                    path: "read-messages/:groupMemberId",
+                    element: <ReadMessages />,
+                  },
+                  {
+                    path: "reply/:groupMemberId",
+                    element: <Reply />,
+                    action: replyAction,
+                  },
+                  {
+                    path: "delete-message/:messageId",
+                    action: deleteMessageAction,
                   },
                   {
                     path: "contact/:groupMemberId",

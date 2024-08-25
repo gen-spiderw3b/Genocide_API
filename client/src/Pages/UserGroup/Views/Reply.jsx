@@ -3,6 +3,7 @@ import Wrapper from "../../../Wrappers/UserGroup/Views/contact";
 import { FormInput } from "../../../Components/index";
 import customFetch from "../../../Utils/customFetch";
 import { toast } from "react-toastify";
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request, params }) => {
   const formData = await request.formData();
@@ -13,18 +14,18 @@ export const action = async ({ request, params }) => {
       data
     );
     toast.success("you have sent a message!");
-    return redirect("../views/view-all-groups");
+    return redirect("../views/messages");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
   }
 };
 
-const Contact = () => {
+const Reply = () => {
   return (
     <Wrapper>
       <div className="title">
-        <h2>contact</h2>
+        <h2>reply</h2>
       </div>
       <div className="title-underline"></div>
       <Form method="post" className="form">
@@ -46,10 +47,10 @@ const Contact = () => {
           send msg
         </button>
       </Form>
-      <Link to="../views/view-all-groups" className="cancel btn-block">
+      <Link to="../views/messages" className="cancel btn-block">
         cancel
       </Link>
     </Wrapper>
   );
 };
-export default Contact;
+export default Reply;

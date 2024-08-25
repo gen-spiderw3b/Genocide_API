@@ -18,10 +18,10 @@ export const loader = async () => {
 };
 
 const DeleteSubgroup = () => {
-  const { viewCreatedSubgroups } = useLoaderData();
+  const { subgroups } = useLoaderData();
   const navigation = useNavigation();
   const [index, setIndex] = useState(0);
-  const [group] = useState(viewCreatedSubgroups);
+  const [group] = useState(subgroups);
   if (group.length === 0) {
     return (
       <Wrapper>

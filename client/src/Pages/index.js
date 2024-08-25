@@ -57,6 +57,8 @@ export { default as ViewHeadline } from "./UserGroup/Views/ViewHeadline";
 export { default as ViewSchedule } from "./UserGroup/Views/ViewSchedule";
 export { default as ViewAllGroups } from "./UserGroup/Views/ViewAllGroups";
 export { default as Messages } from "./UserGroup/Views/Messages";
+export { default as ReadMessages } from "./UserGroup/Views/ReadMessages";
+export { default as Reply } from "./UserGroup/Views/Reply";
 // Action Pages
 export { default as Contact } from "./UserGroup/ActionPages/Contact";
 //End Of User Layout

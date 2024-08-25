@@ -14,7 +14,7 @@ const Member = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "users",
     },
-    messageRecieved: [
+    messageReceived: [
       {
         type: mongoose.Types.ObjectId,
         ref: "contact",
