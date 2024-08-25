@@ -19,7 +19,7 @@ export const loader = async ({ params }) => {
   }
 };
 
-const ViewSubgroup = () => {
+const ViewAllGroups = () => {
   const { subgroups, groupMembers } = useLoaderData();
   const [Btn, setBtn] = useState(false);
 
@@ -53,4 +53,4 @@ const ViewSubgroup = () => {
     </Wrapper>
   );
 };
-export default ViewSubgroup;
+export default ViewAllGroups;

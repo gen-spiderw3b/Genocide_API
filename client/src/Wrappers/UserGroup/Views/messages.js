@@ -38,31 +38,31 @@ const Wrapper = styled.main`
     text-align: center;
     text-transform: capitalize;
   }
+
   .link-btn {
-    color: white;
-    margin: 0 0.8rem;
-    font-size: 1.3rem;
-    border-radius: 5px;
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  .link-btn:hover {
-    color: red;
-  }
-  .btn {
-    border-radius: 5px;
-    background: red;
-    padding: 0 1.25rem;
-    color: black;
-    font-size: 1rem;
-    box-shadow: none;
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  .btn:hover {
     background: black;
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .link-btn a {
+    color: green;
+  }
+  .link-btn a:hover {
     color: red;
   }
+
+  .delete {
+    background: black;
+    color: green;
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .delete:hover {
+    color: red;
+  }
+
   @media (max-width: 600px) {
     th {
       display: none;
@@ -82,29 +82,8 @@ const Wrapper = styled.main`
       text-transform: uppercase;
       font-weight: 600;
     }
-    .link-btn {
-      background: red;
-      color: black;
-      width: 100px;
-      margin: 0 auto;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-    .btn {
-      max-width: 100px;
-      min-width: 100px;
-      margin: 0 auto;
-      color: black;
-    }
-  }
-  @media (min-width: 600px) {
-    .btn {
-      margin-right: 1rem;
-    }
-  }
-  @media (min-width: 1000px) {
-    .link-btn {
-      padding: 0 0.1rem;
+    .delete {
+      width: 100%;
     }
   }
 `;

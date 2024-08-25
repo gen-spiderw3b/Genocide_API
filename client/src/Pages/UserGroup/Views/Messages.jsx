@@ -48,29 +48,29 @@ const Messages = () => {
         <tbody>
           {messenger.map((item) => {
             const { _id, greeting, desc, firstName, lastName, sentBy } = item;
-
             return (
               <tr key={_id}>
                 <td data-cell="greeting">{greeting}</td>
                 <td data-cell="firstName">{firstName}</td>
                 <td data-cell="lastName">{lastName}</td>
                 <td data-cell="read">
-                  <Link
-                    to={`../read-messages/${sentBy}`}
-                    state={{ msg: desc }}
-                    className="link-btn"
-                  >
-                    read
-                  </Link>
+                  <button className="link-btn">
+                    <Link
+                      to={`../read-messages/${sentBy}`}
+                      state={{ msg: desc }}
+                    >
+                      read
+                    </Link>
+                  </button>
                 </td>
                 <td data-cell="contact">
-                  <Link to={`../reply/${sentBy}`} className="link-btn">
-                    contact
-                  </Link>
+                  <button className="link-btn">
+                    <Link to={`../reply/${sentBy}`}>contact</Link>
+                  </button>
                 </td>
                 <td data-cell="delete">
                   <Form method="post" action={`../delete-message/${_id}`}>
-                    <button type="submit" className="btn">
+                    <button type="submit" className="link-btn delete">
                       delete
                     </button>
                   </Form>

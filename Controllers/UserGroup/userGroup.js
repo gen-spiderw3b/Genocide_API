@@ -156,7 +156,7 @@ export const allGroups = async (req, res) => {
   const subgroups = await SubGroup.aggregate([
     {
       $match: {
-        createdBy: mongoose.Types.ObjectId.createFromHexString(
+        joinedBy: mongoose.Types.ObjectId.createFromHexString(
           req.user.memberId
         ),
       },

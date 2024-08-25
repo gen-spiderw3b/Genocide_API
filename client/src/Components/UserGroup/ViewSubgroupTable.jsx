@@ -5,10 +5,20 @@ import { useState } from "react";
 const ViewSubgroupTable = ({ subgroups }) => {
   const [contacts] = useState(subgroups);
 
+  //Error Msg
+  if (contacts.length === 0) {
+    return (
+      <div>
+        <h3 className="error-msg">your not in a subgroup</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="table-container">
       {contacts.map((contact) => {
         const { _id, subgroupName, members } = contact;
+
         return (
           <table key={_id}>
             <caption>{subgroupName}</caption>
@@ -31,7 +41,9 @@ const ViewSubgroupTable = ({ subgroups }) => {
                     <td data-cell="state">{state}</td>
                     <td data-cell="city">{city}</td>
                     <td data-cell="contact">
-                      <Link to={`../contact/${_id}`}>contact me</Link>
+                      <button className="link-btn">
+                        <Link to={`../contact/${_id}`}>contact me</Link>
+                      </button>
                     </td>
                   </tr>
                 );

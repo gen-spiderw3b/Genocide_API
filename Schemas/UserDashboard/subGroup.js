@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const subGroupSchema = new mongoose.Schema(
   {
     subgroupName: String,
-
+    link: String,
     teamLeader: {
       type: mongoose.Types.ObjectId,
       ref: "member",
