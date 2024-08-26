@@ -9,6 +9,7 @@ export const POSITION = {
     headline: true,
     schedule: true,
     subgroups: true,
+    subgroup_link: false,
     promotion: true,
     delete_headline: true,
     delete_schedule: true,
@@ -17,6 +18,7 @@ export const POSITION = {
     view_schedule: true,
     view_subgroup: true,
     view_messages: true,
+    view_all_links: true,
   },
 
   VICE_PRESIDENT: {
@@ -24,6 +26,7 @@ export const POSITION = {
     headline: true,
     schedule: true,
     subgroups: true,
+    subgroup_link: false,
     promotion: true,
     delete_headline: true,
     delete_schedule: true,
@@ -32,6 +35,7 @@ export const POSITION = {
     view_schedule: true,
     view_subgroup: true,
     view_messages: true,
+    view_all_links: true,
   },
 
   TREASURER: {
@@ -39,6 +43,7 @@ export const POSITION = {
     headline: true,
     schedule: true,
     subgroups: false,
+    subgroup_link: false,
     promotion: false,
     delete_headline: true,
     delete_schedule: true,
@@ -47,6 +52,7 @@ export const POSITION = {
     view_schedule: true,
     view_subgroup: true,
     view_messages: true,
+    view_all_links: true,
   },
 
   TEAM_LEADER: {
@@ -54,6 +60,7 @@ export const POSITION = {
     headline: false,
     schedule: true,
     subgroups: false,
+    subgroup_link: true,
     promotion: false,
     delete_headline: false,
     delete_schedule: true,
@@ -62,6 +69,7 @@ export const POSITION = {
     view_schedule: true,
     view_subgroup: true,
     view_messages: true,
+    view_all_links: true,
   },
 
   ASSOCIATE: {
@@ -69,6 +77,7 @@ export const POSITION = {
     headline: false,
     schedule: false,
     subgroups: false,
+    subgroup_link: false,
     promotion: false,
     delete_headline: false,
     delete_schedule: false,
@@ -77,6 +86,7 @@ export const POSITION = {
     view_schedule: true,
     view_subgroup: true,
     view_messages: true,
+    view_all_links: true,
   },
 };
 

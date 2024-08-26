@@ -50,6 +50,11 @@ const UserLayout = () => {
                     )
                       return;
                     if (
+                      label === "create link" &&
+                      member.permission.subgroup_link !== true
+                    )
+                      return;
+                    if (
                       label === "promotion" &&
                       member.permission.promotion !== true
                     )
@@ -87,6 +92,11 @@ const UserLayout = () => {
                     if (
                       label === "messages" &&
                       member.permission.view_messages !== true
+                    )
+                      return;
+                    if (
+                      label === "view all links" &&
+                      member.permission.view_all_links !== true
                     )
                       return;
 

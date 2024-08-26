@@ -36,6 +36,14 @@ const CreateHeadline = () => {
         <Form method="post" className="form">
           <SelectOption name="category" list={[...Object.values(CATEGORY)]} />
           <FormInput type="text" name="headline" placeholder="happy hour" />
+          <label htmlFor="link">URL Link</label>
+          <input
+            className="link"
+            id="link"
+            type="url"
+            name="link"
+            placeholder="https://discord.gg/afhpsZgV"
+          />
           <br />
           <h6>descritpion</h6>
           <textarea

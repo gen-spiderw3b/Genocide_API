@@ -25,6 +25,12 @@ export const subLinks = [
       },
       {
         id: nanoid(),
+        label: "create link",
+        url: "create/link",
+        view: true,
+      },
+      {
+        id: nanoid(),
         label: "promotion",
         url: "create/promotion",
         view: true,
@@ -81,6 +87,12 @@ export const subLinks = [
         id: nanoid(),
         label: "messages",
         url: "views/messages",
+        view: true,
+      },
+      {
+        id: nanoid(),
+        label: "view all links",
+        url: "views/view-all-links",
         view: true,
       },
     ],

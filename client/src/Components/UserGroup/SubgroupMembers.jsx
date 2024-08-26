@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import customFetch from "../../Utils/customFetch";
 
-const SubgroupMembers = ({ members, subId }) => {
+const SubgroupMembers = ({ members, subId, teamLeader }) => {
   const [isName, setIsName] = useState(false);
   const [useName, setUseName] = useState("");
   const [id, setId] = useState("");
@@ -67,15 +67,12 @@ const SubgroupMembers = ({ members, subId }) => {
     <div>
       <ul className="list">
         {members.map((item) => {
-          const { _id, firstName, permission } = item;
-
+          const { _id, firstName } = item;
           return (
             <li
               key={_id}
               id={_id}
-              className={
-                permission.role === "team leader" ? "teamleader" : "lists"
-              }
+              className={_id === teamLeader ? "teamleader" : "lists"}
               onClick={handleName}
             >
               {firstName}
@@ -96,7 +93,6 @@ const SubgroupMembers = ({ members, subId }) => {
             >
               make team leader
             </button>
-
             <button type="button" onClick={removeMember} className="update-btn">
               remove member
             </button>
@@ -109,5 +105,6 @@ const SubgroupMembers = ({ members, subId }) => {
 SubgroupMembers.propTypes = {
   members: PropTypes.array,
   subId: PropTypes.string,
+  teamLeader: PropTypes.string,
 };
 export default SubgroupMembers;

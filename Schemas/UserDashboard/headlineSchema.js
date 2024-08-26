@@ -8,6 +8,7 @@ const headlineSchema = new mongoose.Schema(
     },
     headline: String,
     desc: String,
+    link: String,
     madeBy: {
       type: mongoose.Types.ObjectId,
       ref: "Investments",

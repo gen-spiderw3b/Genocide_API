@@ -16,7 +16,6 @@ export const loader = async ({ params }) => {
 
 const SelectMembers = () => {
   const { subgroupId } = useParams();
-
   const { groupMembers } = useLoaderData();
   const { members } = groupMembers[0];
 

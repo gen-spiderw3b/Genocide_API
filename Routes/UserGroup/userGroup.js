@@ -12,6 +12,7 @@ import {
   deleteSubgroup,
   processMember,
   viewCreatedSubGroups,
+  viewTeamLeaderGroup,
   allGroups,
   teamLeader,
   removeMember,
@@ -19,6 +20,7 @@ import {
   createPresident,
   createVicePresident,
   createAssociate,
+  updateLink,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
@@ -69,6 +71,7 @@ Subgroup
 */
 router.route("/create-subgroup").post(createSubgroups, createSubgroup);
 router.route("/view-created-subgroups").get(viewCreatedSubGroups);
+router.route("/view-teamleader-group").get(viewTeamLeaderGroup);
 router
   .route("/process-member/:memberId/:subgroupId")
   .patch(checkMember, processMember);
@@ -94,5 +97,12 @@ router
 router
   .route("/create-associate/:groupId/:memberId")
   .patch(promotionValidation, createAssociate);
+
+/*
+  ===============
+  Link
+  ===============
+  */
+router.route("/update-link/:subgroupId").patch(updateLink);
 
 export default router;

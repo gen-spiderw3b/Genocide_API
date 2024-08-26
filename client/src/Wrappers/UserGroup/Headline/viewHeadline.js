@@ -38,6 +38,14 @@ const Wrapper = styled.main`
   .headline h3 {
     color: red;
   }
+  .link {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    color: white;
+  }
+  .link:hover {
+    color: red;
+  }
   .desc p {
     color: white;
     width: 20em;

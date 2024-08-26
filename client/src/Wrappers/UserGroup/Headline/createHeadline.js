@@ -19,6 +19,7 @@ const Wrapper = styled.main`
   .form-input {
     background: white;
     color: red;
+    margin-bottom: 1rem;
   }
   .form-select {
     width: 100%;
@@ -27,6 +28,11 @@ const Wrapper = styled.main`
   }
   h6 {
     color: red;
+  }
+  .link {
+    width: 100%;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
   }
   .desc {
     width: 100%;

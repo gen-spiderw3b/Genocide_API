@@ -33,7 +33,7 @@ const ViewHeadline = () => {
       <div className="title-underline"></div>
       <div className="section-center">
         {viewHeadline.map((item) => {
-          const { _id, category, headline, desc } = item;
+          const { _id, category, headline, desc, link = "none" } = item;
           return (
             <article key={_id} className="article">
               <div className="article-center">
@@ -42,6 +42,9 @@ const ViewHeadline = () => {
                   <h3>{headline}</h3>
                 </div>
                 <div className="desc">
+                  <a className="link" href={link} target="_blank">
+                    {link}
+                  </a>
                   <p>{desc}</p>
                 </div>
               </div>

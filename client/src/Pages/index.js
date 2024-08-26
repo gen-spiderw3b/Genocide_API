@@ -47,6 +47,7 @@ export { default as CreateHeadline } from "./UserGroup/CreateHeadline/CreateHead
 export { default as CreateSchedule } from "./UserGroup/Create Schedule/CreateSchedule";
 export { default as SubGroupLayout } from "./UserGroup/Create Sub Groups/SubGroupLayout";
 export { default as CreateSubGroup } from "./UserGroup/Create Sub Groups/CreateSubGroup";
+export { default as CreateLink } from "./UserGroup/Create Link/CreateLink";
 export { default as ViewSubGroups } from "./UserGroup/Create Sub Groups/ViewSubgroups";
 export { default as SelectMembers } from "./UserGroup/Create Sub Groups/SelectMembers";
 export { default as Promotion } from "./UserGroup/Promotion/Promotion";
@@ -59,6 +60,7 @@ export { default as ViewAllGroups } from "./UserGroup/Views/ViewAllGroups";
 export { default as Messages } from "./UserGroup/Views/Messages";
 export { default as ReadMessages } from "./UserGroup/Views/ReadMessages";
 export { default as Reply } from "./UserGroup/Views/Reply";
+export { default as ViewAllLinks } from "./UserGroup/Views/ViewAllLinks";
 // Action Pages
 export { default as Contact } from "./UserGroup/ActionPages/Contact";
 //End Of User Layout

@@ -34,6 +34,7 @@ import {
   CreateSchedule,
   SubGroupLayout,
   CreateSubGroup,
+  CreateLink,
   SelectMembers,
   Promotion,
   DeleteHeadline,
@@ -47,6 +48,7 @@ import {
   Messages,
   ReadMessages,
   Reply,
+  ViewAllLinks,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -98,6 +100,8 @@ import { loader as deleteScheduleLoader } from "./Pages/UserGroup/Delete Schedul
 import { loader as deleteSubgroupLoader } from "./Pages/UserGroup/Delete Subgroup/DeleteSubgroup";
 import { loader as viewHeadlineLoader } from "./Pages/UserGroup/Views/ViewHeadline";
 import { loader as messageLoader } from "./Pages/UserGroup/Views/Messages";
+import { loader as linkLoader } from "./Pages/UserGroup/Create Link/CreateLink";
+import { loader as viewLinkLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -240,10 +244,10 @@ const router = createBrowserRouter([
                     element: <CreateSchedule />,
                     action: scheduleAction,
                   },
+
                   {
                     path: "create/sub-groups",
                     element: <SubGroupLayout />,
-
                     children: [
                       {
                         path: "create-subgroup",
@@ -265,6 +269,11 @@ const router = createBrowserRouter([
                         action: processAction,
                       },
                     ],
+                  },
+                  {
+                    path: "create/link",
+                    element: <CreateLink />,
+                    loader: linkLoader,
                   },
                   {
                     path: "create/promotion",
@@ -328,6 +337,11 @@ const router = createBrowserRouter([
                     path: "views/view-all-groups",
                     element: <ViewAllGroups />,
                     loader: viewLoader,
+                  },
+                  {
+                    path: "views/view-all-links",
+                    element: <ViewAllLinks />,
+                    loader: viewLinkLoader,
                   },
                   {
                     path: "views/messages",

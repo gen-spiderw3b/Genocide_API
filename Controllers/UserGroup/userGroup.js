@@ -150,6 +150,27 @@ export const viewCreatedSubGroups = async (req, res) => {
   ]);
   res.status(StatusCodes.OK).json({ subgroups });
 };
+//View subGroup As Team ledaer
+export const viewTeamLeaderGroup = async (req, res) => {
+  const teamLeaderGroup = await SubGroup.aggregate([
+    {
+      $match: {
+        teamLeader: mongoose.Types.ObjectId.createFromHexString(
+          req.user.memberId
+        ),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "joinedBy",
+        foreignField: "_id",
+        as: "members",
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ teamLeaderGroup });
+};
 
 //View Both Groups
 export const allGroups = async (req, res) => {
@@ -405,4 +426,22 @@ export const createAssociate = async (req, res) => {
   );
 
   res.status(StatusCodes.OK).json({ msg: "you have selected a new associate" });
+};
+
+/*
+================
+Links
+================
+*/
+
+//TeamLeader Update link
+export const updateLink = async (req, res) => {
+  const updatedLink = await SubGroup.findByIdAndUpdate(
+    req.params.subgroupId,
+    {
+      link: req.body.link,
+    },
+    { new: true }
+  );
+  res.status(StatusCodes.OK).json({ updateLink });
 };
