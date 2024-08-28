@@ -42,9 +42,11 @@ const ViewHeadline = () => {
                   <h3>{headline}</h3>
                 </div>
                 <div className="desc">
-                  <a className="link" href={link} target="_blank">
-                    {link}
-                  </a>
+                  <p className="link">
+                    <a href={link} target="_blank">
+                      {link}
+                    </a>
+                  </p>
                   <p>{desc}</p>
                 </div>
               </div>

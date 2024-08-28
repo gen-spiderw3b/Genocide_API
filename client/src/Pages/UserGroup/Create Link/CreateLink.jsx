@@ -20,7 +20,6 @@ const CreateLink = () => {
   const { teamLeaderGroup } = useLoaderData();
   const [group] = useState(teamLeaderGroup);
   const [url, setUrl] = useState("");
-  const { subgroupName, members, _id } = group[0];
 
   //ErrMessage
   if (group.length === 0) {
@@ -32,6 +31,7 @@ const CreateLink = () => {
   }
   //End Of ErrMessage
 
+  const { subgroupName, members, _id } = group[0];
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = { link: url };

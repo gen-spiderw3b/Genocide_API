@@ -125,6 +125,7 @@ Subgroup
 //Create SubGroup
 export const createSubgroup = async (req, res) => {
   req.body.createdBy = req.user.memberId;
+  req.body.madeBy = req.params.groupId;
   const createdSubgroup = await SubGroup.create(req.body);
   res.status(StatusCodes.CREATED).json({ createdSubgroup });
 };
@@ -444,4 +445,11 @@ export const updateLink = async (req, res) => {
     { new: true }
   );
   res.status(StatusCodes.OK).json({ updateLink });
+};
+
+//View All Links
+export const viewAllLinks = async (req, res) => {
+  const subgroup = await SubGroup.find({ madeBy: req.params.groupId });
+  const headline = await Headline.find({ madeBy: req.params.groupId });
+  res.status(StatusCodes.OK).json({ subgroup, headline });
 };

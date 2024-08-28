@@ -15,6 +15,10 @@ const subGroupSchema = new mongoose.Schema(
         ref: "member",
       },
     ],
+    madeBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "Investments",
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "member",

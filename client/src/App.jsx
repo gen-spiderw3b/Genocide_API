@@ -44,11 +44,12 @@ import {
   ViewSchedule,
   ViewSubGroups,
   ViewAllGroups,
+  ViewAllLinks,
   Contact,
   Messages,
   ReadMessages,
   Reply,
-  ViewAllLinks,
+
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -101,7 +102,7 @@ import { loader as deleteSubgroupLoader } from "./Pages/UserGroup/Delete Subgrou
 import { loader as viewHeadlineLoader } from "./Pages/UserGroup/Views/ViewHeadline";
 import { loader as messageLoader } from "./Pages/UserGroup/Views/Messages";
 import { loader as linkLoader } from "./Pages/UserGroup/Create Link/CreateLink";
-import { loader as viewLinkLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
+import { loader as viewAllLinksLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -338,15 +339,16 @@ const router = createBrowserRouter([
                     element: <ViewAllGroups />,
                     loader: viewLoader,
                   },
-                  {
-                    path: "views/view-all-links",
-                    element: <ViewAllLinks />,
-                    loader: viewLinkLoader,
-                  },
+
                   {
                     path: "views/messages",
                     element: <Messages />,
                     loader: messageLoader,
+                  },
+                  {
+                    path: "views/view-all-links",
+                    element: <ViewAllLinks />,
+                    loader: viewAllLinksLoader,
                   },
                   {
                     path: "read-messages/:groupMemberId",

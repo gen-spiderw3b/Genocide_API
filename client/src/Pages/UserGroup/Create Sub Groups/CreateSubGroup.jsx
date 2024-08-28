@@ -5,11 +5,14 @@ import { toast } from "react-toastify";
 import customFetch from "../../../Utils/customFetch";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const action = async ({ request }) => {
+export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   try {
-    await customFetch.post("/investment/user-group/create-subgroup", data);
+    await customFetch.post(
+      `/investment/user-group/create-subgroup/${params.groupId}`,
+      data
+    );
     toast.success("SubGroup has been created!");
     return redirect("../view-subgroups");
   } catch (error) {

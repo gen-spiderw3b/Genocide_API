@@ -21,3 +21,5 @@ export { default as InvestmentPagination } from "./Pagination/InvestmentPaginati
 export { default as SubgroupMembers } from "./UserGroup/SubgroupMembers";
 export { default as ViewSubgroupTable } from "./UserGroup/ViewSubgroupTable";
 export { default as ViewAllGroupTable } from "./UserGroup/ViewAllGroupTable";
+export { default as ViewSubgroupLink } from "./UserGroup/ViewSubgroupLink";
+export { default as ViewHeadlineLink } from "./UserGroup/ViewHeadlineLink";
