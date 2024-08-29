@@ -59,6 +59,12 @@ export const subLinks = [
         url: "delete/delete-subgroups",
         view: true,
       },
+      {
+        id: nanoid(),
+        label: "delete entire group",
+        url: "delete/entire-group",
+        view: true,
+      },
     ],
   },
   {

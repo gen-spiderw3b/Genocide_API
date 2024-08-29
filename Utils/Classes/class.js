@@ -14,6 +14,7 @@ export const POSITION = {
     delete_headline: true,
     delete_schedule: true,
     delete_subgroups: true,
+    delete_investment_group: true,
     view_headline: true,
     view_schedule: true,
     view_subgroup: true,

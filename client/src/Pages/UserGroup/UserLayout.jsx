@@ -99,6 +99,11 @@ const UserLayout = () => {
                       member.permission.view_all_links !== true
                     )
                       return;
+                    if (
+                      label === "delete entire group" &&
+                      member.permission.delete_investment_group !== true
+                    )
+                      return;
 
                     return (
                       <ul key={id}>

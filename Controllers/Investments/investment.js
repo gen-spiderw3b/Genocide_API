@@ -34,6 +34,18 @@ export const createInvestmentGroup = async (req, res) => {
       new: true,
     }
   );
+  const updateUser = await Member.findOneAndUpdate(
+    { _id: member._id },
+    {
+      groupJoined: mongoose.Types.ObjectId.createFromHexString(
+        group._id.toString()
+      ),
+    },
+
+    {
+      new: true,
+    }
+  );
   res.status(StatusCodes.CREATED).json({ updateGroup });
 };
 
@@ -96,6 +108,17 @@ export const createMember = async (req, res) => {
       new: true,
     }
   );
+  const updateUser = await Member.findOneAndUpdate(
+    { _id: member._id },
+    {
+      groupJoined: mongoose.Types.ObjectId.createFromHexString(
+        group._id.toString()
+      ),
+    },
 
+    {
+      new: true,
+    }
+  );
   res.status(StatusCodes.CREATED).json({ member, group });
 };

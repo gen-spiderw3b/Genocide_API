@@ -3,7 +3,7 @@ const ViewSubgroupLink = ({ subgroup }) => {
   if (subgroup.length === 0) {
     return (
       <div>
-        <h2 className="error-msg">no headline links</h2>
+        <h2 className="error-msg">no subgroup links</h2>
       </div>
     );
   }

@@ -453,3 +453,22 @@ export const viewAllLinks = async (req, res) => {
   const headline = await Headline.find({ madeBy: req.params.groupId });
   res.status(StatusCodes.OK).json({ subgroup, headline });
 };
+
+/*
+=======================
+Delete Investment Group
+=======================
+*/
+
+//Delete Investment Group
+export const deleteInvestmentGroup = async (req, res) => {
+  const deleteGroup = await Investment.findByIdAndDelete(req.params.groupId);
+  const deleteAllMembers = await Member.deleteMany({
+    groupJoined: mongoose.Types.ObjectId.createFromHexString(
+      req.params.groupId
+    ),
+  });
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "you have deleted this investment group!" });
+};

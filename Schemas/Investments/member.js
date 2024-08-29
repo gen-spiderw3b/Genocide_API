@@ -14,6 +14,10 @@ const Member = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "users",
     },
+    groupJoined: {
+      type: mongoose.Types.ObjectId,
+      ref: "investments",
+    },
     messageReceived: [
       {
         type: mongoose.Types.ObjectId,

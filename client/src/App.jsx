@@ -49,7 +49,7 @@ import {
   Messages,
   ReadMessages,
   Reply,
-
+  DeleteEntireGroup,
   //End Of User Groups Layout
   Education,
   UpdateUser,
@@ -367,6 +367,10 @@ const router = createBrowserRouter([
                     path: "contact/:groupMemberId",
                     element: <Contact />,
                     action: contactAction,
+                  },
+                  {
+                    path: "delete/entire-group",
+                    element: <DeleteEntireGroup />,
                   },
                 ],
               },
