@@ -40,6 +40,7 @@ import {
   DeleteHeadline,
   DeleteSchedule,
   DeleteSubgroup,
+  DeleteSelf,
   ViewHeadline,
   ViewSchedule,
   ViewSubGroups,
@@ -373,6 +374,10 @@ const router = createBrowserRouter([
                   {
                     path: "delete/entire-group",
                     element: <DeleteEntireGroup />,
+                  },
+                  {
+                    path: "delete/leave-group",
+                    element: <DeleteSelf />,
                   },
                 ],
               },

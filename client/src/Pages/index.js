@@ -62,6 +62,7 @@ export { default as ReadMessages } from "./UserGroup/Views/ReadMessages";
 export { default as Reply } from "./UserGroup/Views/Reply";
 export { default as ViewAllLinks } from "./UserGroup/Views/ViewAllLinks";
 export { default as DeleteEntireGroup } from "./UserGroup/Delete Entire Group/DeleteEntireGroup";
+export { default as DeleteSelf } from "./UserGroup/Delete Self/DeleteSelf";
 
 // Action Pages
 export { default as Contact } from "./UserGroup/ActionPages/Contact";

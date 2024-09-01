@@ -104,6 +104,11 @@ const UserLayout = () => {
                       member.permission.delete_investment_group !== true
                     )
                       return;
+                    if (
+                      label === "leave group" &&
+                      member.permission.leave_group !== true
+                    )
+                      return;
 
                     return (
                       <ul key={id}>

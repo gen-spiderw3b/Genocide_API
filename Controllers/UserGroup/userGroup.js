@@ -472,3 +472,22 @@ export const deleteInvestmentGroup = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ msg: "you have deleted this investment group!" });
 };
+
+/*
+===========
+Delete Self
+===========
+*/
+export const deleteSelf = async (req, res) => {
+  const removeFromGroup = await Investment.findByIdAndUpdate(
+    req.params.groupId,
+    {
+      $pull: { joinedBy: req.user.memberId, authorize: req.user.userId },
+    },
+    { new: true }
+  );
+  const deleteSelf = await Member.findByIdAndDelete(req.user.memberId);
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "you have left  this investment group!" });
+};

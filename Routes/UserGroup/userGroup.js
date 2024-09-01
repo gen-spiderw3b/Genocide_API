@@ -23,6 +23,7 @@ import {
   updateLink,
   viewAllLinks,
   deleteInvestmentGroup,
+  deleteSelf,
 } from "../../Controllers/UserGroup/userGroup.js";
 import {
   createHeadlineValidate,
@@ -115,5 +116,6 @@ router.route("/view-all-links/:groupId").get(viewAllLinks);
   */
 
 router.route("/delete-group/:groupId").delete(deleteInvestmentGroup);
+router.route("/leave-group/:groupId").delete(deleteSelf);
 
 export default router;
