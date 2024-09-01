@@ -23,3 +23,7 @@ export { default as ViewSubgroupTable } from "./UserGroup/ViewSubgroupTable";
 export { default as ViewAllGroupTable } from "./UserGroup/ViewAllGroupTable";
 export { default as ViewSubgroupLink } from "./UserGroup/ViewSubgroupLink";
 export { default as ViewHeadlineLink } from "./UserGroup/ViewHeadlineLink";
+export { default as Profile } from "./User Profile/Profile";
+export { default as InvestmentProfile } from "./User Profile/InvestmentProfile";
+export { default as ImageProfile } from "./User Profile/ImageProfile";
+export { default as EducationProfile } from "./User Profile/EducationProfile";

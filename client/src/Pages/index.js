@@ -72,7 +72,7 @@ export { default as Education } from "./Education/Education";
 //End Of Education
 
 //User Profile
-export { default as UpdateUser } from "./User/UpdateUser";
+export { default as UserProfile } from "./User/UserProfile";
 //End Of User Profile
 
 //WarRoutes

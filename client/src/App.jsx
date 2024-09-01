@@ -52,7 +52,7 @@ import {
   DeleteEntireGroup,
   //End Of User Groups Layout
   Education,
-  UpdateUser,
+  UserProfile,
 } from "./Pages/index";
 
 //Actions
@@ -81,6 +81,7 @@ import { action as deleteDateAction } from "./Pages/UserGroup/ActionPages/Delete
 import { action as deleteSubgroupAction } from "./Pages/UserGroup/ActionPages/DeleteSubgroup";
 import { action as replyAction } from "./Pages/UserGroup/Views/Reply";
 import { action as deleteMessageAction } from "./Pages/UserGroup/ActionPages/DeleteMessage";
+import { action as updateProfileAction } from "./Pages/User/UserProfile";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -103,6 +104,7 @@ import { loader as viewHeadlineLoader } from "./Pages/UserGroup/Views/ViewHeadli
 import { loader as messageLoader } from "./Pages/UserGroup/Views/Messages";
 import { loader as linkLoader } from "./Pages/UserGroup/Create Link/CreateLink";
 import { loader as viewAllLinksLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
+import { loader as profileLoader } from "./Pages/User/UserProfile";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -384,8 +386,10 @@ const router = createBrowserRouter([
           },
           //Update User
           {
-            path: "user/update-users",
-            element: <UpdateUser />,
+            path: "user/user-profile",
+            element: <UserProfile />,
+            loader: profileLoader,
+            action: updateProfileAction,
           },
           //Version
           {
