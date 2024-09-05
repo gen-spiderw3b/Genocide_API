@@ -5,7 +5,7 @@ import { IoNewspaperSharp } from "react-icons/io5";
 import { GiBabyfootPlayers } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
-
+import { GiMeatCleaver } from "react-icons/gi";
 //NanoId
 import { nanoid } from "nanoid";
 
@@ -97,6 +97,12 @@ const subLinks = [
         label: "user profile",
         icon: <FaUserSecret />,
         url: "user/user-profile",
+      },
+      {
+        id: nanoid(),
+        label: "leave organization",
+        icon: <GiMeatCleaver />,
+        url: "user/leave-org",
       },
     ],
   },

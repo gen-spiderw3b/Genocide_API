@@ -63,6 +63,7 @@ export { default as Reply } from "./UserGroup/Views/Reply";
 export { default as ViewAllLinks } from "./UserGroup/Views/ViewAllLinks";
 export { default as DeleteEntireGroup } from "./UserGroup/Delete Entire Group/DeleteEntireGroup";
 export { default as DeleteSelf } from "./UserGroup/Delete Self/DeleteSelf";
+export { default as EmergencyPresident } from "./UserGroup/Emergency/EmergencyPresident";
 
 // Action Pages
 export { default as Contact } from "./UserGroup/ActionPages/Contact";
@@ -74,6 +75,7 @@ export { default as Education } from "./Education/Education";
 
 //User Profile
 export { default as UserProfile } from "./User/UserProfile";
+export { default as LeaveOrg } from "./User/LeaveOrg";
 //End Of User Profile
 
 //WarRoutes

@@ -1,4 +1,5 @@
-import { Outlet, useLoaderData, NavLink } from "react-router-dom";
+import { Outlet, useLoaderData, NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Wrapper from "../../Wrappers/UserGroup/userLayout";
 import customFetch from "../../Utils/customFetch";
 import { subLinks } from "../../Utils/InvestmentData";
@@ -17,7 +18,17 @@ export const loader = async ({ params }) => {
 };
 
 const UserLayout = () => {
-  const { member } = useLoaderData();
+  const { member, groupMembers, checkPresident } = useLoaderData();
+  const [isTrue] = useState(checkPresident);
+  const { members } = groupMembers[0];
+  const nav = useNavigate();
+
+  useEffect(() => {
+    //Check If President Exists
+    if (isTrue.length === 0) {
+      return nav("emergency");
+    }
+  }, [isTrue.length, nav]);
 
   return (
     <Wrapper>
@@ -122,10 +133,12 @@ const UserLayout = () => {
           );
         })}
       </aside>
+
       <div className="main">
-        <Outlet context={{ member }} />
+        <Outlet context={{ member, members }} />
       </div>
     </Wrapper>
   );
 };
+
 export default UserLayout;

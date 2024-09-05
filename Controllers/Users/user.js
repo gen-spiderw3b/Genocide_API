@@ -1,7 +1,8 @@
 import Investment from "../../Schemas/Investments/investments.js";
 import Member from "../../Schemas/Investments/member.js";
-import { StatusCodes } from "http-status-codes";
+import War from "../../Schemas/War/war.js";
 import Users from "../../Schemas/userSchema.js";
+import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 
 //Get Current User
@@ -62,4 +63,25 @@ export const updateProfile = async (req, res) => {
     { new: true }
   );
   res.status(StatusCodes.OK).json({ msg: "you have updated this user!" });
+};
+
+/*
+==================
+Leave Organization
+==================
+*/
+
+export const leaveOrg = async (req, res) => {
+  const investment = await Investment.find({
+    authorize: req.user.userId,
+  }).countDocuments();
+
+  if (investment > 0) {
+    throw new Error("you have to leave all investment groups first!");
+  } else {
+    const war = await War.deleteMany({ createdBy: req.user.userId });
+    const member = await Member.deleteMany({ createdBy: req.user.userId });
+    const user = await Users.findByIdAndDelete({ _id: req.user.userId });
+  }
+  res.status(StatusCodes.OK).json({ msg: "you have left genocide" });
 };

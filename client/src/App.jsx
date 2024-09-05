@@ -51,9 +51,11 @@ import {
   ReadMessages,
   Reply,
   DeleteEntireGroup,
+  EmergencyPresident,
   //End Of User Groups Layout
   Education,
   UserProfile,
+  LeaveOrg,
 } from "./Pages/index";
 
 //Actions
@@ -239,6 +241,10 @@ const router = createBrowserRouter([
                 loader: userGroupLoader,
                 children: [
                   {
+                    path: "emergency",
+                    element: <EmergencyPresident />,
+                  },
+                  {
                     path: "create/create-headline",
                     element: <CreateHeadline />,
                     action: headlineAction,
@@ -395,6 +401,10 @@ const router = createBrowserRouter([
             element: <UserProfile />,
             loader: profileLoader,
             action: updateProfileAction,
+          },
+          {
+            path: "user/leave-org",
+            element: <LeaveOrg />,
           },
           //Version
           {
