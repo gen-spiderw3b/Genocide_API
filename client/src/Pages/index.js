@@ -25,6 +25,7 @@ export { default as VersionInfo } from "./VersionInfo/VersionInfo";
 
 //Headline
 export { default as Headline } from "./Headline/Headline";
+export { default as DashViewHeadline } from "./Headline/DashViewHeadline";
 //End Of Headline
 
 //Static Groups

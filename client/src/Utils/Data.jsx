@@ -6,6 +6,7 @@ import { GiBabyfootPlayers } from "react-icons/gi";
 import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
 import { GiMeatCleaver } from "react-icons/gi";
+import { GiNewspaper } from "react-icons/gi";
 //NanoId
 import { nanoid } from "nanoid";
 
@@ -19,6 +20,12 @@ const subLinks = [
         label: "bulletBoard",
         icon: <IoNewspaperSharp />,
         url: ".",
+      },
+      {
+        id: nanoid(),
+        label: "view headline",
+        icon: <GiNewspaper />,
+        url: "view-headline",
       },
     ],
   },

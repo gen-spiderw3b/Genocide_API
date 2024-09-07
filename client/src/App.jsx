@@ -8,6 +8,7 @@ import {
   Error,
   VersionInfo,
   Headline,
+  DashViewHeadline,
   //War
   WarLayout,
   CreateGroup,
@@ -85,6 +86,7 @@ import { action as deleteSubgroupAction } from "./Pages/UserGroup/ActionPages/De
 import { action as replyAction } from "./Pages/UserGroup/Views/Reply";
 import { action as deleteMessageAction } from "./Pages/UserGroup/ActionPages/DeleteMessage";
 import { action as updateProfileAction } from "./Pages/User/UserProfile";
+import { action as dashboardHeadlineAction } from "./Pages/Headline/Headline";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -108,6 +110,7 @@ import { loader as messageLoader } from "./Pages/UserGroup/Views/Messages";
 import { loader as linkLoader } from "./Pages/UserGroup/Create Link/CreateLink";
 import { loader as viewAllLinksLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
 import { loader as profileLoader } from "./Pages/User/UserProfile";
+import { loader as dashViewHeadlineLoader } from "./Pages/Headline/DashViewHeadline";
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -120,6 +123,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+
       {
         path: "register",
         element: <Register />,
@@ -140,6 +144,12 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Headline />,
+            action: dashboardHeadlineAction,
+          },
+          {
+            path: "view-headline",
+            element: <DashViewHeadline />,
+            loader: dashViewHeadlineLoader,
           },
           //War
           {

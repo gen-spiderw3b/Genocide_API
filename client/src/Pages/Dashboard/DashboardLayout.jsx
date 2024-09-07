@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData, redirect, useNavigate } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Wrapper from "../../Wrappers/DashboardLayout/dashboardLayout";
 import { useState, useContext, createContext } from "react";
 import customFetch from "../../Utils/customFetch";
@@ -15,7 +15,7 @@ export const loader = async () => {
     const { data } = await customFetch.get("users/current-user");
     return data;
   } catch (error) {
-    return redirect("/");
+    return error;
   }
 };
 

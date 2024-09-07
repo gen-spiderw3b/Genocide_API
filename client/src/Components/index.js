@@ -27,3 +27,4 @@ export { default as Profile } from "./User Profile/Profile";
 export { default as InvestmentProfile } from "./User Profile/InvestmentProfile";
 export { default as ImageProfile } from "./User Profile/ImageProfile";
 export { default as EducationProfile } from "./User Profile/EducationProfile";
+export { default as DashViewPagination } from "./Pagination/DashViewPagination";

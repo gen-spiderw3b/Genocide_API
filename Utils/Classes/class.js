@@ -104,3 +104,8 @@ export const CATEGORY = {
   GENERAL: "general",
   MEET_UP: "meet up",
 };
+export const DASHCATEGORY = {
+  GENERAL: "general",
+  MEET_UP: "meet up",
+  CONGRATZ: "congratulations",
+};

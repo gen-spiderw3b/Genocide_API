@@ -14,6 +14,7 @@ import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
 import warRoutes from "./Routes/War/war.js";
 import UserAuthRouter from "./Routes/Users/user.js";
+import DashboardRouter from "./Routes/Dashboard/dashboard.js";
 import InvestmentRouter from "./Routes/Investments/investment.js";
 import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
@@ -35,6 +36,7 @@ if ((process.env.NODE_ENV = "development")) {
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
+app.use("/api/v1/dash", authMiddleWare, DashboardRouter);
 app.use("/api/v1/war", authMiddleWare, warRoutes);
 app.use("/api/v1/investment", authMiddleWare, InvestmentRouter);
 app.use(
