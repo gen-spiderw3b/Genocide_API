@@ -1,8 +1,13 @@
 import DashHeadline from "../../Schemas/Dashboard/dash_headline.js";
-import Schedule from "../../Schemas/UserDashboard/scheduleSchema.js";
+import DashSchedule from "../../Schemas/Dashboard/dashScheduleSchema.js";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 
+/*
+==============
+DASH HEADLINES
+==============
+*/
 //Create Headline
 export const createHeadline = async (req, res) => {
   req.body.madeBy = req.user.userId;
@@ -27,4 +32,35 @@ export const deleteHeadlines = async (req, res) => {
     _id: req.params.id,
   });
   res.status(StatusCodes.CREATED).json({ msg: "you have deleted a headline" });
+};
+
+/*
+=============
+DASH SCHEDULE
+=============
+*/
+
+//Create Schedule
+export const createSchedule = async (req, res) => {
+  const date = await DashSchedule.create({
+    title: req.body.title,
+    start: req.body.start,
+    start_time: `${req.body.start} ${req.body.start_time}`,
+    end: req.body.end,
+    end_time: `${req.body.end} ${req.body.end_time}`,
+    createdBy: req.user.userId,
+  });
+  res.status(StatusCodes.CREATED).json({ date });
+};
+
+//Get Schedule
+export const getSchedule = async (req, res) => {
+  const schedule = await DashSchedule.find({});
+  res.status(StatusCodes.OK).json({ schedule });
+};
+
+//Delete Schedule
+export const deleteDates = async (req, res) => {
+  const date = await Schedule.findOneAndDelete({ _id: req.params.id });
+  res.status(StatusCodes.OK).json({ msg: "date deleted!" });
 };

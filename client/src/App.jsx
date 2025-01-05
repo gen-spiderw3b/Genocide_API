@@ -8,6 +8,8 @@ import {
   Error,
   VersionInfo,
   Headline,
+  DashSchedule,
+  ViewDashSchedule,
   DashViewHeadline,
   //War
   WarLayout,
@@ -54,9 +56,16 @@ import {
   DeleteEntireGroup,
   EmergencyPresident,
   //End Of User Groups Layout
+  //Education
   Education,
+  Upload,
+  Courses,
+  ViewCourse,
+  //End Of Education
+  //USER PROFILE
   UserProfile,
   LeaveOrg,
+  //END Of USER PROFILE
 } from "./Pages/index";
 
 //Actions
@@ -87,6 +96,7 @@ import { action as replyAction } from "./Pages/UserGroup/Views/Reply";
 import { action as deleteMessageAction } from "./Pages/UserGroup/ActionPages/DeleteMessage";
 import { action as updateProfileAction } from "./Pages/User/UserProfile";
 import { action as dashboardHeadlineAction } from "./Pages/Headline/Headline";
+import { action as dashScheduleAction } from "./Pages/Schedule/DashSchedule";
 
 //Loaders
 import { loader as dashboardLoader } from "./Pages/Dashboard/DashboardLayout";
@@ -111,6 +121,9 @@ import { loader as linkLoader } from "./Pages/UserGroup/Create Link/CreateLink";
 import { loader as viewAllLinksLoader } from "./Pages/UserGroup/Views/ViewAllLinks";
 import { loader as profileLoader } from "./Pages/User/UserProfile";
 import { loader as dashViewHeadlineLoader } from "./Pages/Headline/DashViewHeadline";
+import { loader as viewDashScheduleLoader } from "./Pages/Schedule/ViewDashSchedule";
+
+//Fallbacks
 
 const router = createBrowserRouter([
   //HomeLayout
@@ -140,7 +153,7 @@ const router = createBrowserRouter([
         element: <DashboardLayout />,
         loader: dashboardLoader,
         children: [
-          // Headline
+          //Headline
           {
             index: true,
             element: <Headline />,
@@ -151,6 +164,19 @@ const router = createBrowserRouter([
             element: <DashViewHeadline />,
             loader: dashViewHeadlineLoader,
           },
+          //End Of Headline
+          //DashSchedule
+          {
+            path: "create-schedule",
+            element: <DashSchedule />,
+            action: dashScheduleAction,
+          },
+          {
+            path: "view-schedule",
+            element: <ViewDashSchedule />,
+            loader: viewDashScheduleLoader,
+          },
+          //End Of DashSchedule
           //War
           {
             path: "war/",
@@ -404,6 +430,21 @@ const router = createBrowserRouter([
           {
             path: "education",
             element: <Education />,
+            children: [
+              {
+                index: true,
+                path: "view-course",
+                element: <ViewCourse />,
+              },
+              {
+                path: "courses",
+                element: <Courses />,
+              },
+              {
+                path: "upload",
+                element: <Upload />,
+              },
+            ],
           },
           //Update User
           {

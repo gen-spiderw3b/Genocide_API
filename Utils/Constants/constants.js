@@ -95,3 +95,11 @@ export const STATES = {
   WI: "Wisconsin",
   WY: "Wyoming",
 };
+
+export const COURSES = {
+  MATH: "math",
+  READING: "reading",
+  HISTORY: "history",
+  SCIENCE: "science",
+  ENGLISH: "english",
+};

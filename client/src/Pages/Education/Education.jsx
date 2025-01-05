@@ -1,4 +1,11 @@
+import Wrapper from "../../Wrappers/Education/education";
+import { Outlet } from "react-router-dom";
+
 const Education = () => {
-  return <div>Education</div>;
+  return (
+    <Wrapper>
+      <Outlet />
+    </Wrapper>
+  );
 };
 export default Education;

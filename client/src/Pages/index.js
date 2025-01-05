@@ -28,6 +28,11 @@ export { default as Headline } from "./Headline/Headline";
 export { default as DashViewHeadline } from "./Headline/DashViewHeadline";
 //End Of Headline
 
+//Dash Schedule
+export { default as DashSchedule } from "./Schedule/DashSchedule";
+export { default as ViewDashSchedule } from "./Schedule/ViewDashSchedule";
+//End Of Schedule
+
 //Static Groups
 export { default as InvestmentLayout } from "./Groups/InvestmentLayout";
 export { default as BrowseAllGroups } from "./Groups/BrowseAllGroups";
@@ -72,6 +77,9 @@ export { default as Contact } from "./UserGroup/ActionPages/Contact";
 
 //Education
 export { default as Education } from "./Education/Education";
+export { default as Upload } from "./Education/Upload";
+export { default as Courses } from "./Education/Courses";
+export { default as ViewCourse } from "./Education/ViewCourse";
 //End Of Education
 
 //User Profile

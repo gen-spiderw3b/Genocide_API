@@ -8,7 +8,9 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
 import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
 dotenv.config();
+
 //Custom Imports
 import errorHandler from "./Middleware/ErrorHandler/errorHandlerMiddleware.js";
 import UserRouter from "./Routes/userRoutes.js";
@@ -19,6 +21,7 @@ import InvestmentRouter from "./Routes/Investments/investment.js";
 import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
 import ContactRouter from "./Routes/Contact/contact.js";
+import EducationRouter from "./Routes/Education/fileUpload.js";
 //Test
 import TestRouter from "./Routes/test.js";
 //Dashboard Auth
@@ -29,7 +32,7 @@ const app = express();
 const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(fileUpload());
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
 }
@@ -46,10 +49,11 @@ app.use(
 );
 app.use("/api/v1/investment/user-group", authMiddleWare, UserGroupRouter);
 app.use("/api/v1/investment/user-group/contact", authMiddleWare, ContactRouter);
+app.use("/api/v1/education", authMiddleWare, EducationRouter);
 app.use("/api/v1/test", TestRouter);
+
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 app.get("*", (req, res) => {

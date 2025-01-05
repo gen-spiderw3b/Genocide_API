@@ -7,6 +7,9 @@ import { IoCreate } from "react-icons/io5";
 import { FaUserSecret } from "react-icons/fa6";
 import { GiMeatCleaver } from "react-icons/gi";
 import { GiNewspaper } from "react-icons/gi";
+import { AiFillSchedule } from "react-icons/ai";
+import { GrSchedules } from "react-icons/gr";
+
 //NanoId
 import { nanoid } from "nanoid";
 
@@ -26,6 +29,18 @@ const subLinks = [
         label: "view headline",
         icon: <GiNewspaper />,
         url: "view-headline",
+      },
+      {
+        id: nanoid(),
+        label: "create schedule",
+        icon: <AiFillSchedule />,
+        url: "create-schedule",
+      },
+      {
+        id: nanoid(),
+        label: "view schedule",
+        icon: <GrSchedules />,
+        url: "view-schedule",
       },
     ],
   },
@@ -65,9 +80,15 @@ const subLinks = [
     links: [
       {
         id: nanoid(),
-        label: "juniorDeveloper",
+        label: "course selection",
         icon: <SiBookstack />,
         url: "education",
+      },
+      {
+        id: nanoid(),
+        label: "upload course",
+        icon: <SiBookstack />,
+        url: "education/upload",
       },
     ],
   },
