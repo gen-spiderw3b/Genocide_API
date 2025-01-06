@@ -434,7 +434,7 @@ const router = createBrowserRouter(
               children: [
                 {
                   index: true,
-                  path: "view-course",
+                  // path: "view-course",
                   element: <ViewCourse />,
                 },
                 {

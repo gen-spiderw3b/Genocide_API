@@ -54,10 +54,10 @@ app.use("/api/v1/test", TestRouter);
 
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
 });
 //End Of Building Front-End Progomatically
 
