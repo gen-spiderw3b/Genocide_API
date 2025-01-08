@@ -97,7 +97,7 @@ export const fileUpload = async (req, res) => {
           await file.mv(filePath);
           return res.status(StatusCodes.CREATED).json({
             file: {
-              src: `/upload/${file.name}`,
+              src: `/upload/${course}/${section}/${file.name}`,
               msg: "file has been uploaded succesfully",
             },
           });

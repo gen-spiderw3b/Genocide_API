@@ -21,7 +21,6 @@ const Courses = () => {
   const { course } = useLoaderData();
   const [isVideo, setIsVideo] = useState("");
   const newSection = course.map(({ newSection }) => newSection);
-  console.log(isVideo);
 
   return (
     <Wrapper>

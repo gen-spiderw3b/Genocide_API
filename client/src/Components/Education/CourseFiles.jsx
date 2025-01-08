@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
-import { FaRegPlayCircle } from "react-icons/fa";
+import { FaPlayCircle } from "react-icons/fa";
 const CourseFiles = ({ files, videoFunc }) => {
   return (
     <div>
-      <ul>
+      <ul className="list-container">
         {files.map((item) => {
           const { _id, title, src } = item;
           return (
-            <li key={_id}>
-              <p>{title}</p>
-              <button type="button" onClick={() => videoFunc(src)}>
-                <FaRegPlayCircle />
+            <li key={_id} className="list">
+              <p className="title">{title}</p>
+              <button
+                type="button"
+                className="icon"
+                onClick={() => videoFunc(src)}
+              >
+                <FaPlayCircle />
               </button>
             </li>
           );
