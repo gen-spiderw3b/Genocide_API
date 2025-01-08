@@ -1,8 +1,25 @@
+import Wrapper from "../../Wrappers/Education/viewCourse";
+import { useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 const ViewCourse = () => {
+  const { courses } = useOutletContext();
   return (
-    <div>
-      <video src="/upload/math/1/section1-1.mp4" controls></video>
-    </div>
+    <Wrapper>
+      <div className="section-center">
+        {courses.map((items) => {
+          const { _id, course, section } = items;
+          return (
+            <article key={_id} className="article">
+              <div className="title">
+                <h2>{course}</h2>
+              </div>
+              <p className="section-length">{`${section.length} sections`}</p>
+              <Link to={`course/${_id}`}>{`go to ${course}`}</Link>
+            </article>
+          );
+        })}
+      </div>
+    </Wrapper>
   );
 };
 export default ViewCourse;

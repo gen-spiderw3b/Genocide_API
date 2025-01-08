@@ -33,7 +33,6 @@ const Upload = () => {
         setIsSection(true);
         toast.success(data.data.msg);
       }
-      console.log(data);
 
       return;
     } catch (error) {

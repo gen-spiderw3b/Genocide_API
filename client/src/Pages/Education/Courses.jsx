@@ -1,4 +1,37 @@
+import { CourseSection, VideoFile } from "../../Components/index";
+import Wrapper from "../../Wrappers/Education/course";
+import customFetch from "../../Utils/customFetch";
+import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useState } from "react";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const loader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(
+      `/education/course/${params.courseId}`
+    );
+    return data;
+  } catch (error) {
+    return toast.error(error?.response?.data?.msg);
+  }
+};
+
 const Courses = () => {
-  return <div>Courses</div>;
+  const { course } = useLoaderData();
+  const [isVideo, setIsVideo] = useState("");
+  const newSection = course.map(({ newSection }) => newSection);
+  console.log(isVideo);
+
+  return (
+    <Wrapper>
+      <div className="video">
+        <VideoFile video={isVideo} />
+      </div>
+      <div className="section">
+        <CourseSection section={newSection} videoFunc={setIsVideo} />
+      </div>
+    </Wrapper>
+  );
 };
 export default Courses;

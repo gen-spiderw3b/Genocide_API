@@ -28,3 +28,7 @@ export { default as InvestmentProfile } from "./User Profile/InvestmentProfile";
 export { default as ImageProfile } from "./User Profile/ImageProfile";
 export { default as EducationProfile } from "./User Profile/EducationProfile";
 export { default as DashViewPagination } from "./Pagination/DashViewPagination";
+export { default as CourseSection } from "./Education/CourseSection";
+export { default as CourseSectionInnerArray } from "./Education/CourseSectionInnerArray";
+export { default as CourseFiles } from "./Education/CourseFiles";
+export { default as VideoFile } from "./Education/VideoFile";
