@@ -61,6 +61,8 @@ import {
   Upload,
   Courses,
   ViewCourse,
+  Update,
+  Edit,
   //End Of Education
   //USER PROFILE
   UserProfile,
@@ -124,6 +126,9 @@ import { loader as dashViewHeadlineLoader } from "./Pages/Headline/DashViewHeadl
 import { loader as viewDashScheduleLoader } from "./Pages/Schedule/ViewDashSchedule";
 import { loader as courseLoader } from "./Pages/Education/Education";
 import { loader as singleCourseLoader } from "./Pages/Education/Courses";
+import { loader as updateLoader } from "./Pages/Education/Update";
+import { loader as editLoader } from "./Pages/Education/Edit";
+
 //Fallbacks
 import { Fallback } from "./Utils/FallBack";
 const router = createBrowserRouter([
@@ -474,6 +479,18 @@ const router = createBrowserRouter([
               {
                 path: "upload",
                 element: <Upload />,
+              },
+              {
+                path: "update",
+                element: <Update />,
+                loader: updateLoader,
+                HydrateFallback: Fallback,
+              },
+              {
+                path: "edit/:courseId",
+                element: <Edit />,
+                loader: editLoader,
+                HydrateFallback: Fallback,
               },
             ],
           },

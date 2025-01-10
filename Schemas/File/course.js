@@ -12,6 +12,10 @@ const Course = new mongoose.Schema(
         ref: "section",
       },
     ],
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
+    },
   },
   { timestamps: true }
 );

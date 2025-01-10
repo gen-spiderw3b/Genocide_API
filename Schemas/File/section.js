@@ -12,6 +12,10 @@ const Section = new mongoose.Schema(
         ref: "file",
       },
     ],
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
+    },
   },
   { timestamps: true }
 );

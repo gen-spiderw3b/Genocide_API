@@ -90,6 +90,12 @@ const subLinks = [
         icon: <SiBookstack />,
         url: "education/upload",
       },
+      {
+        id: nanoid(),
+        label: "update course",
+        icon: <SiBookstack />,
+        url: "education/update",
+      },
     ],
   },
   {

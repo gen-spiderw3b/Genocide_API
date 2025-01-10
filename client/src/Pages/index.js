@@ -80,6 +80,8 @@ export { default as Education } from "./Education/Education";
 export { default as Upload } from "./Education/Upload";
 export { default as Courses } from "./Education/Courses";
 export { default as ViewCourse } from "./Education/ViewCourse";
+export { default as Update } from "./Education/Update";
+export { default as Edit } from "./Education/Edit";
 //End Of Education
 
 //User Profile

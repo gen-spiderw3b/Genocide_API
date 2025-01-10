@@ -6,8 +6,18 @@ import mongoose from "mongoose";
 
 export const createFullCourse = async (req, res) => {
   const { course, section, title, src } = req.body;
-  const file = await File.create({ title: title, src: src });
-  const newSection = await Section.create({ section: section });
+
+  const file = await File.create({
+    title: title,
+    src: src,
+    createdBy: req.user.userId,
+  });
+
+  const newSection = await Section.create({
+    section: section,
+    createdBy: req.user.userId,
+  });
+
   const uploadSection = await Section.findByIdAndUpdate(
     { _id: newSection._id },
     {
@@ -17,7 +27,12 @@ export const createFullCourse = async (req, res) => {
       new: true,
     }
   );
-  const newCourse = await Course.create({ course: course });
+
+  const newCourse = await Course.create({
+    course: course,
+    createdBy: req.user.userId,
+  });
+
   const uploadCourse = await Course.findByIdAndUpdate(
     { _id: newCourse._id },
     {
