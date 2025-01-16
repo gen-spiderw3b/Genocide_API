@@ -49,13 +49,13 @@ const Edit = () => {
       </div>
       <div className="section-center">
         {/* section */}
-        {section ? <AddSection /> : null}
+        {section ? <AddSection course={course} /> : null}
         {/*  Removesection */}
-        {removeSection ? <RemoveSection /> : null}
+        {removeSection ? <RemoveSection course={course} /> : null}
         {/*  file */}
-        {file ? <AddFile /> : null}
+        {file ? <AddFile course={course} /> : null}
         {/*  Remove file */}
-        {removeFile ? <RemoveFile /> : null}
+        {removeFile ? <RemoveFile course={course} /> : null}
         {section || removeSection || file || removeFile ? (
           <div className="data-true">
             <EditData course={course} />

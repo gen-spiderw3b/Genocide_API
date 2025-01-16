@@ -6,8 +6,9 @@ import mongoose from "mongoose";
 
 export const createFullCourse = async (req, res) => {
   const { course, section, title, src } = req.body;
-
   const file = await File.create({
+    course: course,
+    section: section,
     title: title,
     src: src,
     createdBy: req.user.userId,
@@ -15,6 +16,7 @@ export const createFullCourse = async (req, res) => {
 
   const newSection = await Section.create({
     section: section,
+    course: course,
     createdBy: req.user.userId,
   });
 

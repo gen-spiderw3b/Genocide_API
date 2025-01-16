@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const Section = new mongoose.Schema(
   {
+    course: {
+      type: String,
+      required: true,
+    },
     section: {
       type: Number,
       required: true,

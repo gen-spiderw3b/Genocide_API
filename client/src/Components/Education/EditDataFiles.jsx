@@ -6,9 +6,8 @@ const EditDataFiles = ({ files }) => {
       {files.map((item) => {
         const { _id, title, src } = item;
         return (
-          <div key={_id}>
+          <div className="file-div" key={_id}>
             <div className="title">
-              <h3>files</h3>
               <p>title:{title}</p>
               <p>src:{src}</p>
             </div>

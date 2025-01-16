@@ -9,7 +9,15 @@ import {
   getAllCourses,
   getCourse,
 } from "../../Controllers/Education/course.js";
-import { findCourses, findCourse } from "../../Controllers/Education/update.js";
+import {
+  findCourses,
+  findCourse,
+  addSection,
+  removeSection,
+  addFile,
+  addFileSubmit,
+  removeFile,
+} from "../../Controllers/Education/update.js";
 const router = Router();
 
 //Create Course
@@ -25,5 +33,18 @@ router.route("/course/:courseId").get(getCourse);
 //Update
 router.route("/my-course").get(findCourses);
 router.route("/my-course/:courseId").get(findCourse);
+
+//Add Section
+router.route("/my-course/add-section").post(addSection);
+
+//Remove Section
+router.route("/my-course/remove-section").post(removeSection);
+
+//AddFile
+router.route("/my-course/add-file").post(addFile);
+router.route("/my-course/submit-file").post(addFileSubmit);
+
+//RemoveFile
+router.route("/my-course/remove-file").post(removeFile);
 
 export default router;

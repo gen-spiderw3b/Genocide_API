@@ -2,6 +2,14 @@ import mongoose from "mongoose";
 
 const File = new mongoose.Schema(
   {
+    course: {
+      type: String,
+      required: true,
+    },
+    section: {
+      type: Number,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
