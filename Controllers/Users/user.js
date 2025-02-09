@@ -84,7 +84,7 @@ export const updatePic = async (req, res) => {
     await cloudinary.v2.uploader.destroy(updatedPic.avatarPublicId);
   }
 
-  res.status(StatusCodes.OK).sendFile(req.file.path);
+  res.status(StatusCodes.OK).json({ msg: "img Upload Successfull" });
 };
 /*
 ==================
