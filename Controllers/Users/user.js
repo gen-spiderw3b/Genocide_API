@@ -5,7 +5,7 @@ import Users from "../../Schemas/userSchema.js";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 import cloudinary from "cloudinary";
-import { promises as fs } from "fs";
+import { formatImage } from "../../Middleware/Multer/multerMiddleWare.js";
 
 //Get Current User
 export const currentUser = async (req, res) => {
@@ -72,12 +72,14 @@ export const updatePic = async (req, res) => {
   const user = await Users.findById(req.user.userId);
 
   if (req.file) {
-    const response = await cloudinary.v2.uploader.upload(req.file.path);
-    await fs.unlink(req.file.path);
+    const file = formatImage(req.file);
+    const response = await cloudinary.v2.uploader.upload(file);
     user.avatar = response.secure_url;
     user.avatarPublicId = response.public_id;
   }
+
   const updatedPic = await Users.findByIdAndUpdate(user._id, user);
+
   if (req.file && updatedPic.avatarPublicId) {
     await cloudinary.v2.uploader.destroy(updatedPic.avatarPublicId);
   }
