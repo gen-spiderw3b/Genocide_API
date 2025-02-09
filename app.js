@@ -8,7 +8,8 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
 import cookieParser from "cookie-parser";
-import fileUpload from "express-fileupload";
+// import fileUpload from "express-fileupload";
+import cloudinary from "cloudinary";
 dotenv.config();
 
 //Custom Imports
@@ -32,10 +33,20 @@ const app = express();
 const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use(cookieParser());
-app.use(fileUpload());
+// app.use(fileUpload());
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
 }
+
+/**********
+ CLOUDINARY
+ *********/
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
@@ -54,10 +65,10 @@ app.use("/api/v1/test", TestRouter);
 
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
 });
 //End Of Building Front-End Progomatically
 

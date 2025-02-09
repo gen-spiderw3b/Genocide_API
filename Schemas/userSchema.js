@@ -12,6 +12,8 @@ const UserSchema = new mongoose.Schema(
     lastName: String,
     email: String,
     password: String,
+    avatar: String,
+    avatarPublicId: String,
     state: {
       type: String,
       enum: Object.values(STATES),

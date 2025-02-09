@@ -4,6 +4,8 @@ import War from "../../Schemas/War/war.js";
 import Users from "../../Schemas/userSchema.js";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
+import cloudinary from "cloudinary";
+import { promises as fs } from "fs";
 
 //Get Current User
 export const currentUser = async (req, res) => {
@@ -65,6 +67,23 @@ export const updateProfile = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "you have updated this user!" });
 };
 
+//Update Pic
+export const updatePic = async (req, res) => {
+  const user = await Users.findById(req.user.userId);
+
+  if (req.file) {
+    const response = await cloudinary.v2.uploader.upload(req.file.path);
+    await fs.unlink(req.file.path);
+    user.avatar = response.secure_url;
+    user.avatarPublicId = response.public_id;
+  }
+  const updatedPic = await Users.findByIdAndUpdate(user._id, user);
+  if (req.file && updatedPic.avatarPublicId) {
+    await cloudinary.v2.uploader.destroy(updatedPic.avatarPublicId);
+  }
+
+  res.status(StatusCodes.OK).json({ msg: "test" });
+};
 /*
 ==================
 Leave Organization
