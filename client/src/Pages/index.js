@@ -97,3 +97,7 @@ export { default as MyGroups } from "./War/MyGroups";
 export { default as JoinedGroups } from "./War/JoinedGroups";
 export { default as LeaveGroup } from "./War/LeaveGroup";
 //End Of WarRoutes
+
+//Test
+export { default as Test } from "./Test/Test";
+//End Of Test

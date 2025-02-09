@@ -68,6 +68,7 @@ import {
   UserProfile,
   LeaveOrg,
   //END Of USER PROFILE
+  Test,
 } from "./Pages/index";
 
 //Actions
@@ -510,6 +511,11 @@ const router = createBrowserRouter([
           {
             path: "version-info",
             element: <VersionInfo />,
+          },
+          //Test
+          {
+            path: "test/mountpath",
+            element: <Test />,
           },
         ],
       },

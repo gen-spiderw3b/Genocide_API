@@ -204,18 +204,8 @@ export const addFileSubmit = async (req, res) => {
 
 //RemoveFile
 export const removeFile = async (req, res) => {
-  const {
-    file,
-    src,
-    section,
-    sectionText,
-    title,
-    courseName,
-    upload,
-    courseText,
-  } = req.body;
-
-  console.log(file);
+  const { file, src, section, sectionText, courseName, upload, courseText } =
+    req.body;
 
   function getUpload(str) {
     const newUpload = str.length;

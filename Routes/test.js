@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { setDateTest } from "../Controllers/test.js";
+import { mountPath } from "../Controllers/test.js";
 const router = Router();
 
-router.route("/").post(setDateTest);
+router.route("/mountpath").post(mountPath);
 
 export default router;

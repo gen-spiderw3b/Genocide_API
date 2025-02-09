@@ -140,6 +140,18 @@ const subLinks = [
       },
     ],
   },
+  {
+    pageId: nanoid(),
+    page: "test",
+    links: [
+      {
+        id: nanoid(),
+        label: "test route",
+        icon: <FaUserSecret />,
+        url: "test/mountpath",
+      },
+    ],
+  },
 ];
 
 export default subLinks;

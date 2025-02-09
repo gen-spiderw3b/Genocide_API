@@ -47,10 +47,13 @@ export const createFullCourse = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ msg: "FullCourse has been created" });
 };
 
+//GetAllCourses
 export const getAllCourses = async (req, res) => {
   const courses = await Course.find({});
   res.status(StatusCodes.OK).json({ courses });
 };
+
+//GetSingleCourse
 export const getCourse = async (req, res) => {
   const course = await Course.aggregate([
     {
