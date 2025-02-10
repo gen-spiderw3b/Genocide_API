@@ -22,15 +22,16 @@ const Upload = () => {
       const data = await customFetch.post("/education/check-course", {
         course: courseSelection,
       });
-      console.log(data.data.msg);
+      console.log(data.msg);
       console.log(data.status);
-
-      if (data.status === 201) {
+      //ACCEPTED STATUSCODE
+      if (data.status === 202) {
         setIsCourse(false);
         setIsSection(true);
         toast.info(data.data.msg);
       }
-      if (data.status === 200) {
+      //CREATED STATUSCODE
+      if (data.status === 201) {
         setIsCourse(false);
         setIsSection(true);
         toast.success(data.data.msg);
