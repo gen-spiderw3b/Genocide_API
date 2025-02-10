@@ -75,7 +75,6 @@ export const fileUpload = async (req, res) => {
       } else {
         const filePath = `/public/${course}/${section}/` + `${file.name}`;
 
-        await file.mv(filePath);
         return res.status(StatusCodes.CREATED).json({
           file: {
             src: `/public/${course}/${section}/${file.name}`,
