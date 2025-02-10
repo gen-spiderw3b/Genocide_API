@@ -4,8 +4,9 @@ import fs from "fs";
 
 //Test
 export const mountPath = async (req, res) => {
-  const { folderName } = req.body;
-  fs.mkdir(`/uploads/${folderName}`, { recursive: true }, (err) => {
+  const { testPath } = req.body;
+
+  fs.mkdir(`/uploads/${testPath}`, { recursive: true }, (err) => {
     if (err) {
       return err;
     }

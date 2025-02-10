@@ -4,7 +4,7 @@ const Test = () => {
   const handleTest = async () => {
     const folderName = "TestOne";
     try {
-      await customFetch.post("/test/mountpath", folderName);
+      await customFetch.post("/test/mountpath", { testPath: folderName });
     } catch (error) {
       return error;
     }
