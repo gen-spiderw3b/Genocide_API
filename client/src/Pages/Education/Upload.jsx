@@ -19,13 +19,14 @@ const Upload = () => {
   const handleCourse = async (e) => {
     e.preventDefault();
     try {
-      const data = await customFetch.post("/education/check-course", {
+      const { data } = await customFetch.post("/education/check-course", {
         course: courseSelection,
       });
       console.log(data);
-      console.log(data?.data?.msg);
-      console.log(data.msg);
+      console.log(data.data.msg);
+      console.log(data.data.data.msg);
       console.log(data.status);
+
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
         setIsCourse(false);
