@@ -6,7 +6,9 @@ export const checkCourse = (req, res) => {
   fs.readdir("/public", (err, files) => {
     if (err) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        msg: "there was a error with routing, contact me so i can fix it!",
+        data: {
+          msg: "there was a error with routing, contact me so i can fix it!",
+        },
       });
     } else {
       if (files.includes(`${course}`)) {
@@ -15,12 +17,14 @@ export const checkCourse = (req, res) => {
         fs.mkdir(`/public/${course}`, { recursive: true }, (err) => {
           if (err) {
             res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-              msg: "Error with creating course directory, contact me so i can fix this!",
+              data: {
+                msg: "Error with creating course directory, contact me so i can fix this!",
+              },
             });
           } else {
             res
               .status(StatusCodes.CREATED)
-              .json({ msg: `${course} has been made!` });
+              .json({ data: { msg: `${course} has been made!` } });
           }
         });
       }
