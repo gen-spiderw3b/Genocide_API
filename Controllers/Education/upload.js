@@ -7,31 +7,34 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const checkCourse = (req, res) => {
   const { course } = req.body;
-  fs.readdir("/public", (err, files) => {
-    if (err) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        msg: "there was a error with routing, contact me so i can fix it!",
-      });
-    } else {
-      if (files.includes(`${course}`)) {
-        res
-          .status(StatusCodes.ACCEPTED)
-          .json({ msg: `${course} has already been made!` });
-      } else {
-        fs.mkdir(`/public/${course}`, { recursive: true }, (err) => {
-          if (err) {
-            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-              msg: "Error with creating course directory, contact me so i can fix this!",
-            });
-          } else {
-            res
-              .status(StatusCodes.CREATED)
-              .json({ msg: `${course} has been made!` });
-          }
-        });
-      }
-    }
-  });
+  console.log(course);
+
+  // fs.readdir("/public", (err, files) => {
+  //   if (err) {
+  //     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+  //       msg: "there was a error with routing, contact me so i can fix it!",
+  //     });
+  //   } else {
+  //     if (files.includes(`${course}`)) {
+  //       res
+  //         .status(StatusCodes.ACCEPTED)
+  //         .json({ msg: `${course} has already been made!` });
+  //     } else {
+  //       fs.mkdir(`/public/${course}`, { recursive: true }, (err) => {
+  //         if (err) {
+  //           res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+  //             msg: "Error with creating course directory, contact me so i can fix this!",
+  //           });
+  //         } else {
+  //           res
+  //             .status(StatusCodes.CREATED)
+  //             .json({ msg: `${course} has been made!` });
+  //         }
+  //       });
+  //     }
+  //   }
+  // });
+  res.status(200).json({ msg: "testing" });
 };
 
 export const checkSection = (req, res) => {

@@ -20,6 +20,8 @@ const Upload = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("course", courseSelection);
+    console.log(formData.get("course"));
+
     try {
       const data = await customFetch.post("/education/check-course", formData);
 
