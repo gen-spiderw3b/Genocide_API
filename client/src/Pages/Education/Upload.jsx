@@ -23,21 +23,19 @@ const Upload = () => {
         course: courseSelection,
       });
       console.log(data);
-      console.log(data.data.msg);
-      console.log(data.data.data.msg);
       console.log(data.status);
 
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
         setIsCourse(false);
         setIsSection(true);
-        toast.info(data.msg);
+        toast.info(data.data.data.msg);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
         setIsCourse(false);
         setIsSection(true);
-        toast.success(data.msg);
+        toast.success(data.data.data.msg);
       }
 
       return;
