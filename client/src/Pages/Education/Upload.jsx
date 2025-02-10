@@ -23,6 +23,7 @@ const Upload = () => {
         course: courseSelection,
       });
       console.log(data);
+      console.log(data.status);
 
       if (data.statusText === "Accepted") {
         setIsCourse(false);

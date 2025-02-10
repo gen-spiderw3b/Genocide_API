@@ -10,9 +10,7 @@ export const checkCourse = (req, res) => {
       });
     } else {
       if (files.includes(`${course}`)) {
-        res
-          .status(StatusCodes.ACCEPTED)
-          .json({ msg: `${course} has already been made!` });
+        res.status(StatusCodes.ACCEPTED).json({ data: { msg: "testing" } });
       } else {
         fs.mkdir(`/public/${course}`, { recursive: true }, (err) => {
           if (err) {
