@@ -3,7 +3,6 @@ import fs from "fs";
 
 export const checkCourse = (req, res) => {
   const { course } = req.body;
-
   fs.readdir("/public", (err, files) => {
     if (err) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -29,7 +28,6 @@ export const checkCourse = (req, res) => {
       }
     }
   });
-  res.status(200).json({ msg: "testing" });
 };
 
 export const checkSection = (req, res) => {
