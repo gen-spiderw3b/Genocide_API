@@ -62,32 +62,27 @@ export const checkSection = (req, res) => {
 export const fileUpload = async (req, res) => {
   const file = req.files.file;
   const { course, section } = req.body;
-  fs.readdir(
-    path.join(__dirname, `../../public/upload/${course}/${section}`),
-    async (err, files) => {
-      if (err) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-          msg: "there was a error with routing, contact me so i can fix it!",
-        });
+  fs.readdir(`/public/${course}/${section}`, async (err, files) => {
+    if (err) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        msg: "there was a error with routing, contact me so i can fix it!",
+      });
+    } else {
+      if (files.includes(`${file.name}`)) {
+        res
+          .status(StatusCodes.ACCEPTED)
+          .json({ msg: ` file: ${file.name} has already been made!` });
       } else {
-        if (files.includes(`${file.name}`)) {
-          res
-            .status(StatusCodes.ACCEPTED)
-            .json({ msg: ` file: ${file.name} has already been made!` });
-        } else {
-          const filePath = path.join(
-            __dirname,
-            `../../public/upload/${course}/${section}/` + `${file.name}`
-          );
-          await file.mv(filePath);
-          return res.status(StatusCodes.CREATED).json({
-            file: {
-              src: `/upload/${course}/${section}/${file.name}`,
-              msg: "file has been uploaded succesfully",
-            },
-          });
-        }
+        const filePath = `/public/${course}/${section}/` + `${file.name}`;
+
+        await file.mv(filePath);
+        return res.status(StatusCodes.CREATED).json({
+          file: {
+            src: `/public/${course}/${section}/${file.name}`,
+            msg: "file has been uploaded succesfully",
+          },
+        });
       }
     }
-  );
+  });
 };

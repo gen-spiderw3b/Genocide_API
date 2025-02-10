@@ -23,9 +23,6 @@ const Upload = () => {
         course: courseSelection,
       });
 
-      console.log(data.status);
-      console.log(data.data.msg);
-
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
         setIsCourse(false);
@@ -38,7 +35,6 @@ const Upload = () => {
         setIsSection(true);
         toast.success(data.data.msg);
       }
-
       return;
     } catch (error) {
       toast.error(error?.response?.data?.msg);
@@ -47,21 +43,22 @@ const Upload = () => {
 
   const handleSection = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("section", sectionSelection);
-    formData.append("course", courseSelection);
-
     try {
-      const data = await customFetch.post("/education/check-section", formData);
-      if (data.statusText === "Accepted") {
+      const data = await customFetch.post("/education/check-section", {
+        section: sectionSelection,
+        course: courseSelection,
+      });
+      //ACCEPTED STATUSCODE
+      if (data.status === 202) {
         setIsSection(false);
         setIsSrc(true);
-        toast.info(data.data.msg);
+        toast.info(data.msg);
       }
-      if (data.statusText === "Created") {
+      //CREATED STATUSCODE
+      if (data.status === 201) {
         setIsSection(false);
         setIsSrc(true);
-        toast.success(data.data.msg);
+        toast.success(data.msg);
       }
       return;
     } catch (error) {
@@ -72,23 +69,25 @@ const Upload = () => {
   const handleFile = async (e) => {
     e.preventDefault();
     const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("course", courseSelection);
-    formData.append("section", sectionSelection);
     try {
-      const data = await customFetch.post("/education/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const data = await customFetch.post(
+        "/education/upload",
+        { course: courseSelection, section: sectionSelection, file: file },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
-      if (data.statusText === "Accepted") {
+      //ACCEPTED STATUSCODE
+      if (data.status === 202) {
         setIsSrc(false);
         setIsCourse(true);
         toast.info(data.data.msg);
       }
-      if (data.statusText === "Created") {
+      //CREATED STATUSCODE
+      if (data.status === 201) {
         setSrcSelection(data.data.file.src);
         toast.success(data.data.file.msg);
         setIsSrc(false);
@@ -102,16 +101,15 @@ const Upload = () => {
 
   const createFullCourse = async (e) => {
     e.preventDefault();
-    const data = {
-      course: courseSelection,
-      section: sectionSelection,
-      title: titleSelection,
-      src: srcSelection,
-    };
     try {
       const {
         data: { msg },
-      } = await customFetch.post("/education/create-course", data);
+      } = await customFetch.post("/education/create-course", {
+        course: courseSelection,
+        section: sectionSelection,
+        title: titleSelection,
+        src: srcSelection,
+      });
       setFullCourse(false);
       setIsCourse(true);
       toast.success(msg);

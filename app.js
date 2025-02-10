@@ -8,7 +8,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
 import cookieParser from "cookie-parser";
-// import fileUpload from "express-fileupload";
+import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
 dotenv.config();
 
@@ -33,7 +33,7 @@ const app = express();
 const port = process.env.PORT || 5500;
 app.use(express.json());
 app.use(cookieParser());
-// app.use(fileUpload());
+app.use(fileUpload());
 if ((process.env.NODE_ENV = "development")) {
   app.use(morgan("dev"));
 }
