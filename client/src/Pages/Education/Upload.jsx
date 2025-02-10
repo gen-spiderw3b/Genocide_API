@@ -18,12 +18,15 @@ const Upload = () => {
   //HandleCourse
   const handleCourse = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("course", courseSelection);
-    console.log(formData.get("course"));
+    // const formData = new FormData();
+    // formData.append("course", courseSelection);
+    // console.log(formData.get("course"));
+    // console.log(formData);
 
     try {
-      const data = await customFetch.post("/education/check-course", formData);
+      const data = await customFetch.post("/education/check-course", {
+        course: courseSelection,
+      });
 
       if (data.statusText === "Accepted") {
         setIsCourse(false);
