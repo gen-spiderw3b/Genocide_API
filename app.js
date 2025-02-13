@@ -76,7 +76,7 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   const { course, section } = req.body;
   res.status(StatusCodes.CREATED).json({
     file: {
-      src: `/public/${course}/${section}/${originalname}`,
+      src: `/${course}/${section}/${originalname}`,
       msg: "file has been uploaded!",
     },
   });
