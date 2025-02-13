@@ -52,13 +52,13 @@ const Upload = () => {
       if (data.status === 202) {
         setIsSection(false);
         setIsSrc(true);
-        toast.info(data.msg);
+        toast.info(data.data.msg);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
         setIsSection(false);
         setIsSrc(true);
-        toast.success(data.msg);
+        toast.success(data.data.msg);
       }
       return;
     } catch (error) {
@@ -68,17 +68,17 @@ const Upload = () => {
 
   const handleFile = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
     const file = e.target.files[0];
+    formData.append("course", courseSelection);
+    formData.append("section", sectionSelection);
+    formData.append("file", file);
     try {
-      const data = await customFetch.post(
-        "/education/upload",
-        { course: courseSelection, section: sectionSelection, file: file },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const data = await customFetch.post("/education/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       //ACCEPTED STATUSCODE
       if (data.status === 202) {

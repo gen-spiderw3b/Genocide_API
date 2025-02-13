@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  fileUpload,
+  // fileUpload,
   checkCourse,
   checkSection,
 } from "../../Controllers/Education/upload.js";
@@ -23,7 +23,6 @@ const router = Router();
 //Create Course
 router.route("/check-course").post(checkCourse);
 router.route("/check-section").post(checkSection);
-router.route("/upload").post(fileUpload);
 router.route("/create-course").post(createFullCourse);
 
 //Course Selection
@@ -46,5 +45,7 @@ router.route("/my-course/submit-file").post(addFileSubmit);
 
 //RemoveFile
 router.route("/my-course/remove-file").post(removeFile);
+
+// router.route("/upload").post(fileUpload);
 
 export default router;
