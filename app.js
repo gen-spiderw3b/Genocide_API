@@ -69,8 +69,22 @@ const fileStorageEngine = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+const testStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let path = `/public/`;
+    fs.exists(path, (exist) => {
+      if (!exist) {
+        return fs.mkdir(path, (error) => cb(error, path));
+      }
+      return cb(null, path);
+    });
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 const upload = multer({ storage: fileStorageEngine });
-const uploads = multer({ storage: fileStorageEngine });
+const uploads = multer({ storage: testStorageEngine });
 
 app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   const { originalname } = req.file;
