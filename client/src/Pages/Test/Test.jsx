@@ -20,7 +20,6 @@ const Test = () => {
 
       //CREATED STATUSCODE
       if (data.status === 201) {
-        console.log(data);
         setSrc(data.data.file.src);
         setIsSrc(true);
       }
@@ -36,7 +35,7 @@ const Test = () => {
       <form method="POST">
         <input type="file" name="src" className="input" onChange={handleFile} />
       </form>
-      {isSrc ? <video src={src} autoPlay controls /> : null}
+      {isSrc ? <video src={`../../../../${src}`} autoPlay controls /> : null}
     </div>
   );
 };
