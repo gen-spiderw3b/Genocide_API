@@ -74,7 +74,7 @@ const testStorageEngine = multer.diskStorage({
     let path = `/uploads`;
     fs.exists(path, (exist) => {
       if (!exist) {
-        return fs.mkdir(path, (error) => cb(error, path));
+        return cb(null, path);
       }
       return cb(null, path);
     });
@@ -105,6 +105,11 @@ app.post("/api/v1/test", uploads.single("file"), (req, res) => {
       src: `/uploads/${originalname}`,
     },
   });
+});
+const videoFilePath = "/uploads/section1-1.mp4";
+const videoStream = fs.createReadStream(videoFilePath);
+app.get("/video", (req, res) => {
+  res.sendFile(videoFilePath, { root: __dirname });
 });
 
 //EndPoints

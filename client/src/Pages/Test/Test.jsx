@@ -28,13 +28,29 @@ const Test = () => {
       console.log(error);
     }
   };
-
+  const getVideo = async () => {
+    try {
+      const data = await customFetch.get("/video", {
+        headers: {
+          "Content-Type": "video/mp4",
+        },
+      });
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  };
   return (
     <div>
       <h1>tests</h1>
       <form method="POST">
         <input type="file" name="src" className="input" onChange={handleFile} />
       </form>
+      <button type="button" onClick={getVideo}>
+        get file
+      </button>
       {isSrc ? <video src={`../../../../${src}`} autoPlay controls /> : null}
     </div>
   );
