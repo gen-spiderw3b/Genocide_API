@@ -100,7 +100,7 @@ app.post("/api/v1/test", uploads.single("file"), (req, res) => {
   const { path } = req.file;
   res.status(StatusCodes.CREATED).json({
     file: {
-      src: `${path}`,
+      src: `/section1-1.mp4`,
       msg: "file has been uploaded!",
     },
   });
