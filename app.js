@@ -57,7 +57,7 @@ cloudinary.config({
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     const { course, section } = req.body;
-    let path = `/public/${course}/${section}`;
+    let path = `/uploads/${course}/${section}`;
     fs.exists(path, (exist) => {
       if (!exist) {
         return fs.mkdir(path, (error) => cb(error, path));
@@ -71,7 +71,7 @@ const fileStorageEngine = multer.diskStorage({
 });
 const testStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    let path = `/public`;
+    let path = `/uploads`;
     fs.exists(path, (exist) => {
       if (!exist) {
         return fs.mkdir(path, (error) => cb(error, path));
@@ -91,7 +91,7 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   const { course, section } = req.body;
   res.status(StatusCodes.CREATED).json({
     file: {
-      src: `/public/${course}/${section}/${originalname}`,
+      src: `/uploads/${course}/${section}/${originalname}`,
       msg: "file has been uploaded!",
     },
   });
@@ -100,7 +100,7 @@ app.post("/api/v1/test", uploads.single("file"), (req, res) => {
   const { path } = req.file;
   res.status(StatusCodes.CREATED).json({
     file: {
-      src: `/section1-1.mp4`,
+      src: `${path}`,
       msg: "file has been uploaded!",
     },
   });
