@@ -71,7 +71,7 @@ const fileStorageEngine = multer.diskStorage({
 });
 const testStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    let path = `/public/`;
+    let path = `/public`;
     fs.exists(path, (exist) => {
       if (!exist) {
         return fs.mkdir(path, (error) => cb(error, path));
@@ -98,7 +98,6 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
 });
 app.post("/api/v1/test", uploads.single("file"), (req, res) => {
   const { path } = req.file;
-
   res.status(StatusCodes.CREATED).json({
     file: {
       src: `${path}`,

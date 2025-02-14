@@ -37,8 +37,6 @@ const Test = () => {
         <input type="file" name="src" className="input" onChange={handleFile} />
       </form>
       {isSrc ? <video src={src} autoPlay controls /> : null}
-      <video src={"../../../public/section1-1.mp4"} autoPlay controls />
-      <video src={"../../../../public/section1-1.mp4"} autoPlay controls />
     </div>
   );
 };
