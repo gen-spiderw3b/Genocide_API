@@ -97,10 +97,11 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   });
 });
 app.post("/api/v1/test", uploads.single("file"), (req, res) => {
-  console.log(req.file.path);
+  const { path } = req.file;
+
   res.status(StatusCodes.CREATED).json({
     file: {
-      src: "test",
+      src: `${path}`,
       msg: "file has been uploaded!",
     },
   });
