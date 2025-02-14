@@ -30,11 +30,7 @@ const Test = () => {
   };
   const getVideo = async () => {
     try {
-      const data = await customFetch.get("/video", {
-        headers: {
-          "Content-Type": "video/mp4",
-        },
-      });
+      const data = await customFetch.get("/video");
       console.log(data);
       return data;
     } catch (error) {

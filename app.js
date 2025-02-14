@@ -106,10 +106,11 @@ app.post("/api/v1/test", uploads.single("file"), (req, res) => {
     },
   });
 });
-const videoFilePath = "/uploads/section1-1.mp4";
-const videoStream = fs.createReadStream(videoFilePath);
 app.get("/video", (req, res) => {
-  res.sendFile(videoFilePath, { root: __dirname });
+  const videoFilePath = "/uploads/section1-1.mp4";
+  const videoStream = fs.createReadStream(videoFilePath);
+  res.setHeader("Content-Type", "video/mp4");
+  videoStream.pipe(res);
 });
 
 //EndPoints
