@@ -70,6 +70,7 @@ const fileStorageEngine = multer.diskStorage({
   },
 });
 const upload = multer({ storage: fileStorageEngine });
+const uploads = multer({ storage: fileStorageEngine });
 
 app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   const { originalname } = req.file;
@@ -77,6 +78,15 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   res.status(StatusCodes.CREATED).json({
     file: {
       src: `/public/${course}/${section}/${originalname}`,
+      msg: "file has been uploaded!",
+    },
+  });
+});
+app.post("/api/v1/test", uploads.single("file"), (req, res) => {
+  const { originalname } = req.file;
+  res.status(StatusCodes.CREATED).json({
+    file: {
+      src: `/public/${originalname}`,
       msg: "file has been uploaded!",
     },
   });
