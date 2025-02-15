@@ -1,6 +1,7 @@
 import Wrapper from "../../Wrappers/Education/viewCourse";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 const ViewCourse = () => {
   const { courses } = useOutletContext();
   return (

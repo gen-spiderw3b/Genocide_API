@@ -25,9 +25,10 @@ const Upload = () => {
 
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
-        setIsCourse(false);
-        setIsSection(true);
         toast.info(data.data.msg);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
@@ -38,6 +39,9 @@ const Upload = () => {
       return;
     } catch (error) {
       toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   };
 
@@ -50,9 +54,10 @@ const Upload = () => {
       });
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
-        setIsSection(false);
-        setIsSrc(true);
         toast.info(data.data.msg);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
@@ -63,6 +68,9 @@ const Upload = () => {
       return;
     } catch (error) {
       toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   };
 
@@ -80,12 +88,6 @@ const Upload = () => {
         },
       });
 
-      //ACCEPTED STATUSCODE
-      if (data.status === 202) {
-        setIsSrc(false);
-        setIsCourse(true);
-        toast.info(data.data.msg);
-      }
       //CREATED STATUSCODE
       if (data.status === 201) {
         setSrcSelection(data.data.file.src);
@@ -96,6 +98,9 @@ const Upload = () => {
       return;
     } catch (error) {
       toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   };
 
@@ -110,11 +115,15 @@ const Upload = () => {
         title: titleSelection,
         src: srcSelection,
       });
+
       setFullCourse(false);
       setIsCourse(true);
       toast.success(msg);
     } catch (error) {
       toast.error(error?.response?.data?.msg);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     }
   };
 

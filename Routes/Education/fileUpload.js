@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-  // fileUpload,
+  fileUpload,
   checkCourse,
   checkSection,
 } from "../../Controllers/Education/upload.js";
@@ -18,6 +18,7 @@ import {
   addFileSubmit,
   removeFile,
 } from "../../Controllers/Education/update.js";
+import upload from "../../Middleware/Multer/multerFileMiddleware.js";
 const router = Router();
 
 //Create Course
@@ -46,6 +47,6 @@ router.route("/my-course/submit-file").post(addFileSubmit);
 //RemoveFile
 router.route("/my-course/remove-file").post(removeFile);
 
-// router.route("/upload").post(fileUpload);
+router.route("/upload").post(upload.single("file"), fileUpload);
 
 export default router;

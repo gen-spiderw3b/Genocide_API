@@ -1,26 +1,32 @@
 import customFetch from "../../Utils/customFetch";
-import { useState } from "react";
-const Test = () => {
-  const [src, setSrc] = useState("");
-  const [isSrc, setIsSrc] = useState(false);
-  console.log(src);
+import { useState, useRef } from "react";
 
-  const getFile = async () => {
+const Test = () => {
+  const [videoUrl, setVideoUrl] = useState(null);
+  const videoRef = useRef(null);
+  const getDisk = async () => {
     try {
-      const { data } = await customFetch.get("/test");
-      setSrc(data.file.src);
-      setIsSrc(true);
-      return data;
+      await customFetch
+        .get("/test", { responseType: "blob" })
+        .then((response) => {
+          const blobData = response.data;
+          console.log(blobData);
+          const url = URL.createObjectURL(blobData);
+          setVideoUrl(url);
+        });
+
+      return;
     } catch (error) {
       console.log(error);
       return error;
     }
   };
+
   return (
     <div>
       <h1>tests</h1>
-      <button onClick={getFile}>get file</button>
-      {isSrc ? <video src={src} autoPlay controls /> : null}
+      <button onClick={getDisk}>get disk</button>
+      <video ref={videoRef} src={videoUrl} controls></video>
     </div>
   );
 };

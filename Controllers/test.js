@@ -1,16 +1,17 @@
-import { StatusCodes } from "http-status-codes";
-// import Test from "../Schemas/testSchema.js";
 import fs from "fs";
+import path from "path";
 
 //Test
 export const mountPath = async (req, res) => {
-  const { testPath } = req.body;
-
-  fs.mkdir(`/uploads/${testPath}`, { recursive: true }, (err) => {
-    if (err) {
-      return err;
-    }
-    console.log("it worked");
-  });
-  res.status(StatusCodes.CREATED).json({ msg: "testing" });
+  const filePath2 = "/uploads/math/1/section1-1.mp4";
+  if (fs.existsSync(filePath2)) {
+    res.sendFile(filePath2, (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Error while sending the file");
+      }
+    });
+  } else {
+    res.status(404).send("File not found");
+  }
 };
