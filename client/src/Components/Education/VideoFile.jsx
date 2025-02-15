@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 const VideoFile = ({ video }) => {
   return (
     <div className="video-container">

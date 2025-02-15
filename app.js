@@ -4,11 +4,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
 import mongoose from "mongoose";
-import multer from "multer";
-import fs from "fs";
-import { exists } from "node:fs";
 import { dirname } from "path";
-import { StatusCodes } from "http-status-codes";
 import { fileURLToPath } from "url";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -26,6 +22,7 @@ import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
 import ContactRouter from "./Routes/Contact/contact.js";
 import EducationRouter from "./Routes/Education/fileUpload.js";
+import VideoRouter from "./Routes/Education/playVideo.js";
 //Test
 import TestRouter from "./Routes/test.js";
 //Dashboard Auth
@@ -51,37 +48,6 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-/*************
- Multer Upload
- *************/
-const fileStorageEngine = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const { course, section } = req.body;
-    let path = `/uploads/${course}/${section}`;
-    fs.exists(path, (exist) => {
-      if (!exist) {
-        return fs.mkdir(path, (error) => cb(error, path));
-      }
-      return cb(null, path);
-    });
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage: fileStorageEngine });
-
-app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
-  const { originalname } = req.file;
-  const { course, section } = req.body;
-  res.status(StatusCodes.CREATED).json({
-    file: {
-      src: `/uploads/${course}/${section}/${originalname}`,
-      msg: "file has been uploaded!",
-    },
-  });
-});
-
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
@@ -96,6 +62,7 @@ app.use(
 app.use("/api/v1/investment/user-group", authMiddleWare, UserGroupRouter);
 app.use("/api/v1/investment/user-group/contact", authMiddleWare, ContactRouter);
 app.use("/api/v1/education", authMiddleWare, EducationRouter);
+app.use("/api/v1/video", authMiddleWare, VideoRouter);
 app.use("/api/v1/test", TestRouter);
 //End Of Endpoints
 

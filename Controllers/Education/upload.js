@@ -62,3 +62,15 @@ export const checkSection = (req, res) => {
     }
   });
 };
+
+export const fileUpload = (req, res) => {
+  const { course, section } = req.body;
+  const { originalname } = req.file;
+
+  res.status(StatusCodes.CREATED).json({
+    file: {
+      src: `/uploads/${course}/${section}/${originalname}`,
+      msg: "file has been uploaded!",
+    },
+  });
+};
