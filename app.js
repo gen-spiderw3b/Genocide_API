@@ -31,9 +31,6 @@ import TestRouter from "./Routes/test.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 
-//Test
-import File from "./Schemas/File/file.js";
-
 /***********************
  Variables && Middleware
  ***********************/
@@ -85,11 +82,6 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   });
 });
 
-app.get("/api/v1/test", async (req, res) => {
-  const file = await File.findById("67b0058da19f3a4257a5fa56");
-  res.status(200).json({ file });
-});
-
 //EndPoints
 app.use("/api/v1/user", UserRouter);
 app.use("/api/v1/users", authMiddleWare, UserAuthRouter);
@@ -110,7 +102,6 @@ app.use("/api/v1/test", TestRouter);
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.resolve(__dirname, "./client/dist")));
-// app.use(express.static(path.resolve(__dirname, "/uploads")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
