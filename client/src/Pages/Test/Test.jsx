@@ -21,6 +21,7 @@ const Test = () => {
       <h1>tests</h1>
       <button onClick={getFile}>get file</button>
       {isSrc ? <video src={src} autoPlay controls /> : null}
+      <video src="/uploads/section1-1.mp4"></video>
     </div>
   );
 };
