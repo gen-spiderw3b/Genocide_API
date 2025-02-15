@@ -1,6 +1,5 @@
 import customFetch from "../../Utils/customFetch";
 import { useState, useRef } from "react";
-
 const Test = () => {
   const [videoUrl, setVideoUrl] = useState(null);
   const videoRef = useRef(null);
@@ -21,7 +20,6 @@ const Test = () => {
       return error;
     }
   };
-
   return (
     <div>
       <h1>tests</h1>

@@ -1,5 +1,4 @@
 import fs from "fs";
-import path from "path";
 
 //Test
 export const mountPath = async (req, res) => {
