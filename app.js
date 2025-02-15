@@ -31,6 +31,9 @@ import TestRouter from "./Routes/test.js";
 //Dashboard Auth
 import { authMiddleWare } from "./Middleware/AuthMiddleWare/authMiddleWare.js";
 
+//Test
+import File from "./Schemas/File/file.js";
+
 /***********************
  Variables && Middleware
  ***********************/
@@ -69,22 +72,7 @@ const fileStorageEngine = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-const testStorageEngine = multer.diskStorage({
-  destination: (req, file, cb) => {
-    let path = `/uploads`;
-    fs.exists(path, (exist) => {
-      if (!exist) {
-        return cb(null, path);
-      }
-      return cb(null, path);
-    });
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
 const upload = multer({ storage: fileStorageEngine });
-const uploads = multer({ storage: testStorageEngine });
 
 app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
   const { originalname } = req.file;
@@ -96,21 +84,10 @@ app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
     },
   });
 });
-app.post("/api/v1/test", uploads.single("file"), (req, res) => {
-  const { originalname } = req.file;
-  console.log(req.file);
 
-  res.status(StatusCodes.CREATED).json({
-    file: {
-      src: `/uploads/${originalname}`,
-    },
-  });
-});
-app.get("/video", (req, res) => {
-  const videoFilePath = "/uploads/section1-1.mp4";
-  const videoStream = fs.createReadStream(videoFilePath);
-  res.setHeader("Content-Type", "video/mp4");
-  videoStream.pipe(res);
+app.get("/api/v1/test", async (req, res) => {
+  const file = await File.findById("67b0058da19f3a4257a5fa56");
+  res.status(200).json({ file });
 });
 
 //EndPoints
@@ -132,7 +109,8 @@ app.use("/api/v1/test", TestRouter);
 
 //Building Front-End Progomatically
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./client/dist")));
+// app.use(express.static(path.resolve(__dirname, "./client/dist")));
+app.use(express.static(path.resolve(__dirname, "/uploads")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
