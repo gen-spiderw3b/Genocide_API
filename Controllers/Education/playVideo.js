@@ -3,21 +3,15 @@ import fs from "fs";
 
 export const playVideo = (req, res) => {
   const { path } = req.body;
-
   if (fs.existsSync(path)) {
-    console.log(true);
+    res.sendFile(path, (err) => {
+      if (err) {
+        return res
+          .status(StatusCodes.INTERNAL_SERVER_ERROR)
+          .json({ msg: "Error while sending the file" });
+      }
+    });
   } else {
-    console.log(false);
+    res.status(StatusCodes.NOT_FOUND).json({ msg: "File not found" });
   }
-
-  //   res.sendFile(path, (err) => {
-  //     if (err) {
-  //       return res
-  //         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-  //         .json({ msg: "Error while sending the file" });
-  //     }
-  //   });
-  // } else {
-  //   res.status(StatusCodes.NOT_FOUND).json({ msg: "File not found" });
-  // }
 };
