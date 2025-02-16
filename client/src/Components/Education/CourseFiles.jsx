@@ -2,15 +2,13 @@ import PropTypes from "prop-types";
 import { FaPlayCircle } from "react-icons/fa";
 import customFetch from "../../Utils/customFetch";
 import { toast } from "react-toastify";
+
 const CourseFiles = ({ files, videoFunc }) => {
   const sendDisk = async (e) => {
+    const data = { path: e.currentTarget.dataset.src };
     try {
       await customFetch
-        .post(
-          "/video",
-          { path: e.target.dataset.src },
-          { responseType: "blob" }
-        )
+        .post("/video", data, { responseType: "blob" })
         .then((response) => {
           const blobData = response.data;
           const url = URL.createObjectURL(blobData);
@@ -18,7 +16,6 @@ const CourseFiles = ({ files, videoFunc }) => {
         });
       return;
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.msg);
       setTimeout(() => {
         window.location.reload();
@@ -34,8 +31,13 @@ const CourseFiles = ({ files, videoFunc }) => {
           return (
             <li key={_id} className="list">
               <p className="title">{title}</p>
-              <button type="button" className="icon" onClick={sendDisk}>
-                <FaPlayCircle data-src={src} />
+              <button
+                type="button"
+                className="icon"
+                data-src={src}
+                onClick={sendDisk}
+              >
+                <FaPlayCircle />
               </button>
             </li>
           );
