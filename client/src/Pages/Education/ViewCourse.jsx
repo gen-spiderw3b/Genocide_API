@@ -1,12 +1,9 @@
 import Wrapper from "../../Wrappers/Education/viewCourse";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+
 const ViewCourse = () => {
   const { courses } = useOutletContext();
-  useEffect(() => {
-    window.location.reload();
-  }, []);
   return (
     <Wrapper>
       <div className="section-center">
