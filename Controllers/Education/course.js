@@ -8,14 +8,6 @@ export const createFullCourse = async (req, res) => {
   const { course, section, title, src } = req.body;
   const oldCourse = await Course.findOne({ course: course });
 
-  const file = await File.create({
-    course: course,
-    section: section,
-    title: title,
-    src: src,
-    createdBy: req.user.userId,
-  });
-
   if (oldCourse === null) {
     const file = await File.create({
       course: course,
