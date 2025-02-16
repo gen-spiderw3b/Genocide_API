@@ -25,10 +25,9 @@ const Upload = () => {
 
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
+        setIsCourse(false);
+        setIsSection(true);
         toast.info(data.data.msg);
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
@@ -54,10 +53,9 @@ const Upload = () => {
       });
       //ACCEPTED STATUSCODE
       if (data.status === 202) {
+        setIsSection(false);
+        setIsSrc(true);
         toast.info(data.data.msg);
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
       }
       //CREATED STATUSCODE
       if (data.status === 201) {
