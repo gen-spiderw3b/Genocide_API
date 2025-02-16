@@ -3,7 +3,7 @@ import Wrapper from "../../Wrappers/Education/course";
 import customFetch from "../../Utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = async ({ params }) => {
@@ -19,8 +19,12 @@ export const loader = async ({ params }) => {
 
 const Courses = () => {
   const { course } = useLoaderData();
-  const [isVideo, setIsVideo] = useState(null);
+  const [isVideo, setIsVideo] = useState("");
   const newSection = course.map(({ newSection }) => newSection);
+
+  useEffect(() => {
+    console.log("hello from useEffect");
+  }, []);
 
   return (
     <Wrapper>
