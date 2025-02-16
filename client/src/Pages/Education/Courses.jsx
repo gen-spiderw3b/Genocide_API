@@ -19,7 +19,7 @@ export const loader = async ({ params }) => {
 
 const Courses = () => {
   const { course } = useLoaderData();
-  const [isVideo, setIsVideo] = useState("");
+  const [isVideo, setIsVideo] = useState(null);
   const newSection = course.map(({ newSection }) => newSection);
 
   return (

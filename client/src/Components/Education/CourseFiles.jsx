@@ -31,13 +31,8 @@ const CourseFiles = ({ files, videoFunc }) => {
           return (
             <li key={_id} className="list">
               <p className="title">{title}</p>
-              <button
-                type="button"
-                className="icon"
-                data-src={src}
-                onClick={sendDisk}
-              >
-                <FaPlayCircle />
+              <button type="button" className="icon" onClick={sendDisk}>
+                <FaPlayCircle data-src={src} />
               </button>
             </li>
           );
