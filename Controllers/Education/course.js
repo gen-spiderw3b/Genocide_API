@@ -6,6 +6,13 @@ import mongoose from "mongoose";
 
 export const createFullCourse = async (req, res) => {
   const { course, section, title, src } = req.body;
+  const oldCourse = await Course.findOne({ course: course });
+  if (oldCourse.course === course) {
+    return res
+      .status(StatusCodes.CONFLICT)
+      .json({ msg: "course has already been created!" });
+  }
+
   const file = await File.create({
     course: course,
     section: section,
