@@ -4,11 +4,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
 import mongoose from "mongoose";
-import multer from "multer";
-import fs from "fs";
-import { exists } from "node:fs";
 import { dirname } from "path";
-import { StatusCodes } from "http-status-codes";
 import { fileURLToPath } from "url";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -49,37 +45,6 @@ cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
-});
-
-/*************
- Multer Upload
- *************/
-const fileStorageEngine = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const { course, section } = req.body;
-    let path = `/uploads/${course}/${section}`;
-    fs.exists(path, (exist) => {
-      if (!exist) {
-        return fs.mkdir(path, (error) => cb(error, path));
-      }
-      return cb(null, path);
-    });
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-const upload = multer({ storage: fileStorageEngine });
-
-app.post("/api/v1/education/upload", upload.single("file"), (req, res) => {
-  const { originalname } = req.file;
-  const { course, section } = req.body;
-  res.status(StatusCodes.CREATED).json({
-    file: {
-      src: `/uploads/${course}/${section}/${originalname}`,
-      msg: "file has been uploaded!",
-    },
-  });
 });
 
 //EndPoints
