@@ -22,6 +22,7 @@ import GroupInvestmentRouter from "./Routes/GroupInvestment/groupInvestment.js";
 import UserGroupRouter from "./Routes/UserGroup/userGroup.js";
 import ContactRouter from "./Routes/Contact/contact.js";
 import EducationRouter from "./Routes/Education/fileUpload.js";
+import VideoRouter from "./Routes/Education/playVideo.js";
 //Test
 import TestRouter from "./Routes/test.js";
 //Dashboard Auth
@@ -61,6 +62,7 @@ app.use(
 app.use("/api/v1/investment/user-group", authMiddleWare, UserGroupRouter);
 app.use("/api/v1/investment/user-group/contact", authMiddleWare, ContactRouter);
 app.use("/api/v1/education", authMiddleWare, EducationRouter);
+app.use("/api/v1/video", authMiddleWare, VideoRouter);
 app.use("/api/v1/test", TestRouter);
 //End Of Endpoints
 
