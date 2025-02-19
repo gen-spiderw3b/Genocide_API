@@ -3,10 +3,15 @@ import multer from "multer";
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
     const { course, section } = req.body;
+<<<<<<< HEAD
     const fileName = file.originalname;
     const dir = `/uploads/${course}/${section}`;
     const filePath = path.join(dir, fileName);
     cb(null, filePath);
+=======
+    const dir = `/uploads/${course}/${section}`;
+    cb(null, dir);
+>>>>>>> 49edacaac489104008a02c4a4a17a4334b4b5ce7
   },
 
   filename: (req, file, cb) => {
